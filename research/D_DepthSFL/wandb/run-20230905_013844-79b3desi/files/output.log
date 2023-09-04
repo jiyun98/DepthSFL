@@ -247,3 +247,7 @@ DepthSFL_depthfl_resnet18_on_cifar10_with_50_users_500_epochs_seed_123_split_[1,
 [Epoch : 47][User 32 with cut_point 3] [C_Loss  0.935 | C_Acc 96.270] [S_Loss  0.343 | S_Acc 95.215]
 [Epoch : 47][User 5 with cut_point 1] [C_Loss  0.331 | C_Acc 94.258] [S_Loss  0.975 | S_Acc 93.633]
 [Epoch : 47][User 17 with cut_point 2] [C_Loss  0.693 | C_Acc 93.281] [S_Loss  0.733 | S_Acc 92.148]
+[Epoch : 48][User 7 with cut_point 1] [C_Loss  0.287 | C_Acc 95.781] [S_Loss  0.803 | S_Acc 95.156]
+[Epoch : 48][User 11 with cut_point 1] [C_Loss  0.355 | C_Acc 92.363] [S_Loss  1.060 | S_Acc 92.754]
+[Epoch : 48][User 19 with cut_point 2] [C_Loss  0.677 | C_Acc 94.062] [S_Loss  0.702 | S_Acc 92.949]
+[Epoch : 48][User 9 with cut_point 1] [C_Loss  0.388 | C_Acc 90.957] [S_Loss  1.144 | S_Acc 91.055]
