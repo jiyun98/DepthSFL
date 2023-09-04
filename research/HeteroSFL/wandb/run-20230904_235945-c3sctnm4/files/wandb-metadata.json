@@ -1,0 +1,213 @@
+{
+    "os": "Linux-4.4.0-210-generic-x86_64-with-glibc2.23",
+    "python": "3.9.16",
+    "heartbeatAt": "2023-09-04T14:59:46.115341",
+    "startedAt": "2023-09-04T14:59:45.424077",
+    "docker": null,
+    "cuda": "10.2.89",
+    "args": [],
+    "state": "running",
+    "program": "/home/gyoon814/research/HeteroSFL/main.py",
+    "codePath": "research/HeteroSFL/main.py",
+    "git": {
+        "remote": "https://github.com/jiyun98/SFL.git1~",
+        "commit": null
+    },
+    "email": "gyoon814@kaist.ac.kr",
+    "root": "/home/gyoon814",
+    "host": "art-dl-1",
+    "username": "gyoon814",
+    "executable": "/home/gyoon814/anaconda3/envs/research/bin/python",
+    "cpu_count": 16,
+    "cpu_count_logical": 32,
+    "cpu_freq": {
+        "current": 1249.84821875,
+        "min": 1200.0,
+        "max": 3000.0
+    },
+    "cpu_freq_per_core": [
+        {
+            "current": 1201.019,
+            "min": 1200.0,
+            "max": 3000.0
+        },
+        {
+            "current": 1279.933,
+            "min": 1200.0,
+            "max": 3000.0
+        },
+        {
+            "current": 1284.773,
+            "min": 1200.0,
+            "max": 3000.0
+        },
+        {
+            "current": 1200.035,
+            "min": 1200.0,
+            "max": 3000.0
+        },
+        {
+            "current": 1268.285,
+            "min": 1200.0,
+            "max": 3000.0
+        },
+        {
+            "current": 1277.8,
+            "min": 1200.0,
+            "max": 3000.0
+        },
+        {
+            "current": 1255.078,
+            "min": 1200.0,
+            "max": 3000.0
+        },
+        {
+            "current": 1200.773,
+            "min": 1200.0,
+            "max": 3000.0
+        },
+        {
+            "current": 1201.265,
+            "min": 1200.0,
+            "max": 3000.0
+        },
+        {
+            "current": 1282.312,
+            "min": 1200.0,
+            "max": 3000.0
+        },
+        {
+            "current": 1272.386,
+            "min": 1200.0,
+            "max": 3000.0
+        },
+        {
+            "current": 1494.855,
+            "min": 1200.0,
+            "max": 3000.0
+        },
+        {
+            "current": 1292.156,
+            "min": 1200.0,
+            "max": 3000.0
+        },
+        {
+            "current": 1199.953,
+            "min": 1200.0,
+            "max": 3000.0
+        },
+        {
+            "current": 1226.531,
+            "min": 1200.0,
+            "max": 3000.0
+        },
+        {
+            "current": 1391.167,
+            "min": 1200.0,
+            "max": 3000.0
+        },
+        {
+            "current": 1200.117,
+            "min": 1200.0,
+            "max": 3000.0
+        },
+        {
+            "current": 1200.281,
+            "min": 1200.0,
+            "max": 3000.0
+        },
+        {
+            "current": 1383.457,
+            "min": 1200.0,
+            "max": 3000.0
+        },
+        {
+            "current": 1199.953,
+            "min": 1200.0,
+            "max": 3000.0
+        },
+        {
+            "current": 1202.25,
+            "min": 1200.0,
+            "max": 3000.0
+        },
+        {
+            "current": 1244.003,
+            "min": 1200.0,
+            "max": 3000.0
+        },
+        {
+            "current": 1222.347,
+            "min": 1200.0,
+            "max": 3000.0
+        },
+        {
+            "current": 1209.796,
+            "min": 1200.0,
+            "max": 3000.0
+        },
+        {
+            "current": 1199.953,
+            "min": 1200.0,
+            "max": 3000.0
+        },
+        {
+            "current": 1284.773,
+            "min": 1200.0,
+            "max": 3000.0
+        },
+        {
+            "current": 1257.046,
+            "min": 1200.0,
+            "max": 3000.0
+        },
+        {
+            "current": 1263.691,
+            "min": 1200.0,
+            "max": 3000.0
+        },
+        {
+            "current": 1224.234,
+            "min": 1200.0,
+            "max": 3000.0
+        },
+        {
+            "current": 1218.246,
+            "min": 1200.0,
+            "max": 3000.0
+        },
+        {
+            "current": 1243.757,
+            "min": 1200.0,
+            "max": 3000.0
+        },
+        {
+            "current": 1254.093,
+            "min": 1200.0,
+            "max": 3000.0
+        }
+    ],
+    "disk": {
+        "total": 875.8985786437988,
+        "used": 655.0864105224609
+    },
+    "gpu": "NVIDIA TITAN Xp",
+    "gpu_count": 3,
+    "gpu_devices": [
+        {
+            "name": "NVIDIA TITAN Xp",
+            "memory_total": 12787122176
+        },
+        {
+            "name": "NVIDIA TITAN Xp",
+            "memory_total": 12788498432
+        },
+        {
+            "name": "NVIDIA TITAN Xp",
+            "memory_total": 12788498432
+        }
+    ],
+    "memory": {
+        "total": 125.79735946655273
+    }
+}

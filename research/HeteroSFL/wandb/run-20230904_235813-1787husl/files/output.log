@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "/home/gyoon814/research/HeteroSFL/main.py", line 45, in <module>
+    net_glob_client, net_glob_server = global_model_assignment(args.cut_point, args.model_name, args.device, args.num_classes)
+  File "/home/gyoon814/research/HeteroSFL/train/model_assign.py", line 48, in global_model_assignment
+    net_glob_client = resnet18_client(num_classes, cut_point[-1], 1).to(device)
+TypeError: resnet18_client() takes from 0 to 2 positional arguments but 3 were given

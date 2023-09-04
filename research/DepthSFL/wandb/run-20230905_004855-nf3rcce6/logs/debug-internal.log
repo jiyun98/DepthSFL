@@ -1,0 +1,1305 @@
+2023-09-05 00:48:55,037 INFO    StreamThr :18074 [internal.py:wandb_internal():86] W&B internal server running at pid: 18074, started at: 2023-09-05 00:48:55.036714
+2023-09-05 00:48:55,039 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status
+2023-09-05 00:48:55,041 INFO    WriterThread:18074 [datastore.py:open_for_write():85] open: /home/gyoon814/research/HeteroSFL/wandb/run-20230905_004855-nf3rcce6/run-nf3rcce6.wandb
+2023-09-05 00:48:55,044 DEBUG   SenderThread:18074 [sender.py:send():369] send: header
+2023-09-05 00:48:55,045 DEBUG   SenderThread:18074 [sender.py:send():369] send: run
+2023-09-05 00:48:57,069 INFO    SenderThread:18074 [dir_watcher.py:__init__():211] watching files in: /home/gyoon814/research/HeteroSFL/wandb/run-20230905_004855-nf3rcce6/files
+2023-09-05 00:48:57,069 INFO    SenderThread:18074 [sender.py:_start_run_threads():1100] run started: nf3rcce6 with start time 1693842535.035766
+2023-09-05 00:48:57,069 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: summary_record
+2023-09-05 00:48:57,070 INFO    SenderThread:18074 [sender.py:_save_file():1354] saving file wandb-summary.json with policy end
+2023-09-05 00:48:57,081 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: check_version
+2023-09-05 00:48:57,081 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: check_version
+2023-09-05 00:48:57,152 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: run_start
+2023-09-05 00:48:57,162 DEBUG   HandlerThread:18074 [system_info.py:__init__():31] System info init
+2023-09-05 00:48:57,163 DEBUG   HandlerThread:18074 [system_info.py:__init__():46] System info init done
+2023-09-05 00:48:57,163 INFO    HandlerThread:18074 [system_monitor.py:start():181] Starting system monitor
+2023-09-05 00:48:57,163 INFO    SystemMonitor:18074 [system_monitor.py:_start():145] Starting system asset monitoring threads
+2023-09-05 00:48:57,163 INFO    HandlerThread:18074 [system_monitor.py:probe():201] Collecting system info
+2023-09-05 00:48:57,164 INFO    SystemMonitor:18074 [interfaces.py:start():190] Started cpu monitoring
+2023-09-05 00:48:57,165 INFO    SystemMonitor:18074 [interfaces.py:start():190] Started disk monitoring
+2023-09-05 00:48:57,167 INFO    SystemMonitor:18074 [interfaces.py:start():190] Started gpu monitoring
+2023-09-05 00:48:57,169 INFO    SystemMonitor:18074 [interfaces.py:start():190] Started memory monitoring
+2023-09-05 00:48:57,171 INFO    SystemMonitor:18074 [interfaces.py:start():190] Started network monitoring
+2023-09-05 00:48:57,203 DEBUG   HandlerThread:18074 [system_info.py:probe():195] Probing system
+2023-09-05 00:48:57,214 DEBUG   HandlerThread:18074 [system_info.py:_probe_git():180] Probing git
+2023-09-05 00:48:57,229 DEBUG   HandlerThread:18074 [system_info.py:_probe_git():188] Probing git done
+2023-09-05 00:48:57,229 DEBUG   HandlerThread:18074 [system_info.py:probe():240] Probing system done
+2023-09-05 00:48:57,229 DEBUG   HandlerThread:18074 [system_monitor.py:probe():210] {'os': 'Linux-4.4.0-210-generic-x86_64-with-glibc2.23', 'python': '3.9.16', 'heartbeatAt': '2023-09-04T15:48:57.203172', 'startedAt': '2023-09-04T15:48:55.024012', 'docker': None, 'cuda': '10.2.89', 'args': ('--model_name', 'resnet101'), 'state': 'running', 'program': '/home/gyoon814/research/HeteroSFL/main.py', 'codePath': 'research/HeteroSFL/main.py', 'git': {'remote': 'https://github.com/jiyun98/SFL.git1~', 'commit': None}, 'email': 'gyoon814@kaist.ac.kr', 'root': '/home/gyoon814', 'host': 'art-dl-1', 'username': 'gyoon814', 'executable': '/home/gyoon814/anaconda3/envs/research/bin/python', 'cpu_count': 16, 'cpu_count_logical': 32, 'cpu_freq': {'current': 1224.5339062500002, 'min': 1200.0, 'max': 3000.0}, 'cpu_freq_per_core': [{'current': 1199.953, 'min': 1200.0, 'max': 3000.0}, {'current': 1200.281, 'min': 1200.0, 'max': 3000.0}, {'current': 1199.953, 'min': 1200.0, 'max': 3000.0}, {'current': 1200.035, 'min': 1200.0, 'max': 3000.0}, {'current': 1201.019, 'min': 1200.0, 'max': 3000.0}, {'current': 1299.785, 'min': 1200.0, 'max': 3000.0}, {'current': 1200.773, 'min': 1200.0, 'max': 3000.0}, {'current': 1271.648, 'min': 1200.0, 'max': 3000.0}, {'current': 1200.773, 'min': 1200.0, 'max': 3000.0}, {'current': 1200.035, 'min': 1200.0, 'max': 3000.0}, {'current': 1200.855, 'min': 1200.0, 'max': 3000.0}, {'current': 1282.558, 'min': 1200.0, 'max': 3000.0}, {'current': 1199.953, 'min': 1200.0, 'max': 3000.0}, {'current': 1300.441, 'min': 1200.0, 'max': 3000.0}, {'current': 1200.937, 'min': 1200.0, 'max': 3000.0}, {'current': 1340.882, 'min': 1200.0, 'max': 3000.0}, {'current': 1200.117, 'min': 1200.0, 'max': 3000.0}, {'current': 1200.281, 'min': 1200.0, 'max': 3000.0}, {'current': 1204.054, 'min': 1200.0, 'max': 3000.0}, {'current': 1200.281, 'min': 1200.0, 'max': 3000.0}, {'current': 1263.773, 'min': 1200.0, 'max': 3000.0}, {'current': 1222.101, 'min': 1200.0, 'max': 3000.0}, {'current': 1227.679, 'min': 1200.0, 'max': 3000.0}, {'current': 1200.117, 'min': 1200.0, 'max': 3000.0}, {'current': 1246.792, 'min': 1200.0, 'max': 3000.0}, {'current': 1205.121, 'min': 1200.0, 'max': 3000.0}, {'current': 1222.921, 'min': 1200.0, 'max': 3000.0}, {'current': 1199.953, 'min': 1200.0, 'max': 3000.0}, {'current': 1233.832, 'min': 1200.0, 'max': 3000.0}, {'current': 1200.281, 'min': 1200.0, 'max': 3000.0}, {'current': 1262.625, 'min': 1200.0, 'max': 3000.0}, {'current': 1215.046, 'min': 1200.0, 'max': 3000.0}], 'disk': {'total': 875.8985786437988, 'used': 655.0870208740234}, 'gpu': 'NVIDIA TITAN Xp', 'gpu_count': 3, 'gpu_devices': [{'name': 'NVIDIA TITAN Xp', 'memory_total': 12787122176}, {'name': 'NVIDIA TITAN Xp', 'memory_total': 12788498432}, {'name': 'NVIDIA TITAN Xp', 'memory_total': 12788498432}], 'memory': {'total': 125.79735946655273}}
+2023-09-05 00:48:57,230 INFO    HandlerThread:18074 [system_monitor.py:probe():211] Finished collecting system info
+2023-09-05 00:48:57,230 INFO    HandlerThread:18074 [system_monitor.py:probe():214] Publishing system info
+2023-09-05 00:48:57,230 DEBUG   HandlerThread:18074 [system_info.py:_save_pip():51] Saving list of pip packages installed into the current environment
+2023-09-05 00:48:57,230 DEBUG   HandlerThread:18074 [system_info.py:_save_pip():67] Saving pip packages done
+2023-09-05 00:48:57,230 DEBUG   HandlerThread:18074 [system_info.py:_save_conda():74] Saving list of conda packages installed into the current environment
+2023-09-05 00:48:58,073 INFO    Thread-12 :18074 [dir_watcher.py:_on_file_created():272] file/dir created: /home/gyoon814/research/HeteroSFL/wandb/run-20230905_004855-nf3rcce6/files/requirements.txt
+2023-09-05 00:48:58,074 INFO    Thread-12 :18074 [dir_watcher.py:_on_file_created():272] file/dir created: /home/gyoon814/research/HeteroSFL/wandb/run-20230905_004855-nf3rcce6/files/conda-environment.yaml
+2023-09-05 00:48:58,074 INFO    Thread-12 :18074 [dir_watcher.py:_on_file_created():272] file/dir created: /home/gyoon814/research/HeteroSFL/wandb/run-20230905_004855-nf3rcce6/files/wandb-summary.json
+2023-09-05 00:49:01,816 DEBUG   HandlerThread:18074 [system_info.py:_save_conda():86] Saving conda packages done
+2023-09-05 00:49:01,817 INFO    HandlerThread:18074 [system_monitor.py:probe():216] Finished publishing system info
+2023-09-05 00:49:01,821 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 00:49:01,822 DEBUG   SenderThread:18074 [sender.py:send():369] send: files
+2023-09-05 00:49:01,823 INFO    SenderThread:18074 [sender.py:_save_file():1354] saving file wandb-metadata.json with policy now
+2023-09-05 00:49:01,834 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 00:49:01,835 DEBUG   SenderThread:18074 [sender.py:send():369] send: telemetry
+2023-09-05 00:49:01,835 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 00:49:02,075 INFO    Thread-12 :18074 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/HeteroSFL/wandb/run-20230905_004855-nf3rcce6/files/conda-environment.yaml
+2023-09-05 00:49:02,076 INFO    Thread-12 :18074 [dir_watcher.py:_on_file_created():272] file/dir created: /home/gyoon814/research/HeteroSFL/wandb/run-20230905_004855-nf3rcce6/files/wandb-metadata.json
+2023-09-05 00:49:02,078 DEBUG   SenderThread:18074 [sender.py:send():369] send: telemetry
+2023-09-05 00:49:02,079 DEBUG   SenderThread:18074 [sender.py:send():369] send: run
+2023-09-05 00:49:02,348 INFO    SenderThread:18074 [sender.py:send_run():978] updated run: nf3rcce6
+2023-09-05 00:49:02,348 DEBUG   SenderThread:18074 [sender.py:send():369] send: config
+2023-09-05 00:49:02,546 INFO    wandb-upload_0:18074 [upload_job.py:push():133] Uploaded file /tmp/tmp_y50sah0wandb/7f94cjdu-wandb-metadata.json
+2023-09-05 00:49:03,076 INFO    Thread-12 :18074 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/HeteroSFL/wandb/run-20230905_004855-nf3rcce6/files/config.yaml
+2023-09-05 00:49:05,349 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 00:49:09,078 INFO    Thread-12 :18074 [dir_watcher.py:_on_file_created():272] file/dir created: /home/gyoon814/research/HeteroSFL/wandb/run-20230905_004855-nf3rcce6/files/output.log
+2023-09-05 00:49:10,751 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 00:49:11,079 INFO    Thread-12 :18074 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/HeteroSFL/wandb/run-20230905_004855-nf3rcce6/files/output.log
+2023-09-05 00:49:15,753 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 00:49:16,833 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 00:49:16,834 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 00:49:21,057 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 00:49:26,063 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 00:49:28,085 INFO    Thread-12 :18074 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/HeteroSFL/wandb/run-20230905_004855-nf3rcce6/files/config.yaml
+2023-09-05 00:49:28,167 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-05 00:49:29,086 INFO    Thread-12 :18074 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/HeteroSFL/wandb/run-20230905_004855-nf3rcce6/files/output.log
+2023-09-05 00:49:31,833 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 00:49:31,834 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 00:49:33,045 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 00:49:38,046 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 00:49:41,918 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-05 00:49:43,091 INFO    Thread-12 :18074 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/HeteroSFL/wandb/run-20230905_004855-nf3rcce6/files/output.log
+2023-09-05 00:49:43,918 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 00:49:46,835 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 00:49:46,836 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 00:49:49,186 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 00:49:54,186 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 00:49:56,219 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-05 00:49:57,096 INFO    Thread-12 :18074 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/HeteroSFL/wandb/run-20230905_004855-nf3rcce6/files/output.log
+2023-09-05 00:49:57,171 DEBUG   SystemMonitor:18074 [system_monitor.py:_start():159] Starting system metrics aggregation loop
+2023-09-05 00:49:57,174 DEBUG   SenderThread:18074 [sender.py:send():369] send: stats
+2023-09-05 00:50:00,176 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 00:50:01,833 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 00:50:01,834 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 00:50:06,070 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 00:50:09,638 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-05 00:50:11,103 INFO    Thread-12 :18074 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/HeteroSFL/wandb/run-20230905_004855-nf3rcce6/files/output.log
+2023-09-05 00:50:11,638 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 00:50:16,639 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 00:50:16,832 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 00:50:16,833 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 00:50:22,150 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 00:50:26,273 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-05 00:50:27,109 INFO    Thread-12 :18074 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/HeteroSFL/wandb/run-20230905_004855-nf3rcce6/files/output.log
+2023-09-05 00:50:27,176 DEBUG   SenderThread:18074 [sender.py:send():369] send: stats
+2023-09-05 00:50:27,177 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 00:50:31,835 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 00:50:31,835 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 00:50:33,144 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 00:50:38,146 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 00:50:43,147 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 00:50:46,835 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 00:50:46,835 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 00:50:49,085 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 00:50:54,087 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 00:50:57,178 DEBUG   SenderThread:18074 [sender.py:send():369] send: stats
+2023-09-05 00:50:59,179 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 00:51:01,836 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 00:51:01,836 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 00:51:05,107 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 00:51:10,108 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 00:51:15,109 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 00:51:16,835 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 00:51:16,836 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 00:51:20,125 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 00:51:25,126 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 00:51:27,179 DEBUG   SenderThread:18074 [sender.py:send():369] send: stats
+2023-09-05 00:51:30,181 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 00:51:31,837 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 00:51:31,838 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 00:51:36,068 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 00:51:41,069 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 00:51:46,070 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 00:51:46,835 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 00:51:46,835 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 00:51:52,062 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 00:51:57,063 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 00:51:57,181 DEBUG   SenderThread:18074 [sender.py:send():369] send: stats
+2023-09-05 00:52:01,835 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 00:52:01,836 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 00:52:02,096 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 00:52:07,097 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 00:52:12,098 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 00:52:16,836 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 00:52:16,837 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 00:52:18,078 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 00:52:23,079 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 00:52:27,183 DEBUG   SenderThread:18074 [sender.py:send():369] send: stats
+2023-09-05 00:52:28,185 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 00:52:31,836 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 00:52:31,838 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 00:52:34,117 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 00:52:39,118 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 00:52:44,119 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 00:52:46,835 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 00:52:46,836 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 00:52:50,092 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 00:52:55,093 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 00:52:57,185 DEBUG   SenderThread:18074 [sender.py:send():369] send: stats
+2023-09-05 00:52:58,282 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-05 00:52:58,287 DEBUG   SenderThread:18074 [sender.py:send():369] send: history
+2023-09-05 00:52:58,287 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: summary_record
+2023-09-05 00:52:58,288 INFO    SenderThread:18074 [sender.py:_save_file():1354] saving file wandb-summary.json with policy end
+2023-09-05 00:52:59,166 INFO    Thread-12 :18074 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/HeteroSFL/wandb/run-20230905_004855-nf3rcce6/files/output.log
+2023-09-05 00:52:59,166 INFO    Thread-12 :18074 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/HeteroSFL/wandb/run-20230905_004855-nf3rcce6/files/wandb-summary.json
+2023-09-05 00:53:00,289 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 00:53:01,835 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 00:53:01,836 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 00:53:06,049 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 00:53:11,050 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 00:53:13,791 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-05 00:53:15,173 INFO    Thread-12 :18074 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/HeteroSFL/wandb/run-20230905_004855-nf3rcce6/files/output.log
+2023-09-05 00:53:16,793 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 00:53:16,835 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 00:53:16,836 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 00:53:22,111 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 00:53:27,112 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 00:53:27,187 DEBUG   SenderThread:18074 [sender.py:send():369] send: stats
+2023-09-05 00:53:27,431 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-05 00:53:29,178 INFO    Thread-12 :18074 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/HeteroSFL/wandb/run-20230905_004855-nf3rcce6/files/output.log
+2023-09-05 00:53:31,838 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 00:53:31,838 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 00:53:33,043 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 00:53:38,044 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 00:53:40,447 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-05 00:53:41,183 INFO    Thread-12 :18074 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/HeteroSFL/wandb/run-20230905_004855-nf3rcce6/files/output.log
+2023-09-05 00:53:43,449 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 00:53:46,836 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 00:53:46,837 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 00:53:49,188 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 00:53:54,189 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 00:53:57,189 DEBUG   SenderThread:18074 [sender.py:send():369] send: stats
+2023-09-05 00:53:58,225 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-05 00:53:59,191 INFO    Thread-12 :18074 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/HeteroSFL/wandb/run-20230905_004855-nf3rcce6/files/output.log
+2023-09-05 00:53:59,227 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 00:54:01,838 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 00:54:01,838 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 00:54:05,063 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 00:54:10,063 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 00:54:15,064 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 00:54:16,840 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 00:54:16,841 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 00:54:20,198 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 00:54:25,199 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 00:54:27,191 DEBUG   SenderThread:18074 [sender.py:send():369] send: stats
+2023-09-05 00:54:31,193 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 00:54:31,839 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 00:54:31,839 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 00:54:37,157 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 00:54:42,157 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 00:54:46,840 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 00:54:46,840 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 00:54:47,160 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 00:54:52,161 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 00:54:57,161 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 00:54:57,193 DEBUG   SenderThread:18074 [sender.py:send():369] send: stats
+2023-09-05 00:55:01,840 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 00:55:01,841 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 00:55:03,067 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 00:55:08,068 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 00:55:13,069 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 00:55:16,840 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 00:55:16,840 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 00:55:18,097 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 00:55:23,097 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 00:55:27,195 DEBUG   SenderThread:18074 [sender.py:send():369] send: stats
+2023-09-05 00:55:28,196 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 00:55:31,839 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 00:55:31,839 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 00:55:34,059 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 00:55:39,060 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 00:55:44,061 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 00:55:46,840 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 00:55:46,841 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 00:55:49,135 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 00:55:54,136 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 00:55:57,196 DEBUG   SenderThread:18074 [sender.py:send():369] send: stats
+2023-09-05 00:55:59,198 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 00:56:01,840 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 00:56:01,840 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 00:56:05,136 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 00:56:10,138 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 00:56:15,138 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 00:56:16,842 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 00:56:16,842 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 00:56:20,166 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 00:56:25,167 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 00:56:27,198 DEBUG   SenderThread:18074 [sender.py:send():369] send: stats
+2023-09-05 00:56:30,200 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 00:56:31,840 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 00:56:31,840 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 00:56:36,150 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 00:56:41,151 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 00:56:44,333 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-05 00:56:44,339 DEBUG   SenderThread:18074 [sender.py:send():369] send: history
+2023-09-05 00:56:44,339 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: summary_record
+2023-09-05 00:56:44,340 INFO    SenderThread:18074 [sender.py:_save_file():1354] saving file wandb-summary.json with policy end
+2023-09-05 00:56:45,253 INFO    Thread-12 :18074 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/HeteroSFL/wandb/run-20230905_004855-nf3rcce6/files/wandb-summary.json
+2023-09-05 00:56:46,253 INFO    Thread-12 :18074 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/HeteroSFL/wandb/run-20230905_004855-nf3rcce6/files/output.log
+2023-09-05 00:56:46,341 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 00:56:46,841 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 00:56:46,842 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 00:56:52,149 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 00:56:57,150 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 00:56:57,201 DEBUG   SenderThread:18074 [sender.py:send():369] send: stats
+2023-09-05 00:57:01,842 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 00:57:01,842 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 00:57:03,108 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 00:57:03,554 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-05 00:57:06,261 INFO    Thread-12 :18074 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/HeteroSFL/wandb/run-20230905_004855-nf3rcce6/files/output.log
+2023-09-05 00:57:08,557 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 00:57:13,557 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 00:57:16,842 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 00:57:16,842 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 00:57:18,243 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-05 00:57:19,244 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 00:57:20,267 INFO    Thread-12 :18074 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/HeteroSFL/wandb/run-20230905_004855-nf3rcce6/files/output.log
+2023-09-05 00:57:24,245 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 00:57:27,202 DEBUG   SenderThread:18074 [sender.py:send():369] send: stats
+2023-09-05 00:57:30,204 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 00:57:31,483 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-05 00:57:31,843 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 00:57:31,844 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 00:57:34,273 INFO    Thread-12 :18074 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/HeteroSFL/wandb/run-20230905_004855-nf3rcce6/files/output.log
+2023-09-05 00:57:36,090 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 00:57:41,091 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 00:57:45,293 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-05 00:57:46,278 INFO    Thread-12 :18074 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/HeteroSFL/wandb/run-20230905_004855-nf3rcce6/files/output.log
+2023-09-05 00:57:46,295 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 00:57:46,843 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 00:57:46,844 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 00:57:52,145 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 00:57:57,147 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 00:57:57,204 DEBUG   SenderThread:18074 [sender.py:send():369] send: stats
+2023-09-05 00:58:01,844 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 00:58:01,844 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 00:58:03,111 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 00:58:08,111 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 00:58:13,112 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 00:58:16,844 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 00:58:16,844 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 00:58:19,085 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 00:58:24,085 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 00:58:27,206 DEBUG   SenderThread:18074 [sender.py:send():369] send: stats
+2023-09-05 00:58:29,207 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 00:58:31,846 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 00:58:31,847 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 00:58:35,119 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 00:58:40,120 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 00:58:45,121 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 00:58:46,846 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 00:58:46,846 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 00:58:51,106 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 00:58:56,107 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 00:58:57,208 DEBUG   SenderThread:18074 [sender.py:send():369] send: stats
+2023-09-05 00:59:01,210 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 00:59:01,847 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 00:59:01,848 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 00:59:07,116 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 00:59:12,117 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 00:59:16,846 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 00:59:16,847 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 00:59:17,160 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 00:59:22,161 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 00:59:27,161 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 00:59:27,209 DEBUG   SenderThread:18074 [sender.py:send():369] send: stats
+2023-09-05 00:59:31,847 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 00:59:31,847 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 00:59:33,110 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 00:59:38,111 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 00:59:43,112 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 00:59:46,846 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 00:59:46,847 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 00:59:48,119 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 00:59:53,119 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 00:59:57,212 DEBUG   SenderThread:18074 [sender.py:send():369] send: stats
+2023-09-05 00:59:58,213 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:00:01,847 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:00:01,847 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:00:04,085 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:00:09,086 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:00:14,087 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:00:16,846 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:00:16,847 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:00:19,114 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:00:24,115 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:00:27,213 DEBUG   SenderThread:18074 [sender.py:send():369] send: stats
+2023-09-05 01:00:29,214 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:00:31,849 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:00:31,849 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:00:34,330 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:00:39,331 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:00:42,278 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-05 01:00:42,281 DEBUG   SenderThread:18074 [sender.py:send():369] send: history
+2023-09-05 01:00:42,281 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: summary_record
+2023-09-05 01:00:42,282 INFO    SenderThread:18074 [sender.py:_save_file():1354] saving file wandb-summary.json with policy end
+2023-09-05 01:00:42,346 INFO    Thread-12 :18074 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/HeteroSFL/wandb/run-20230905_004855-nf3rcce6/files/wandb-summary.json
+2023-09-05 01:00:44,346 INFO    Thread-12 :18074 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/HeteroSFL/wandb/run-20230905_004855-nf3rcce6/files/output.log
+2023-09-05 01:00:45,284 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:00:46,847 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:00:46,848 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:00:51,128 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:00:56,129 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:00:56,449 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-05 01:00:57,215 DEBUG   SenderThread:18074 [sender.py:send():369] send: stats
+2023-09-05 01:00:58,352 INFO    Thread-12 :18074 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/HeteroSFL/wandb/run-20230905_004855-nf3rcce6/files/output.log
+2023-09-05 01:01:01,217 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:01:01,858 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:01:01,858 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:01:07,137 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:01:12,138 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:01:14,799 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-05 01:01:16,359 INFO    Thread-12 :18074 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/HeteroSFL/wandb/run-20230905_004855-nf3rcce6/files/output.log
+2023-09-05 01:01:16,858 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:01:16,858 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:01:17,158 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:01:22,159 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:01:27,160 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:01:27,217 DEBUG   SenderThread:18074 [sender.py:send():369] send: stats
+2023-09-05 01:01:30,537 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-05 01:01:31,857 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:01:31,858 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:01:32,365 INFO    Thread-12 :18074 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/HeteroSFL/wandb/run-20230905_004855-nf3rcce6/files/output.log
+2023-09-05 01:01:33,120 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:01:38,121 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:01:43,122 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:01:43,599 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-05 01:01:44,370 INFO    Thread-12 :18074 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/HeteroSFL/wandb/run-20230905_004855-nf3rcce6/files/output.log
+2023-09-05 01:01:46,859 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:01:46,860 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:01:49,113 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:01:54,114 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:01:57,218 DEBUG   SenderThread:18074 [sender.py:send():369] send: stats
+2023-09-05 01:01:59,220 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:02:01,860 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:02:01,861 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:02:05,079 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:02:10,080 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:02:15,081 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:02:16,859 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:02:16,860 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:02:20,086 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:02:25,087 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:02:27,220 DEBUG   SenderThread:18074 [sender.py:send():369] send: stats
+2023-09-05 01:02:30,222 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:02:31,860 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:02:31,860 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:02:36,162 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:02:41,163 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:02:46,164 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:02:46,861 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:02:46,862 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:02:52,137 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:02:57,138 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:02:57,222 DEBUG   SenderThread:18074 [sender.py:send():369] send: stats
+2023-09-05 01:03:01,861 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:03:01,862 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:03:02,160 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:03:07,161 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:03:12,162 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:03:16,862 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:03:16,863 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:03:18,138 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:03:23,139 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:03:27,224 DEBUG   SenderThread:18074 [sender.py:send():369] send: stats
+2023-09-05 01:03:28,225 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:03:31,863 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:03:31,864 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:03:34,130 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:03:39,131 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:03:44,132 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:03:46,862 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:03:46,862 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:03:49,175 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:03:54,175 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:03:57,231 DEBUG   SenderThread:18074 [sender.py:send():369] send: stats
+2023-09-05 01:03:59,232 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:04:01,862 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:04:01,863 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:04:05,087 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:04:10,088 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:04:15,089 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:04:16,862 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:04:16,863 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:04:20,164 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:04:22,631 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-05 01:04:22,633 DEBUG   SenderThread:18074 [sender.py:send():369] send: history
+2023-09-05 01:04:22,633 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: summary_record
+2023-09-05 01:04:22,634 INFO    SenderThread:18074 [sender.py:_save_file():1354] saving file wandb-summary.json with policy end
+2023-09-05 01:04:23,430 INFO    Thread-12 :18074 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/HeteroSFL/wandb/run-20230905_004855-nf3rcce6/files/wandb-summary.json
+2023-09-05 01:04:24,431 INFO    Thread-12 :18074 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/HeteroSFL/wandb/run-20230905_004855-nf3rcce6/files/output.log
+2023-09-05 01:04:25,636 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:04:27,227 DEBUG   SenderThread:18074 [sender.py:send():369] send: stats
+2023-09-05 01:04:31,229 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:04:31,869 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:04:31,870 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:04:36,021 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-05 01:04:37,022 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:04:38,436 INFO    Thread-12 :18074 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/HeteroSFL/wandb/run-20230905_004855-nf3rcce6/files/output.log
+2023-09-05 01:04:42,023 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:04:46,870 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:04:46,870 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:04:47,094 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:04:49,123 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-05 01:04:50,441 INFO    Thread-12 :18074 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/HeteroSFL/wandb/run-20230905_004855-nf3rcce6/files/output.log
+2023-09-05 01:04:52,124 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:04:57,125 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:04:57,229 DEBUG   SenderThread:18074 [sender.py:send():369] send: stats
+2023-09-05 01:05:01,868 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:05:01,869 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:05:02,172 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:05:03,371 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-05 01:05:04,446 INFO    Thread-12 :18074 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/HeteroSFL/wandb/run-20230905_004855-nf3rcce6/files/output.log
+2023-09-05 01:05:07,372 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:05:12,373 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:05:16,755 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-05 01:05:16,869 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:05:16,870 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:05:18,146 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:05:18,453 INFO    Thread-12 :18074 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/HeteroSFL/wandb/run-20230905_004855-nf3rcce6/files/output.log
+2023-09-05 01:05:23,147 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:05:27,231 DEBUG   SenderThread:18074 [sender.py:send():369] send: stats
+2023-09-05 01:05:28,232 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:05:31,870 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:05:31,871 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:05:34,166 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:05:39,167 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:05:44,168 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:05:46,871 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:05:46,872 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:05:50,088 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:05:55,088 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:05:57,235 DEBUG   SenderThread:18074 [sender.py:send():369] send: stats
+2023-09-05 01:06:00,237 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:06:01,871 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:06:01,871 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:06:06,098 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:06:11,099 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:06:16,100 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:06:16,871 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:06:16,872 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:06:22,100 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:06:27,100 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:06:27,234 DEBUG   SenderThread:18074 [sender.py:send():369] send: stats
+2023-09-05 01:06:31,873 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:06:31,873 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:06:32,118 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:06:37,118 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:06:42,119 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:06:46,873 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:06:46,874 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:06:47,184 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:06:52,186 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:06:57,186 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:06:57,236 DEBUG   SenderThread:18074 [sender.py:send():369] send: stats
+2023-09-05 01:07:01,874 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:07:01,874 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:07:03,167 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:07:08,168 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:07:13,168 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:07:16,874 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:07:16,874 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:07:19,120 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:07:24,121 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:07:27,238 DEBUG   SenderThread:18074 [sender.py:send():369] send: stats
+2023-09-05 01:07:29,239 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:07:31,874 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:07:31,875 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:07:35,147 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:07:40,147 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:07:45,148 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:07:46,873 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:07:46,874 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:07:50,179 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:07:55,180 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:07:57,239 DEBUG   SenderThread:18074 [sender.py:send():369] send: stats
+2023-09-05 01:07:58,858 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-05 01:07:58,859 DEBUG   SenderThread:18074 [sender.py:send():369] send: history
+2023-09-05 01:07:58,860 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: summary_record
+2023-09-05 01:07:58,860 INFO    SenderThread:18074 [sender.py:_save_file():1354] saving file wandb-summary.json with policy end
+2023-09-05 01:07:59,515 INFO    Thread-12 :18074 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/HeteroSFL/wandb/run-20230905_004855-nf3rcce6/files/wandb-summary.json
+2023-09-05 01:08:00,515 INFO    Thread-12 :18074 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/HeteroSFL/wandb/run-20230905_004855-nf3rcce6/files/output.log
+2023-09-05 01:08:00,862 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:08:01,873 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:08:01,874 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:08:06,180 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:08:11,181 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:08:15,287 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-05 01:08:16,288 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:08:16,521 INFO    Thread-12 :18074 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/HeteroSFL/wandb/run-20230905_004855-nf3rcce6/files/output.log
+2023-09-05 01:08:16,876 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:08:16,877 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:08:22,116 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:08:27,117 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:08:27,241 DEBUG   SenderThread:18074 [sender.py:send():369] send: stats
+2023-09-05 01:08:28,325 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-05 01:08:30,527 INFO    Thread-12 :18074 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/HeteroSFL/wandb/run-20230905_004855-nf3rcce6/files/output.log
+2023-09-05 01:08:31,874 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:08:31,874 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:08:32,126 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:08:37,126 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:08:40,791 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-05 01:08:42,531 INFO    Thread-12 :18074 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/HeteroSFL/wandb/run-20230905_004855-nf3rcce6/files/output.log
+2023-09-05 01:08:42,792 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:08:46,874 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:08:46,875 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:08:48,138 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:08:53,139 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:08:54,586 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-05 01:08:56,536 INFO    Thread-12 :18074 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/HeteroSFL/wandb/run-20230905_004855-nf3rcce6/files/output.log
+2023-09-05 01:08:57,243 DEBUG   SenderThread:18074 [sender.py:send():369] send: stats
+2023-09-05 01:08:58,244 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:09:01,876 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:09:01,877 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:09:03,442 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:09:08,443 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:09:13,444 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:09:16,875 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:09:16,876 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:09:18,675 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:09:23,676 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:09:27,245 DEBUG   SenderThread:18074 [sender.py:send():369] send: stats
+2023-09-05 01:09:29,246 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:09:31,877 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:09:31,878 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:09:34,576 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:09:39,576 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:09:44,577 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:09:46,878 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:09:46,878 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:09:49,912 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:09:54,913 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:09:57,246 DEBUG   SenderThread:18074 [sender.py:send():369] send: stats
+2023-09-05 01:10:00,248 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:10:01,877 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:10:01,877 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:10:05,402 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:10:10,403 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:10:15,403 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:10:16,878 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:10:16,879 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:10:21,018 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:10:26,019 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:10:27,248 DEBUG   SenderThread:18074 [sender.py:send():369] send: stats
+2023-09-05 01:10:31,250 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:10:31,879 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:10:31,879 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:10:36,721 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:10:41,722 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:10:46,723 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:10:46,879 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:10:46,879 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:10:51,931 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:10:56,933 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:10:57,255 DEBUG   SenderThread:18074 [sender.py:send():369] send: stats
+2023-09-05 01:11:01,879 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:11:01,879 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:11:03,433 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:11:08,434 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:11:13,435 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:11:16,881 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:11:16,881 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:11:19,109 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:11:24,109 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:11:27,252 DEBUG   SenderThread:18074 [sender.py:send():369] send: stats
+2023-09-05 01:11:29,253 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:11:31,881 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:11:31,881 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:11:35,017 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:11:40,018 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:11:45,019 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:11:46,881 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:11:46,882 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:11:48,091 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-05 01:11:48,093 DEBUG   SenderThread:18074 [sender.py:send():369] send: history
+2023-09-05 01:11:48,093 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: summary_record
+2023-09-05 01:11:48,096 INFO    SenderThread:18074 [sender.py:_save_file():1354] saving file wandb-summary.json with policy end
+2023-09-05 01:11:48,602 INFO    Thread-12 :18074 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/HeteroSFL/wandb/run-20230905_004855-nf3rcce6/files/output.log
+2023-09-05 01:11:48,602 INFO    Thread-12 :18074 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/HeteroSFL/wandb/run-20230905_004855-nf3rcce6/files/wandb-summary.json
+2023-09-05 01:11:50,098 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:11:55,099 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:11:57,254 DEBUG   SenderThread:18074 [sender.py:send():369] send: stats
+2023-09-05 01:12:00,256 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:12:01,595 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-05 01:12:01,881 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:12:01,882 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:12:02,608 INFO    Thread-12 :18074 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/HeteroSFL/wandb/run-20230905_004855-nf3rcce6/files/output.log
+2023-09-05 01:12:05,498 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:12:10,499 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:12:15,436 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-05 01:12:16,436 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:12:16,613 INFO    Thread-12 :18074 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/HeteroSFL/wandb/run-20230905_004855-nf3rcce6/files/output.log
+2023-09-05 01:12:16,881 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:12:16,881 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:12:21,711 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:12:26,712 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:12:27,255 DEBUG   SenderThread:18074 [sender.py:send():369] send: stats
+2023-09-05 01:12:31,502 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-05 01:12:31,879 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:12:31,882 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:12:31,883 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:12:32,619 INFO    Thread-12 :18074 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/HeteroSFL/wandb/run-20230905_004855-nf3rcce6/files/output.log
+2023-09-05 01:12:37,845 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:12:42,846 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:12:46,881 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:12:46,882 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:12:48,272 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:12:49,363 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-05 01:12:50,626 INFO    Thread-12 :18074 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/HeteroSFL/wandb/run-20230905_004855-nf3rcce6/files/output.log
+2023-09-05 01:12:53,364 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:12:57,258 DEBUG   SenderThread:18074 [sender.py:send():369] send: stats
+2023-09-05 01:12:59,260 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:13:01,882 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:13:01,883 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:13:04,620 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:13:09,621 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:13:14,622 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:13:16,882 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:13:16,883 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:13:19,636 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:13:24,637 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:13:27,259 DEBUG   SenderThread:18074 [sender.py:send():369] send: stats
+2023-09-05 01:13:30,261 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:13:31,883 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:13:31,884 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:13:36,179 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:13:41,180 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:13:46,181 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:13:46,883 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:13:46,884 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:13:51,207 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:13:56,207 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:13:57,262 DEBUG   SenderThread:18074 [sender.py:send():369] send: stats
+2023-09-05 01:14:01,263 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:14:01,883 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:14:01,884 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:14:06,755 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:14:11,756 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:14:16,757 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:14:16,885 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:14:16,885 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:14:22,259 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:14:27,259 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:14:27,263 DEBUG   SenderThread:18074 [sender.py:send():369] send: stats
+2023-09-05 01:14:31,884 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:14:31,885 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:14:33,234 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:14:38,235 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:14:43,236 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:14:46,885 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:14:46,885 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:14:48,336 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:14:53,337 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:14:57,264 DEBUG   SenderThread:18074 [sender.py:send():369] send: stats
+2023-09-05 01:14:59,266 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:15:01,885 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:15:01,886 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:15:04,662 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:15:09,666 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:15:14,667 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:15:16,885 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:15:16,886 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:15:19,686 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:15:24,687 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:15:27,266 DEBUG   SenderThread:18074 [sender.py:send():369] send: stats
+2023-09-05 01:15:30,268 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:15:31,886 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:15:31,886 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:15:32,673 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-05 01:15:33,040 DEBUG   SenderThread:18074 [sender.py:send():369] send: history
+2023-09-05 01:15:33,041 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: summary_record
+2023-09-05 01:15:33,042 INFO    SenderThread:18074 [sender.py:_save_file():1354] saving file wandb-summary.json with policy end
+2023-09-05 01:15:33,689 INFO    Thread-12 :18074 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/HeteroSFL/wandb/run-20230905_004855-nf3rcce6/files/wandb-summary.json
+2023-09-05 01:15:35,690 INFO    Thread-12 :18074 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/HeteroSFL/wandb/run-20230905_004855-nf3rcce6/files/output.log
+2023-09-05 01:15:36,043 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:15:41,044 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:15:44,727 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-05 01:15:46,728 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:15:46,885 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:15:46,885 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:15:47,694 INFO    Thread-12 :18074 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/HeteroSFL/wandb/run-20230905_004855-nf3rcce6/files/output.log
+2023-09-05 01:15:51,776 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:15:56,777 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:15:57,268 DEBUG   SenderThread:18074 [sender.py:send():369] send: stats
+2023-09-05 01:16:01,885 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:16:01,887 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:16:01,887 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:16:04,499 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-05 01:16:05,701 INFO    Thread-12 :18074 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/HeteroSFL/wandb/run-20230905_004855-nf3rcce6/files/output.log
+2023-09-05 01:16:07,500 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:16:12,501 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:16:16,886 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:16:16,887 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:16:18,199 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:16:23,200 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:16:23,296 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-05 01:16:25,709 INFO    Thread-12 :18074 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/HeteroSFL/wandb/run-20230905_004855-nf3rcce6/files/output.log
+2023-09-05 01:16:27,270 DEBUG   SenderThread:18074 [sender.py:send():369] send: stats
+2023-09-05 01:16:28,271 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:16:31,887 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:16:31,888 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:16:34,186 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:16:36,485 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-05 01:16:37,715 INFO    Thread-12 :18074 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/HeteroSFL/wandb/run-20230905_004855-nf3rcce6/files/output.log
+2023-09-05 01:16:39,486 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:16:44,487 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:16:46,888 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:16:46,888 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:16:50,205 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:16:55,206 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:16:57,272 DEBUG   SenderThread:18074 [sender.py:send():369] send: stats
+2023-09-05 01:17:00,273 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:17:01,888 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:17:01,889 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:17:05,318 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:17:10,319 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:17:15,320 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:17:16,888 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:17:16,888 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:17:21,151 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:17:26,152 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:17:27,273 DEBUG   SenderThread:18074 [sender.py:send():369] send: stats
+2023-09-05 01:17:31,275 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:17:31,889 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:17:31,890 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:17:37,179 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:17:42,180 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:17:46,890 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:17:46,890 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:17:48,180 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:17:53,181 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:17:57,275 DEBUG   SenderThread:18074 [sender.py:send():369] send: stats
+2023-09-05 01:17:58,276 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:18:01,890 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:18:01,890 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:18:04,190 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:18:09,191 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:18:14,192 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:18:16,890 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:18:16,890 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:18:20,135 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:18:25,136 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:18:27,282 DEBUG   SenderThread:18074 [sender.py:send():369] send: stats
+2023-09-05 01:18:30,284 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:18:31,889 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:18:31,890 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:18:35,292 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:18:40,293 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:18:45,294 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:18:46,891 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:18:46,892 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:18:51,227 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:18:56,228 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:18:57,278 DEBUG   SenderThread:18074 [sender.py:send():369] send: stats
+2023-09-05 01:19:01,280 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:19:01,892 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:19:01,893 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:19:07,215 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:19:12,216 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:19:16,891 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:19:16,891 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:19:18,145 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:19:22,311 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-05 01:19:22,313 DEBUG   SenderThread:18074 [sender.py:send():369] send: history
+2023-09-05 01:19:22,313 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: summary_record
+2023-09-05 01:19:22,317 INFO    SenderThread:18074 [sender.py:_save_file():1354] saving file wandb-summary.json with policy end
+2023-09-05 01:19:22,775 INFO    Thread-12 :18074 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/HeteroSFL/wandb/run-20230905_004855-nf3rcce6/files/wandb-summary.json
+2023-09-05 01:19:23,318 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:19:23,776 INFO    Thread-12 :18074 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/HeteroSFL/wandb/run-20230905_004855-nf3rcce6/files/output.log
+2023-09-05 01:19:27,280 DEBUG   SenderThread:18074 [sender.py:send():369] send: stats
+2023-09-05 01:19:29,281 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:19:31,892 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:19:31,893 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:19:35,121 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:19:37,822 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-05 01:19:39,782 INFO    Thread-12 :18074 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/HeteroSFL/wandb/run-20230905_004855-nf3rcce6/files/output.log
+2023-09-05 01:19:40,823 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:19:45,824 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:19:46,892 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:19:46,893 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:19:51,250 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:19:52,996 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-05 01:19:55,788 INFO    Thread-12 :18074 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/HeteroSFL/wandb/run-20230905_004855-nf3rcce6/files/output.log
+2023-09-05 01:19:56,997 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:19:57,282 DEBUG   SenderThread:18074 [sender.py:send():369] send: stats
+2023-09-05 01:20:01,894 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:20:01,895 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:20:02,275 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:20:07,276 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:20:09,241 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-05 01:20:11,794 INFO    Thread-12 :18074 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/HeteroSFL/wandb/run-20230905_004855-nf3rcce6/files/output.log
+2023-09-05 01:20:13,243 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:20:16,894 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:20:16,894 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:20:19,207 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:20:23,196 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-05 01:20:25,197 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:20:25,799 INFO    Thread-12 :18074 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/HeteroSFL/wandb/run-20230905_004855-nf3rcce6/files/output.log
+2023-09-05 01:20:27,283 DEBUG   SenderThread:18074 [sender.py:send():369] send: stats
+2023-09-05 01:20:30,285 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:20:31,895 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:20:31,895 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:20:36,209 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:20:41,209 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:20:46,210 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:20:46,896 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:20:46,896 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:20:52,136 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:20:57,137 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:20:57,288 DEBUG   SenderThread:18074 [sender.py:send():369] send: stats
+2023-09-05 01:21:01,896 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:21:01,896 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:21:02,192 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:21:07,193 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:21:12,194 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:21:16,898 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:21:16,898 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:21:18,143 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:21:23,144 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:21:27,287 DEBUG   SenderThread:18074 [sender.py:send():369] send: stats
+2023-09-05 01:21:28,288 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:21:31,897 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:21:31,897 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:21:34,211 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:21:39,212 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:21:44,213 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:21:46,896 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:21:46,897 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:21:50,149 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:21:55,150 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:21:57,288 DEBUG   SenderThread:18074 [sender.py:send():369] send: stats
+2023-09-05 01:22:00,290 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:22:01,896 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:22:01,897 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:22:06,187 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:22:11,188 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:22:16,190 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:22:16,898 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:22:16,899 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:22:22,131 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:22:27,132 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:22:27,290 DEBUG   SenderThread:18074 [sender.py:send():369] send: stats
+2023-09-05 01:22:31,898 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:22:31,899 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:22:32,207 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:22:37,208 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:22:42,208 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:22:46,897 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:22:46,898 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:22:48,148 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:22:53,149 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:22:57,292 DEBUG   SenderThread:18074 [sender.py:send():369] send: stats
+2023-09-05 01:22:58,293 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:22:59,226 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-05 01:22:59,228 DEBUG   SenderThread:18074 [sender.py:send():369] send: history
+2023-09-05 01:22:59,228 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: summary_record
+2023-09-05 01:22:59,229 INFO    SenderThread:18074 [sender.py:_save_file():1354] saving file wandb-summary.json with policy end
+2023-09-05 01:22:59,856 INFO    Thread-12 :18074 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/HeteroSFL/wandb/run-20230905_004855-nf3rcce6/files/wandb-summary.json
+2023-09-05 01:23:01,857 INFO    Thread-12 :18074 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/HeteroSFL/wandb/run-20230905_004855-nf3rcce6/files/output.log
+2023-09-05 01:23:01,973 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:23:01,974 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:23:04,279 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:23:09,280 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:23:13,254 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-05 01:23:15,255 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:23:15,862 INFO    Thread-12 :18074 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/HeteroSFL/wandb/run-20230905_004855-nf3rcce6/files/output.log
+2023-09-05 01:23:16,973 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:23:16,973 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:23:21,248 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:23:26,249 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:23:27,294 DEBUG   SenderThread:18074 [sender.py:send():369] send: stats
+2023-09-05 01:23:31,295 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:23:31,977 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:23:31,977 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:23:33,131 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-05 01:23:35,870 INFO    Thread-12 :18074 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/HeteroSFL/wandb/run-20230905_004855-nf3rcce6/files/output.log
+2023-09-05 01:23:37,132 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:23:42,133 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:23:46,974 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:23:46,974 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:23:47,300 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:23:49,819 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-05 01:23:51,876 INFO    Thread-12 :18074 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/HeteroSFL/wandb/run-20230905_004855-nf3rcce6/files/output.log
+2023-09-05 01:23:52,820 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:23:57,295 DEBUG   SenderThread:18074 [sender.py:send():369] send: stats
+2023-09-05 01:23:58,297 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:24:01,974 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:24:01,975 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:24:04,239 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:24:06,070 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-05 01:24:07,882 INFO    Thread-12 :18074 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/HeteroSFL/wandb/run-20230905_004855-nf3rcce6/files/output.log
+2023-09-05 01:24:10,072 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:24:15,073 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:24:16,976 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:24:16,977 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:24:20,200 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:24:25,201 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:24:27,297 DEBUG   SenderThread:18074 [sender.py:send():369] send: stats
+2023-09-05 01:24:30,299 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:24:31,977 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:24:31,978 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:24:36,192 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:24:41,193 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:24:46,194 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:24:46,977 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:24:46,978 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:24:52,189 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:24:57,190 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:24:57,299 DEBUG   SenderThread:18074 [sender.py:send():369] send: stats
+2023-09-05 01:25:01,977 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:25:01,978 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:25:02,261 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:25:07,261 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:25:12,262 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:25:16,978 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:25:16,978 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:25:17,265 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:25:22,266 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:25:27,267 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:25:27,300 DEBUG   SenderThread:18074 [sender.py:send():369] send: stats
+2023-09-05 01:25:31,978 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:25:31,979 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:25:32,274 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:25:37,275 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:25:42,276 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:25:46,978 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:25:46,979 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:25:48,271 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:25:53,272 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:25:57,307 DEBUG   SenderThread:18074 [sender.py:send():369] send: stats
+2023-09-05 01:25:58,309 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:26:01,981 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:26:01,981 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:26:04,204 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:26:09,205 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:26:14,206 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:26:16,980 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:26:16,981 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:26:19,214 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:26:24,215 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:26:27,304 DEBUG   SenderThread:18074 [sender.py:send():369] send: stats
+2023-09-05 01:26:29,306 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:26:31,982 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:26:31,983 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:26:34,308 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:26:39,309 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:26:39,525 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-05 01:26:41,941 INFO    Thread-12 :18074 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/HeteroSFL/wandb/run-20230905_004855-nf3rcce6/files/output.log
+2023-09-05 01:26:44,527 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:26:46,529 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-05 01:26:46,979 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:26:46,980 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:26:47,943 INFO    Thread-12 :18074 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/HeteroSFL/wandb/run-20230905_004855-nf3rcce6/files/output.log
+2023-09-05 01:26:50,251 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:26:53,340 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-05 01:26:55,340 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:26:55,946 INFO    Thread-12 :18074 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/HeteroSFL/wandb/run-20230905_004855-nf3rcce6/files/output.log
+2023-09-05 01:26:57,306 DEBUG   SenderThread:18074 [sender.py:send():369] send: stats
+2023-09-05 01:27:01,307 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:27:01,979 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:27:01,980 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:27:07,281 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:27:08,011 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-05 01:27:08,013 DEBUG   SenderThread:18074 [sender.py:send():369] send: history
+2023-09-05 01:27:08,014 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: summary_record
+2023-09-05 01:27:08,015 INFO    SenderThread:18074 [sender.py:_save_file():1354] saving file wandb-summary.json with policy end
+2023-09-05 01:27:08,951 INFO    Thread-12 :18074 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/HeteroSFL/wandb/run-20230905_004855-nf3rcce6/files/wandb-summary.json
+2023-09-05 01:27:09,952 INFO    Thread-12 :18074 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/HeteroSFL/wandb/run-20230905_004855-nf3rcce6/files/output.log
+2023-09-05 01:27:13,016 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:27:16,982 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:27:16,983 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:27:18,244 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:27:23,245 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:27:23,732 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-05 01:27:25,958 INFO    Thread-12 :18074 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/HeteroSFL/wandb/run-20230905_004855-nf3rcce6/files/output.log
+2023-09-05 01:27:27,308 DEBUG   SenderThread:18074 [sender.py:send():369] send: stats
+2023-09-05 01:27:28,309 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:27:31,980 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:27:31,981 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:27:34,197 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:27:38,633 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-05 01:27:39,635 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:27:39,964 INFO    Thread-12 :18074 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/HeteroSFL/wandb/run-20230905_004855-nf3rcce6/files/output.log
+2023-09-05 01:27:44,636 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:27:46,984 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:27:46,984 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:27:50,275 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:27:52,418 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-05 01:27:53,970 INFO    Thread-12 :18074 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/HeteroSFL/wandb/run-20230905_004855-nf3rcce6/files/output.log
+2023-09-05 01:27:55,419 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:27:57,309 DEBUG   SenderThread:18074 [sender.py:send():369] send: stats
+2023-09-05 01:28:01,311 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:28:01,984 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:28:01,985 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:28:06,071 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-05 01:28:07,072 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:28:07,975 INFO    Thread-12 :18074 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/HeteroSFL/wandb/run-20230905_004855-nf3rcce6/files/output.log
+2023-09-05 01:28:12,073 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:28:16,986 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:28:16,986 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:28:17,272 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:28:22,272 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:28:27,273 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:28:27,311 DEBUG   SenderThread:18074 [sender.py:send():369] send: stats
+2023-09-05 01:28:31,986 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:28:31,986 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:28:33,225 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:28:38,226 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:28:43,227 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:28:46,986 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:28:46,987 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:28:48,331 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:28:53,331 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:28:57,312 DEBUG   SenderThread:18074 [sender.py:send():369] send: stats
+2023-09-05 01:28:59,314 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:29:01,986 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:29:01,987 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:29:05,299 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:29:10,300 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:29:15,302 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:29:16,985 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:29:16,986 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:29:21,286 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:29:26,287 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:29:27,314 DEBUG   SenderThread:18074 [sender.py:send():369] send: stats
+2023-09-05 01:29:31,316 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:29:31,987 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:29:31,987 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:29:37,243 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:29:42,243 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:29:46,988 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:29:46,989 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:29:47,264 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:29:52,264 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:29:57,265 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:29:57,316 DEBUG   SenderThread:18074 [sender.py:send():369] send: stats
+2023-09-05 01:30:01,989 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:30:01,989 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:30:02,288 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:30:07,289 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:30:12,290 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:30:16,989 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:30:16,990 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:30:18,253 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:30:23,254 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:30:27,318 DEBUG   SenderThread:18074 [sender.py:send():369] send: stats
+2023-09-05 01:30:28,320 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:30:31,987 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:30:31,987 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:30:33,343 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:30:37,007 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-05 01:30:37,009 DEBUG   SenderThread:18074 [sender.py:send():369] send: history
+2023-09-05 01:30:37,009 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: summary_record
+2023-09-05 01:30:37,010 INFO    SenderThread:18074 [sender.py:_save_file():1354] saving file wandb-summary.json with policy end
+2023-09-05 01:30:37,033 INFO    Thread-12 :18074 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/HeteroSFL/wandb/run-20230905_004855-nf3rcce6/files/wandb-summary.json
+2023-09-05 01:30:38,034 INFO    Thread-12 :18074 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/HeteroSFL/wandb/run-20230905_004855-nf3rcce6/files/output.log
+2023-09-05 01:30:39,011 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:30:44,013 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:30:46,989 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:30:46,990 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:30:49,257 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:30:52,131 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-05 01:30:54,040 INFO    Thread-12 :18074 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/HeteroSFL/wandb/run-20230905_004855-nf3rcce6/files/output.log
+2023-09-05 01:30:55,132 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:30:57,320 DEBUG   SenderThread:18074 [sender.py:send():369] send: stats
+2023-09-05 01:31:00,322 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:31:02,157 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:31:02,158 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:31:05,387 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:31:09,233 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-05 01:31:10,046 INFO    Thread-12 :18074 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/HeteroSFL/wandb/run-20230905_004855-nf3rcce6/files/output.log
+2023-09-05 01:31:11,234 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:31:16,235 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:31:17,157 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:31:17,158 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:31:21,462 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:31:22,323 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-05 01:31:24,052 INFO    Thread-12 :18074 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/HeteroSFL/wandb/run-20230905_004855-nf3rcce6/files/output.log
+2023-09-05 01:31:27,322 DEBUG   SenderThread:18074 [sender.py:send():369] send: stats
+2023-09-05 01:31:27,326 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:31:32,157 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:31:32,158 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:31:32,405 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:31:36,023 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-05 01:31:38,024 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:31:38,060 INFO    Thread-12 :18074 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/HeteroSFL/wandb/run-20230905_004855-nf3rcce6/files/output.log
+2023-09-05 01:31:43,025 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:31:47,159 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:31:47,159 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:31:48,472 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:31:53,473 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:31:57,323 DEBUG   SenderThread:18074 [sender.py:send():369] send: stats
+2023-09-05 01:31:59,325 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:32:02,158 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:32:02,159 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:32:04,406 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:32:09,408 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:32:14,409 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:32:17,160 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:32:17,161 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:32:19,422 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:32:24,423 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:32:27,325 DEBUG   SenderThread:18074 [sender.py:send():369] send: stats
+2023-09-05 01:32:30,327 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:32:32,161 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:32:32,161 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:32:35,369 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:32:40,370 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:32:45,371 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:32:47,160 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:32:47,161 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:32:50,466 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:32:55,467 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:32:57,333 DEBUG   SenderThread:18074 [sender.py:send():369] send: stats
+2023-09-05 01:33:01,335 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:33:02,161 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:33:02,162 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:33:06,460 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:33:11,461 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:33:16,462 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:33:17,161 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:33:17,161 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:33:22,391 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:33:27,329 DEBUG   SenderThread:18074 [sender.py:send():369] send: stats
+2023-09-05 01:33:28,330 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:33:32,162 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:33:32,162 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:33:33,465 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:33:38,466 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:33:43,467 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:33:47,163 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:33:47,164 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:33:49,393 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:33:54,395 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:33:57,335 DEBUG   SenderThread:18074 [sender.py:send():369] send: stats
+2023-09-05 01:34:00,337 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:34:02,160 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:34:02,161 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:34:05,378 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:34:10,379 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:34:15,380 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:34:15,654 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-05 01:34:15,656 DEBUG   SenderThread:18074 [sender.py:send():369] send: history
+2023-09-05 01:34:15,656 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: summary_record
+2023-09-05 01:34:15,657 INFO    SenderThread:18074 [sender.py:_save_file():1354] saving file wandb-summary.json with policy end
+2023-09-05 01:34:16,128 INFO    Thread-12 :18074 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/HeteroSFL/wandb/run-20230905_004855-nf3rcce6/files/output.log
+2023-09-05 01:34:16,128 INFO    Thread-12 :18074 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/HeteroSFL/wandb/run-20230905_004855-nf3rcce6/files/wandb-summary.json
+2023-09-05 01:34:17,176 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:34:17,177 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:34:20,473 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:34:25,473 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:34:27,333 DEBUG   SenderThread:18074 [sender.py:send():369] send: stats
+2023-09-05 01:34:31,334 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:34:32,176 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:34:32,177 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:34:34,201 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-05 01:34:37,137 INFO    Thread-12 :18074 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/HeteroSFL/wandb/run-20230905_004855-nf3rcce6/files/output.log
+2023-09-05 01:34:37,202 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:34:42,203 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:34:47,177 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:34:47,178 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:34:47,390 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:34:52,392 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:34:53,165 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-05 01:34:55,145 INFO    Thread-12 :18074 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/HeteroSFL/wandb/run-20230905_004855-nf3rcce6/files/output.log
+2023-09-05 01:34:57,334 DEBUG   SenderThread:18074 [sender.py:send():369] send: stats
+2023-09-05 01:34:58,336 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:35:02,177 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:35:02,178 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:35:03,415 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:35:07,324 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-05 01:35:09,150 INFO    Thread-12 :18074 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/HeteroSFL/wandb/run-20230905_004855-nf3rcce6/files/output.log
+2023-09-05 01:35:09,325 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:35:14,326 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:35:17,179 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:35:17,179 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:35:19,475 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:35:24,476 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:35:25,719 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-05 01:35:27,158 INFO    Thread-12 :18074 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/HeteroSFL/wandb/run-20230905_004855-nf3rcce6/files/output.log
+2023-09-05 01:35:27,336 DEBUG   SenderThread:18074 [sender.py:send():369] send: stats
+2023-09-05 01:35:30,338 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:35:32,177 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:35:32,177 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:35:35,456 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:35:40,457 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:35:45,458 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:35:47,179 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:35:47,179 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:35:51,434 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:35:56,435 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:35:57,338 DEBUG   SenderThread:18074 [sender.py:send():369] send: stats
+2023-09-05 01:36:02,178 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:36:02,178 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:36:02,403 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:36:07,405 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:36:12,405 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:36:17,178 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:36:17,178 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:36:18,395 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:36:23,396 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:36:27,340 DEBUG   SenderThread:18074 [sender.py:send():369] send: stats
+2023-09-05 01:36:29,341 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:36:32,179 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:36:32,179 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:36:34,397 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:36:39,398 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:36:44,399 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:36:47,179 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:36:47,180 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:36:49,416 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:36:54,417 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:36:57,341 DEBUG   SenderThread:18074 [sender.py:send():369] send: stats
+2023-09-05 01:37:00,343 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:37:02,180 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:37:02,181 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:37:05,493 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:37:10,494 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:37:15,495 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:37:17,179 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:37:17,180 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:37:21,440 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:37:26,440 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:37:27,343 DEBUG   SenderThread:18074 [sender.py:send():369] send: stats
+2023-09-05 01:37:32,178 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:37:32,179 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:37:32,456 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:37:37,456 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:37:42,458 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:37:47,179 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:37:47,180 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:37:48,442 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:37:53,443 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:37:57,346 DEBUG   SenderThread:18074 [sender.py:send():369] send: stats
+2023-09-05 01:37:59,347 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:38:00,153 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-05 01:38:00,155 DEBUG   SenderThread:18074 [sender.py:send():369] send: history
+2023-09-05 01:38:00,155 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: summary_record
+2023-09-05 01:38:00,156 INFO    SenderThread:18074 [sender.py:_save_file():1354] saving file wandb-summary.json with policy end
+2023-09-05 01:38:00,219 INFO    Thread-12 :18074 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/HeteroSFL/wandb/run-20230905_004855-nf3rcce6/files/wandb-summary.json
+2023-09-05 01:38:02,179 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:38:02,180 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:38:03,220 INFO    Thread-12 :18074 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/HeteroSFL/wandb/run-20230905_004855-nf3rcce6/files/output.log
+2023-09-05 01:38:04,493 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:38:09,494 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:38:13,342 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-05 01:38:15,225 INFO    Thread-12 :18074 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/HeteroSFL/wandb/run-20230905_004855-nf3rcce6/files/output.log
+2023-09-05 01:38:15,342 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:38:17,181 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-05 01:38:17,182 DEBUG   SenderThread:18074 [sender.py:send_request():396] send_request: stop_status
+2023-09-05 01:38:20,460 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:38:25,461 DEBUG   HandlerThread:18074 [handler.py:handle_request():144] handle_request: status_report
+2023-09-05 01:38:27,346 DEBUG   SenderThread:18074 [sender.py:send():369] send: stats
+2023-09-05 01:38:27,361 INFO    cpu       :18074 [interfaces.py:monitor():140] Process cpu has exited.
+2023-09-05 01:38:27,362 DEBUG   SystemMonitor:18074 [system_monitor.py:_start():166] Finished system metrics aggregation loop
+2023-09-05 01:38:27,362 DEBUG   SystemMonitor:18074 [system_monitor.py:_start():170] Publishing last batch of metrics
+2023-09-05 01:38:27,364 DEBUG   SenderThread:18074 [sender.py:send():369] send: stats
+2023-09-05 01:38:28,787 INFO    MainThread:18074 [internal.py:handle_exit():76] Internal process exited

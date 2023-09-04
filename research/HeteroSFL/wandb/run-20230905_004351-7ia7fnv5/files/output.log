@@ -1,0 +1,32 @@
+
+DepthSFL_resnet101_on_cifar10_with_50_users_500_epochs_seed_123_split_[1, 2, 3].txt
+Traceback (most recent call last):
+  File "/home/gyoon814/research/HeteroSFL/main.py", line 103, in <module>
+    weight_c, weight_a, weight_s, args, loss_acc_c, loss_acc_s = local.train(
+  File "/home/gyoon814/research/HeteroSFL/train/train.py", line 66, in train
+    net_server , self.args, loss_server, acc_server= train_server(client_fx, labels, net_server, self.args)
+  File "/home/gyoon814/research/HeteroSFL/train/train.py", line 92, in train_server
+    fx_server, probs = net_server(fx_client)
+  File "/home/gyoon814/anaconda3/envs/research/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1501, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/gyoon814/research/HeteroSFL/model/resnet101.py", line 156, in forward
+    out = self.layer3(x)
+  File "/home/gyoon814/anaconda3/envs/research/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1501, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/gyoon814/anaconda3/envs/research/lib/python3.9/site-packages/torch/nn/modules/container.py", line 217, in forward
+    input = module(input)
+  File "/home/gyoon814/anaconda3/envs/research/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1501, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/gyoon814/research/HeteroSFL/model/blocks.py", line 80, in forward
+    x = self.residual_function(x) + self.shortcut(x)
+  File "/home/gyoon814/anaconda3/envs/research/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1501, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/gyoon814/anaconda3/envs/research/lib/python3.9/site-packages/torch/nn/modules/container.py", line 217, in forward
+    input = module(input)
+  File "/home/gyoon814/anaconda3/envs/research/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1501, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/gyoon814/anaconda3/envs/research/lib/python3.9/site-packages/torch/nn/modules/conv.py", line 463, in forward
+    return self._conv_forward(input, self.weight, self.bias)
+  File "/home/gyoon814/anaconda3/envs/research/lib/python3.9/site-packages/torch/nn/modules/conv.py", line 459, in _conv_forward
+    return F.conv2d(input, weight, bias, self.stride,
+RuntimeError: Given groups=1, weight of size [256, 256, 1, 1], expected input[64, 1024, 4, 4] to have 256 channels, but got 1024 channels instead

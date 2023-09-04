@@ -1,0 +1,12 @@
+
+DepthSFL_resnet18_on_cifar10_with_50_users_500_epochs_seed_123_split_[1, 2, 3].txt
+[Epoch : 1][User 13 with cut_point 1] [C_Loss  1.782 | C_Acc 42.207] [S_Loss  3.022 | S_Acc 34.551]
+[Epoch : 1][User 28 with cut_point 2] [C_Loss  1.792 | C_Acc 41.855] [S_Loss  3.206 | S_Acc 34.160]
+[Epoch : 1][User 24 with cut_point 2] [C_Loss  1.763 | C_Acc 45.176] [S_Loss  3.233 | S_Acc 33.945]
+Traceback (most recent call last):
+  File "/home/gyoon814/research/HeteroSFL/main.py", line 99, in <module>
+    s_model_select.load_state_dict(weight_s)
+  File "/home/gyoon814/anaconda3/envs/research/lib/python3.9/site-packages/torch/nn/modules/module.py", line 2041, in load_state_dict
+    raise RuntimeError('Error(s) in loading state_dict for {}:\n\t{}'.format(
+RuntimeError: Error(s) in loading state_dict for ResNet18_server_v3:
+	size mismatch for layer4.0.conv1.weight: copying a param with shape torch.Size([512, 256, 3, 3]) from checkpoint, the shape in current model is torch.Size([512, 512, 3, 3]).
