@@ -27,7 +27,7 @@ if __name__ == '__main__':
     seed_everything(args.seed)
     # Load dataset
     dataset_train, dataset_test, dict_users, args.num_classes = load_data(args)
-    
+
     # Split point setting
     args.cut_point = [1,2,3]
 
@@ -161,21 +161,21 @@ if __name__ == '__main__':
     # Save output data to .excel file
     acc_test_arr_c = np.array(acc_test_total_c)
     acc_test_arr_s = np.array(acc_test_total_s)
-    file_name_c = './saved/results/{}/client_{}_{}_on_{}_with_{}_users_split_point_{}_epochs_{}_seed_{}_{}.txt'.format(
+    file_name_c = './saved/results/{}/client_{}_{}_on_{}_with_{}_users_split_point_{}_epochs_{}_seed_{}.txt'.format(
         args.model_name,'DepthSFL', args.model_name, args.data, args.num_users, args.cut_point,args.epochs, args.seed)
-    file_name_s = './saved/results/{}/server_{}_{}_on_{}_with_{}_users_split_point_{}_epochs_{}_seed_{}_{}.txt'.format(
+    file_name_s = './saved/results/{}/server_{}_{}_on_{}_with_{}_users_split_point_{}_epochs_{}_seed_{}.txt'.format(
         args.model_name,'DepthSFL', args.model_name, args.data, args.num_users, args.cut_point, args.epochs, args.seed)
 
     np.savetxt(file_name_c, acc_test_arr_c)
     np.savetxt(file_name_s, acc_test_arr_s)
 
     # Save the final trained model
-    torch.save(net_glob_client.state_dict(), "./saved/saved_model/{}/client/client_{}_{}_on_{}_with_{}_users_split_point_{}_epochs_{}_seed_{}_{}.pth".format(
+    torch.save(net_glob_client.state_dict(), "./saved/saved_model/{}/client/client_{}_{}_on_{}_with_{}_users_split_point_{}_epochs_{}_seed_{}.pth".format(
         args.model_name,'DepthSFL', args.model_name, args.data, args.num_users, args.cut_point,args.ps, args.epochs, args.seed))
-    torch.save(net_glob_server.state_dict(), "./saved/saved_model/{}/server/server_{}_{}_on_{}_with_{}_users_split_point_{}_epochs_{}_seed_{}_{}.pth".format(
+    torch.save(net_glob_server.state_dict(), "./saved/saved_model/{}/server/server_{}_{}_on_{}_with_{}_users_split_point_{}_epochs_{}_seed_{}.pth".format(
         args.model_name,'DepthSFL', args.model_name, args.data, args.num_users, args.cut_point,args.ps, args.epochs, args.seed))
     for i in range(args.num_models):
-        torch.save(net_glob_server.state_dict(), "./saved/saved_model/{}/auxnet/{}_auxnet_{}_{}_on_{}_with_{}_users_split_point_{}_epochs_{}_seed_{}_{}.pth".format(
+        torch.save(net_glob_server.state_dict(), "./saved/saved_model/{}/auxnet/{}_auxnet_{}_{}_on_{}_with_{}_users_split_point_{}_epochs_{}_seed_{}.pth".format(
             args.model_name,'DepthSFL', args.cut_point[i], args.model_name, args.data, args.num_users, args.cut_point,args.ps, args.epochs, args.seed))
     print("Finish! 소요 시간은 ", time.time() - start_time, " 입니다.")
 

@@ -19,10 +19,18 @@ def model_assignment(cut_point, model_name, num_classes, device):
         for i in range(len(cut_point)):
                 local_cmodels.append(resnet50_client(num_classes, cut_point[i]))
                 local_smodels.append(resnet50_server(num_classes, cut_point[i]))
+    elif model_name == 'resnet56':
+        for i in range(len(cut_point)):
+                local_cmodels.append(resnet56_client(num_classes, cut_point[i]))
+                local_smodels.append(resnet56_server(num_classes, cut_point[i]))
     elif model_name == 'resnet101':
         for i in range(len(cut_point)):
                 local_cmodels.append(resnet101_client(num_classes, cut_point[i]))
                 local_smodels.append(resnet101_server(num_classes, cut_point[i]))
+    elif model_name == 'resnet110':
+        for i in range(len(cut_point)):
+                local_cmodels.append(resnet110_client(num_classes, cut_point[i]))
+                local_smodels.append(resnet110_server(num_classes, cut_point[i]))
     
     '''auxiliary network'''
     for i in range(len(local_cmodels)):
@@ -53,9 +61,15 @@ def global_model_assignment(cut_point, model_name, device, num_classes = 10):
     elif model_name == 'resnet50':
         net_glob_client = resnet50_client(num_classes, cut_point[-1]).to(device)
         net_glob_server = resnet50_server(num_classes, cut_point[0]).to(device) 
+    elif model_name == 'resnet56':
+        net_glob_client = resnet56_client(num_classes, cut_point[-1]).to(device)
+        net_glob_server = resnet56_server(num_classes, cut_point[0]).to(device) 
     elif model_name == 'resnet101':
         net_glob_client = resnet101_client(num_classes, cut_point[-1]).to(device)
         net_glob_server = resnet101_server(num_classes, cut_point[0]).to(device) 
+    elif model_name == 'resnet110':
+        net_glob_client = resnet110_client(num_classes, cut_point[-1]).to(device)
+        net_glob_server = resnet110_server(num_classes, cut_point[0]).to(device) 
     net_glob_client.train()
     net_glob_server.train()
 
