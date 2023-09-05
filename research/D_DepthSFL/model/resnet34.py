@@ -158,7 +158,6 @@ class ResNet34_server_v2(nn.Module):  # Dropout (or pruned) ResNet34 [width]
         out = self.layer3(x)
         out1 = self.layer4[0](out)
         out = self.layer4[1:3](out1)
-        out = self.layer4(out)
         out = F.avg_pool2d(out, out.size()[3])
         out = out.view(out.size(0), -1)
         logits = self.linear(out)
