@@ -82,7 +82,7 @@ if __name__ == '__main__':
         if iter % 10 == 0 :
             test_acc, test_loss = test_img(net_glob, dataset_test, args)
             acc_test_total.append(test_acc)
-            wandb.log({"[Test] loss": test_loss,"[Train] acc": test_acc}, step = iter)
+            wandb.log({"[Test] loss": test_loss,"[Test] acc": test_acc}, step = iter)
 
 #     
     print("finish")

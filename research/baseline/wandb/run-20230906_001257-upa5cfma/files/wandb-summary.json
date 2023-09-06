@@ -1,0 +1,1 @@
+{"[Train] Client 3 loss": 0.0008842403702146839, "[Train] Client 3 acc": 100.0, "_timestamp": 1693935434.2365246, "_runtime": 8656.415493488312, "_step": 500, "[Test] loss": 1.639828857421875, "[Train] acc": 82.1500015258789, "_wandb": {"runtime": 8655}}
