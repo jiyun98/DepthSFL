@@ -72,3 +72,32 @@ def extract_submodel_weight_from_global_ax_bn(glob_net, net, model_i):
         else:
             f[key] = parent_glob[key]
     return f
+
+'''FjORD'''
+def extract_submodel_weight_from_global_fjord(net, p, model_i):
+    idx = model_i
+    parent = net.state_dict()
+    f = copy.deepcopy(parent)
+    for key in parent.keys():
+        shape = parent[key].shape
+        if len(shape) == 4:
+            if key == 'conv1.weight':
+                f[key] = parent[key][0:up(shape[0]*p), :, :, :]
+            else:
+                f[key] = parent[key][0:up(shape[0]*p), 0:up(shape[1]*p), :, :]
+
+        elif len(shape) == 2: # linear.weight len:2, shape [10, 64]
+            f[key] = parent[key][:, 0:up(shape[1]*p)]
+
+        elif len(shape) == 1:
+            # bn1.weight/bias/running_mean/running_var, layer1.x len: 1 shape[0]: 16, layer2.0.bn2.bias len: 1 shape[0]: 32
+            if key != 'fc.bias':
+                f[key] = parent[key][0:up(shape[0]*p)]
+            # 'linear.bias' len 1 shape [10]
+            else:
+                f[key] = parent[key]
+            
+    return f
+
+def up(value):
+  return math.ceil(value)

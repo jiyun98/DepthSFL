@@ -133,3 +133,25 @@ def resnet110_server(num_classes = 10, cut_point = 1):
     elif cut_point == 3:
         model = ResNet110_server_v3(block = BasicBlock, num_blocks = [18,18,10], num_classes = num_classes)
     return model
+
+
+############### '''FjORD'''###################
+
+def resnet18_f(num_classes = 10, ps = 1):
+    return ResNet18_fjord(block = BasicBlock, num_blocks = [2,2,2,2], p_drop = ps, num_classes = num_classes)
+
+def resnet34_f(num_classes = 10, ps = 1):
+    return ResNet18_fjord(block = BasicBlock, num_blocks = [3,4,6,3], p_drop = ps, num_classes = num_classes)
+
+def resnet50_f(num_classes = 10, ps = 1):
+    return ResNet18_fjord(block = BottleNeck, num_blocks = [3,4,6,3], p_drop = ps, num_classes = num_classes)
+
+def resnet56_f(num_classes = 10, ps = 1):
+    return ResNet56_fjord(block = BasicBlock, num_blocks = [9,9,9], p_drop = ps, num_classes = num_classes)
+
+def resnet101_f(num_classes = 10, ps = 1):
+    return ResNet18_fjord(block = BottleNeck, num_blocks = [3,4,23,3], p_drop = ps, num_classes = num_classes)
+
+def resnet110_f(num_classes = 10, ps = 1):
+    return ResNet56_fjord(block = BasicBlock, num_blocks = [18,18,18], p_drop = ps, num_classes = num_classes)
+

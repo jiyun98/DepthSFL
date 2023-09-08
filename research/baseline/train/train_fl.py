@@ -9,14 +9,15 @@ import copy
 import torch.nn.functional as F
 
 class LocalUpdate(object):
-    def __init__(self, args, dataset = None, idxs = None):
+    def __init__(self, args, p = 1.0, dataset = None, idxs = None):
         '''
         args : argument
         dataset : 학습에 사용될 데이터 셋
         idxs : 데이터 분할에 사용되는
         '''
         self.args = args
-        self.ldr_train = DataLoader(DatasetSplit(dataset, idxs), batch_size = args.local_bs, shuffle = True)
+        self.p = p
+        self.ldr_train = DataLoader(DatasetSplit(dataset, idxs), batch_size = args.bs, shuffle = True)
         self.selected_clients = []
         self.loss_func = nn.CrossEntropyLoss()
 
@@ -26,8 +27,8 @@ class LocalUpdate(object):
         #optimizer_client = torch.optim.Adam(net_client.parameters(), lr = self.args.lr, weight_decay=self.args.weight_decay)
         criterion = nn.CrossEntropyLoss() 
 
-        epoch_loss_s = []
-        epoch_acc_s = []
+        epoch_loss = []
+        epoch_acc = []
 
         for iter in range(self.args.local_ep):
             batch_loss = []
@@ -50,10 +51,10 @@ class LocalUpdate(object):
                 batch_loss.append(loss.item())
                 batch_acc.append(acc.item())
 
-            epoch_loss_s.append(sum(batch_loss)/len(batch_loss))
-            epoch_acc_s.append(sum(batch_acc)/len(batch_acc))
+            epoch_loss.append(sum(batch_loss)/len(batch_loss))
+            epoch_acc.append(sum(batch_acc)/len(batch_acc))
         
-        return net.state_dict(),  sum(epoch_loss_s)/len(epoch_loss_s),epoch_acc_s[-1]  # sum(epoch_loss)/len(epoch_loss), epoch_acc[-1], sum(epoch_loss)/len(epoch_loss), epoch_acc[-1]
+        return net.state_dict(), sum(epoch_loss)/len(epoch_loss), epoch_acc[-1]  # sum(epoch_loss)/len(epoch_loss), epoch_acc[-1], sum(epoch_loss)/len(epoch_loss), epoch_acc[-1]
 
 def test_img(net_g, datatest, args):
     net_g.eval()
@@ -74,6 +75,117 @@ def test_img(net_g, datatest, args):
 
     test_loss /= len(data_loader.dataset)
     accuracy = 100.00 * correct / len(data_loader.dataset)
-    print('\nTest set: Average loss: {:.4f} \nAccuracy: {}/{} ({:.2f}%)\n'.format(
-            test_loss, correct, len(data_loader.dataset), accuracy))
+    return accuracy, test_loss
+
+'''DepthFL'''
+class LocalUpdate_d(object):
+    def __init__(self, args, dataset = None, idxs = None, model_idx = None):
+        '''
+        args : argument
+        dataset : 학습에 사용될 데이터 셋
+        idxs : 데이터 분할에 사용되는
+        '''
+        self.args = args
+        self.ldr_train = DataLoader(DatasetSplit(dataset, idxs), batch_size = args.bs, shuffle = True)
+        self.selected_clients = []
+        self.model_idx = model_idx
+
+    def train(self, net, net_ax):
+        net.to(self.args.device)
+        net.train()
+
+        params = list(net.parameters())
+
+        for ax in net_ax:
+            ax.to(self.args.device)
+            ax.train()
+            params += list(ax.parameters())
+
+        optimizer = torch.optim.SGD(params, lr = self.args.lr, momentum=self.args.momentum, weight_decay=self.args.weight_decay)
+        criterion = nn.CrossEntropyLoss() 
+
+        epoch_loss = []
+        epoch_acc = []
+
+        for iter in range(self.args.local_ep):
+            batch_loss = []
+            batch_acc = []
+
+            for batch_idx, (images, labels) in enumerate(self.ldr_train):
+                images, labels = images.to(self.args.device), labels.to(self.args.device)
+                net.zero_grad()
+                optimizer.zero_grad()
+
+                # forward prop in client
+                loss= 0
+                C_logits = []
+
+                if self.model_idx < 3:        # full model은 포함되어 있지 않음
+                    fx = net(images) # fx는 list형식
+                    for i in range(len(fx)):
+                        auxiliary_net = net_ax[i]
+                        auxiliary_net.zero_grad()
+                        client_logits, client_probs = auxiliary_net(fx[i])
+                        C_logits.append(client_logits)
+                        loss += criterion(client_logits, labels)
+                    acc = calculate_accuracy(client_logits, labels) 
+                else:
+                    fx, probs = net(images)
+                    for i in range(len(fx)-1):
+                        auxiliary_net = net_ax[i]
+                        auxiliary_net.zero_grad()
+                        client_logits, client_probs = auxiliary_net(fx[i])
+                        C_logits.append(client_logits)
+                        loss += criterion(client_logits, labels)
+                    loss += criterion(fx[-1], labels)
+                    acc = calculate_accuracy(fx[-1], labels) 
+
+                loss.backward()
+                optimizer.step()
+
+                batch_loss.append(loss.item())
+                batch_acc.append(acc.item())
+
+            epoch_loss.append(sum(batch_loss)/len(batch_loss))
+            epoch_acc.append(sum(batch_acc)/len(batch_acc))
+        
+        weight_a = [ax.state_dict() for ax in net_ax]
+        return net.state_dict(), weight_a, sum(epoch_loss)/len(epoch_loss), epoch_acc[-1]  # sum(epoch_loss)/len(epoch_loss), epoch_acc[-1], sum(epoch_loss)/len(epoch_loss), epoch_acc[-1]
+
+def test_img_d(net, datatest = None, args = None,  net_a = None):
+    net.eval()
+    net.to(args.device)
+    
+    if net_a:
+        net_a.eval()
+        net_a.to(args.device)
+
+    # testing
+    test_loss = 0
+    correct = 0
+
+    data_loader = DataLoader(datatest, batch_size=args.bs)
+    l = len(data_loader)
+
+    with torch.no_grad():
+        for idx, (data, target) in enumerate(data_loader):
+            data, target = data.to(args.device), target.to(args.device)
+            if not net_a:
+                logits, probas = net(data)
+                test_loss += F.cross_entropy(probas, target, reduction='sum').item()
+                # get the index of the max log-probability
+                y_pred = probas.data.max(1, keepdim=True)[1]
+                correct += y_pred.eq(target.data.view_as(y_pred)).long().cpu().sum()
+
+            else:
+                fx = net(data)
+                # sum up batch loss
+                logits, probas = net_a(fx[-1])
+                test_loss += F.cross_entropy(probas, target, reduction='sum').item()
+                # get the index of the max log-probability
+                y_pred = probas.data.max(1, keepdim=True)[1]
+                correct += y_pred.eq(target.data.view_as(y_pred)).long().cpu().sum()
+
+    test_loss /= len(data_loader.dataset)
+    accuracy = 100.00 * correct / len(data_loader.dataset)
     return accuracy, test_loss

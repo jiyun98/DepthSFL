@@ -241,3 +241,6 @@ class ResNet34_server_v3(nn.Module):  # Dropout (or pruned) ResNet34 [width]
         probas = F.softmax(logits, dim=1)
         return logits, probas
 
+
+
+    

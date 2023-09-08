@@ -26,6 +26,9 @@ def args_parser_main():
     parser.add_argument('--device_id', type=str, default='1')
     parser.add_argument('--learnable_step', type=bool, default=True)
 
+    
+    parser.add_argument('--ps', default = [])
+
     parser.add_argument('--run_name',type=str,default = 'vanilla')
     parser.add_argument('--cut_point', default = [])
     parser.add_argument('--seed', type = int, default = 123)
@@ -33,3 +36,4 @@ def args_parser_main():
     args = parser.parse_args()
 
     return args
+

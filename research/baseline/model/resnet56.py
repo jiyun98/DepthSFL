@@ -208,3 +208,36 @@ class ResNet56_server_v3(nn.Module): # Dropout (or pruned) ResNet [width] for CI
         logits = self.fc(out)
         probas = F.softmax(logits, dim=1)
         return logits, probas
+
+class ResNet56_fjord(nn.Module): # ResNetchp, Width-varying ResNet designed for CIFAR-10, less parameters with deeper network
+    def __init__(self, block, num_blocks, p_drop, num_classes=10, track=False):
+        super(ResNet56_fjord, self).__init__()
+        self.in_planes = up(16*p_drop)
+
+        self.conv1 = nn.Conv2d(3, up(16*p_drop), kernel_size=3,stride=1, padding=1, bias=False)
+        self.bn1 = nn.BatchNorm2d(self.in_planes, momentum=None, track_running_stats=track)
+        self.layer1 = self._make_layer(block, up(16*p_drop), num_blocks[0], stride=1, track=track)
+        self.layer2 = self._make_layer(block, up(32*p_drop), num_blocks[1], stride=2, track=track)
+        self.layer3 = self._make_layer(block,up(64*p_drop), num_blocks[2], stride=2, track=track)
+        self.fc = nn.Linear(up(64*block.expansion*p_drop), num_classes)
+
+        self.apply(_weights_init)
+
+    def _make_layer(self, block, planes, num_blocks, stride, track):
+        strides = [stride] + [1]*(num_blocks-1)
+        layers = []
+        for stride in strides:
+            layers.append(block(self.in_planes, planes, stride, track))
+            self.in_planes = planes * block.expansion
+        return nn.Sequential(*layers)
+
+    def forward(self, x):
+        out = F.relu(self.bn1(self.conv1(x)))
+        out = self.layer1(out)
+        out = self.layer2(out)
+        out = self.layer3(out)
+        out = F.avg_pool2d(out, out.size()[3])
+        out = out.view(out.size(0), -1)
+        logits = self.fc(out)
+        probas = F.softmax(logits, dim=1)
+        return logits, probas

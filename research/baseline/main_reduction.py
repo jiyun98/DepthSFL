@@ -30,7 +30,7 @@ if __name__ == '__main__':
     wandb.run.name = args.run_name
     wandb.config.update(args)
 
-    net_glob = global_model_assignment(args.cut_point, args.model_name, args.device)
+    net_glob = global_model_assignment(args.cut_point, args.model_name, args.device, args.num_classes)
     w_glob = net_glob.state_dict()
 
     lr = args.lr
