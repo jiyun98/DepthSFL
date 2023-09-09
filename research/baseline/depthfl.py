@@ -13,34 +13,23 @@ import copy
 import random
 
 
-if __name__ == '__main__':
-    start_time = time.time()
-    
-    # Argument setting
-    args = args_parser_main()
-    args.device = 'cuda:' + args.device_id
-    seed_everything(args.seed)
+def main_depthfl(args):
     # Load dataset
     dataset_train, dataset_test, dict_users, args.num_classes = load_data(args)
 
     # Split point setting
-    args.cut = [1,2,3,4] # 4가 전체 모델
-    args.num_models = len(args.cut)
-    # wandb setting
-    wandb.init(project = '[New]Baseline')
-    wandb.run.name = args.run_name
-    wandb.config.update(args)
+    args.cut_point = [1,2,3,4] # 4가 전체 모델
+    args.num_models = len(args.cut_point)
 
     local_models, auxiliary_models = model_assignment(
-        args.cut, args.model_name, args.num_classes, args.device)
+        args.cut_point, args.model_name, args.num_classes, args.device)
 
     net_glob = copy.deepcopy(local_models[-1])
     net_glob.to(args.device)
     w_glob = net_glob.state_dict()
     
 
-    program = '{}_{}_on_{}_with_{}_users_{}_epochs_seed_{}_level_{}.txt'.format(
-        'DepthFL',args.model_name, args.data, args.num_users, args.epochs, args.seed, args.cut_point)
+    program = args.name
     print(program)
 
     for iter in range(1,args.epochs+1):
@@ -118,7 +107,7 @@ if __name__ == '__main__':
                     model_e.load_state_dict(weight)
 
                     acc_test , loss_test = test_img_d(model_e, dataset_test, args, model_a)
-                    print("[Epoch {}]Testing accuracy with cut point {} : [Client : {:.2f} | Server : {:.2f}] ".format(iter, ind+1,  acc_test, acc_test))
+                    print("[Epoch {}]Testing accuracy with cut point {} :  {:.2f}  ".format(iter, ind+1,  acc_test))
 
                     test_acc_list.append(acc_test)
                 else:
@@ -128,7 +117,7 @@ if __name__ == '__main__':
                     model_e.load_state_dict(weight)
 
                     acc_test , loss_test = test_img_d(model_e,  dataset_test, args)
-                    print("[Epoch {}]Testing accuracy with cut point {} : [Client : {:.2f} | Server : {:.2f}] ".format(iter, ind+1,  acc_test, acc_test))
+                    print("[Epoch {}]Testing accuracy with cut point {} :  {:.2f} ".format(iter, ind+1,  acc_test))
 
                     test_acc_list.append(acc_test)
             acc_test_total.append(test_acc_list)
@@ -139,11 +128,6 @@ if __name__ == '__main__':
 
     # Save output data to .excel file
     acc_test_arr = np.array(acc_test_total)
-    file_name = './results/{}/{}_{}_on_{}_with_{}_users_split_point_{}_epochs_{}_seed_{}.txt'.format(
-        args.model_name,'DepthFL', args.model_name, args.data, args.num_users, args.cut_point, args.epochs, args.seed)
-    
+    file_name = './output/' + args.name + '/test_accuracy.txt'
     np.savetxt(file_name, acc_test_arr)
-
-
-    print("Finish! 소요 시간은 ", time.time() - start_time, " 입니다.")
 

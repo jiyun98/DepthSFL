@@ -13,23 +13,10 @@ import copy
 import random
 
 
-if __name__ == '__main__':
-    start_time = time.time()
-    
-    # Argument setting
-    args = args_parser_main()
-    args.device = 'cuda:' + args.device_id
-    seed_everything(args.seed)
-    # Load dataset6
+def main_fjord(args):
+    # Load dataset
     dataset_train, dataset_test, dict_users, args.num_classes = load_data(args)
-
-    # Split point setting
-    args.ps = [0.25, 0.5, 1.0]
     args.num_models = len(args.ps)
-    # wandb setting
-    wandb.init(project = '[New]Baseline')
-    wandb.run.name = args.run_name
-    wandb.config.update(args)
 
     local_models = fjord_local_model_assignment(
         args.ps, args.model_name, args.device, args.num_classes)
@@ -45,9 +32,7 @@ if __name__ == '__main__':
             bn_keys.append(i)
 
 
-
-    program = '{}_{}_on_{}_with_{}_users_{}_epochs_seed_{}_ps_{}.txt'.format(
-        'FjORD',args.model_name, args.data, args.num_users, args.epochs, args.seed, args.ps)
+    program = args.name
     print(program)
 
     for iter in range(1,args.epochs+1):
@@ -99,7 +84,6 @@ if __name__ == '__main__':
             acc_locals.append(copy.deepcopy(acc))
 
         w_glob = F_Avg(w_locals, bn_keys, args)
-    
 
         net_glob.load_state_dict(w_glob)
 
@@ -120,7 +104,7 @@ if __name__ == '__main__':
                 model_e.load_state_dict(weight)
 
                 acc_test , loss_test = test_img(model_e, dataset_test, args)
-                print("[Epoch {}]Testing accuracy with dropout {} : [Client : {:.2f} | Server : {:.2f}] ".format(iter,p, acc_test, acc_test))
+                print("[Epoch {}]Testing accuracy with dropout {} :  {:.2f}  ".format(iter,p, acc_test))
 
                 test_acc_list.append(acc_test)
             acc_test_total.append(test_acc_list)
@@ -131,17 +115,7 @@ if __name__ == '__main__':
 
     # Save output data to .excel file
     acc_test_arr = np.array(acc_test_total)
-    file_name = './results/{}/{}_{}_on_{}_with_{}_users_ps_{}_epochs_{}_seed_{}.txt'.format(
-        args.model_name,'FjORD', args.model_name, args.data, args.num_users, args.ps, args.epochs, args.seed)
-    
+    file_name = './output/' + args.name + '/test_accuracy.txt'
     np.savetxt(file_name, acc_test_arr)
 
     
-    # df_c = pd.DataFrame(acc_test_arr_c)
-    # df_s = pd.DataFrame(acc_test_arr_s)
-
-    # with pd.ExcelWriter(file_name_excel) as writer:  
-    #     df_c.to_excel(file_name_excel, index = False, sheet_name = 'client')
-    #     df_s.to_excel(file_name_excel, index = False, sheet_name = 'server')
-    print("Finish! 소요 시간은 ", time.time() - start_time, " 입니다.")
-

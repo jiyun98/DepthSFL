@@ -12,23 +12,11 @@ import wandb
 import copy
 
 
-if __name__ == '__main__':
-    start_time = time.time()
-    
-    # Argument setting
-    args = args_parser_main()
-    args.device = 'cuda:' + args.device_id
-    seed_everything(args.seed)
-    # Load dataset6
-    dataset_train, dataset_test, dict_users, args.num_classes = load_data(args)
+def main_exclusive(args):
 
-    # Split point setting
-    args.cut_point = [1,2,3]
+    # Load dataset
+    dataset_train, dataset_test, dict_users, args.num_classes = load_data(args)
     num_models = len(args.cut_point)
-    # wandb setting
-    wandb.init(project = '[New]Baseline')
-    wandb.run.name = args.run_name
-    wandb.config.update(args)
 
     net_glob = global_model_assignment(args.selected_idx, args.model_name, args.device)
     w_glob = net_glob.state_dict()
@@ -37,16 +25,14 @@ if __name__ == '__main__':
 
     acc_test_total = []
 
-    program = '{}_{}_on_{}_with_{}_users_split_point_{}_epochs_{}_seed_{}'.format(
-        'FL_exclusive',args.model_name, args.data, args.num_users, args.cut_point, args.epochs, args.seed)
-
+    program = args.name
     print(program)
 
     for iter in range(1, args.epochs+1):
         if iter == args.epochs/2:
-            lr = lr*0.1
+            args.lr = args.lr*0.1
         elif iter == 3*args.epochs/4:
-            lr = lr*0.1
+            args.lr = args.lr*0.1
 
         loss_locals = []
         acc_locals = []
@@ -88,18 +74,7 @@ if __name__ == '__main__':
     print("finish")
 
     acc_test_arr = np.array(acc_test_total)
-    file_name = './results/{}/{}_{}_on_{}_with_{}_users_split_point_{}_select_{}_epochs_{}_seed_{}.txt'.format(
-        args.model_name,'FL_exclusive',args.model_name, args.data, args.num_users, args.cut_point, args.selected_idx,  args.epochs, args.seed)
-
+    file_name = './output/' + args.name + '/test_accuracy.txt'
     np.savetxt(file_name, acc_test_arr)
 
     
-    # df_c = pd.DataFrame(acc_test_arr_c)
-    # df_s = pd.DataFrame(acc_test_arr_s)
-
-    # with pd.ExcelWriter(file_name_excel) as writer:  
-    #     df_c.to_excel(file_name_excel, index = False, sheet_name = 'client')
-    #     df_s.to_excel(file_name_excel, index = False, isheet_name = 'server')
-    print("Finish! 소요 시간은 ", time.time() - start_time, " 입니다.")
-
-
