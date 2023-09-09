@@ -103,7 +103,7 @@ class LocalUpdate_d(object):
 
         optimizer = torch.optim.SGD(params, lr = self.args.lr, momentum=self.args.momentum, weight_decay=self.args.weight_decay)
         criterion = nn.CrossEntropyLoss() 
-
+        criterion_KD = SoftTarget(self.args.T)
         epoch_loss = []
         epoch_acc = []
 
@@ -118,7 +118,7 @@ class LocalUpdate_d(object):
 
                 # forward prop in client
                 loss= 0
-                C_logits = []
+                KD_logits = []
 
                 if self.model_idx < 3:        # full model은 포함되어 있지 않음
                     fx = net(images) # fx는 list형식
@@ -126,7 +126,7 @@ class LocalUpdate_d(object):
                         auxiliary_net = net_ax[i]
                         auxiliary_net.zero_grad()
                         client_logits, client_probs = auxiliary_net(fx[i])
-                        C_logits.append(client_logits)
+                        KD_logits.append(client_logits)
                         loss += criterion(client_logits, labels)
                     acc = calculate_accuracy(client_logits, labels) 
                 else:
@@ -135,11 +135,20 @@ class LocalUpdate_d(object):
                         auxiliary_net = net_ax[i]
                         auxiliary_net.zero_grad()
                         client_logits, client_probs = auxiliary_net(fx[i])
-                        C_logits.append(client_logits)
+                        KD_logits.append(client_logits)
                         loss += criterion(client_logits, labels)
                     loss += criterion(fx[-1], labels)
                     acc = calculate_accuracy(fx[-1], labels) 
 
+                kd_loss = 0
+                if self.args.kd_opt:
+                    for i in range(len(KD_logits)):
+                        for j in range(len(KD_logits)):
+                            if  i == j:
+                                continue
+                            else:
+                                kd_loss += criterion_KD(KD_logits[i], KD_logits[j])
+                    loss = loss + kd_loss/(len(KD_logits))
                 loss.backward()
                 optimizer.step()
 
@@ -189,3 +198,19 @@ def test_img_d(net, datatest = None, args = None,  net_a = None):
     test_loss /= len(data_loader.dataset)
     accuracy = 100.00 * correct / len(data_loader.dataset)
     return accuracy, test_loss
+
+class SoftTarget(nn.Module):
+	'''
+	Distilling the Knowledge in a Neural Network
+	https://arxiv.org/pdf/1503.02531.pdf
+	'''
+	def __init__(self, T):
+		super(SoftTarget, self).__init__()
+		self.T = T
+
+	def forward(self, out_s, out_t):
+		loss = F.kl_div(F.log_softmax(out_s/self.T, dim=1),
+						F.softmax(out_t/self.T, dim=1),
+						reduction='batchmean') * self.T * self.T
+
+		return loss
