@@ -50,3 +50,8 @@ Files already downloaded and verified
 [Epoch : 10][User 49 with cut_point 3] [C_Loss  3.101 | C_Acc 70.352] [S_Loss  1.007 | S_Acc 64.355]
 [Epoch : 10][User 11 with cut_point 1] [C_Loss  1.223 | C_Acc 59.238] [S_Loss  3.102 | S_Acc 65.332]
 [Epoch : 10][User 27 with cut_point 2] [C_Loss  2.282 | C_Acc 60.918] [S_Loss  2.177 | S_Acc 61.895]
+[Epoch : 10][User 17 with cut_point 2] [C_Loss  2.344 | C_Acc 63.809] [S_Loss  2.209 | S_Acc 62.148]
+[Epoch 10]Testing accuracy with split point 1 : [Client : 56.28 | Server : 60.47]
+[Epoch 10]Testing accuracy with split point 2 : [Client : 61.36 | Server : 61.33]
+[Epoch 10]Testing accuracy with split point 3 : [Client : 61.66 | Server : 59.36]
+finish
