@@ -1,0 +1,29 @@
+2023-09-06 00:18:41,580 INFO    MainThread:1385796 [wandb_setup.py:_flush():76] Current SDK version is 0.15.5
+2023-09-06 00:18:41,580 INFO    MainThread:1385796 [wandb_setup.py:_flush():76] Configure stats pid to 1385796
+2023-09-06 00:18:41,580 INFO    MainThread:1385796 [wandb_setup.py:_flush():76] Loading settings from /home/gyoon814/.config/wandb/settings
+2023-09-06 00:18:41,580 INFO    MainThread:1385796 [wandb_setup.py:_flush():76] Loading settings from /home/gyoon814/research/baseline/wandb/settings
+2023-09-06 00:18:41,580 INFO    MainThread:1385796 [wandb_setup.py:_flush():76] Loading settings from environment variables: {}
+2023-09-06 00:18:41,580 INFO    MainThread:1385796 [wandb_setup.py:_flush():76] Applying setup settings: {'_disable_service': False}
+2023-09-06 00:18:41,580 INFO    MainThread:1385796 [wandb_setup.py:_flush():76] Inferring run settings from compute environment: {'program_relpath': 'research/baseline/main_exclusive.py', 'program': '/home/gyoon814/research/baseline/main_exclusive.py'}
+2023-09-06 00:18:41,580 INFO    MainThread:1385796 [wandb_init.py:_log_setup():507] Logging user logs to /home/gyoon814/research/baseline/wandb/run-20230906_001841-c4r1jt3j/logs/debug.log
+2023-09-06 00:18:41,580 INFO    MainThread:1385796 [wandb_init.py:_log_setup():508] Logging internal logs to /home/gyoon814/research/baseline/wandb/run-20230906_001841-c4r1jt3j/logs/debug-internal.log
+2023-09-06 00:18:41,581 INFO    MainThread:1385796 [wandb_init.py:init():547] calling init triggers
+2023-09-06 00:18:41,581 INFO    MainThread:1385796 [wandb_init.py:init():554] wandb.init called with sweep_config: {}
+config: {}
+2023-09-06 00:18:41,581 INFO    MainThread:1385796 [wandb_init.py:init():596] starting backend
+2023-09-06 00:18:41,581 INFO    MainThread:1385796 [wandb_init.py:init():600] setting up manager
+2023-09-06 00:18:41,584 INFO    MainThread:1385796 [backend.py:_multiprocessing_setup():106] multiprocessing start_methods=fork,spawn,forkserver, using: spawn
+2023-09-06 00:18:41,586 INFO    MainThread:1385796 [wandb_init.py:init():606] backend started and connected
+2023-09-06 00:18:41,589 INFO    MainThread:1385796 [wandb_init.py:init():705] updated telemetry
+2023-09-06 00:18:41,610 INFO    MainThread:1385796 [wandb_init.py:init():738] communicating run to backend with 60.0 second timeout
+2023-09-06 00:18:42,124 INFO    MainThread:1385796 [wandb_run.py:_on_init():2173] communicating current version
+2023-09-06 00:18:42,188 INFO    MainThread:1385796 [wandb_run.py:_on_init():2182] got version response upgrade_message: "wandb version 0.15.9 is available!  To upgrade, please run:\n $ pip install wandb --upgrade"
+
+2023-09-06 00:18:42,188 INFO    MainThread:1385796 [wandb_init.py:init():789] starting run threads in backend
+2023-09-06 00:18:43,938 INFO    MainThread:1385796 [wandb_run.py:_console_start():2152] atexit reg
+2023-09-06 00:18:43,938 INFO    MainThread:1385796 [wandb_run.py:_redirect():2007] redirect: SettingsConsole.WRAP_RAW
+2023-09-06 00:18:43,938 INFO    MainThread:1385796 [wandb_run.py:_redirect():2072] Wrapping output streams.
+2023-09-06 00:18:43,938 INFO    MainThread:1385796 [wandb_run.py:_redirect():2097] Redirects installed.
+2023-09-06 00:18:43,939 INFO    MainThread:1385796 [wandb_init.py:init():830] run started, returning control to user process
+2023-09-06 00:18:43,940 INFO    MainThread:1385796 [wandb_run.py:_config_callback():1281] config_cb None None {'num_users': 50, 'noniid': False, 'class_per_each_client': 10, 'selected_idx': 3, 'frac': 0.1, 'bs': 64, 'local_bs': 64, 'momentum': 0, 'epochs': 500, 'local_ep': 5, 'num_classes': 10, 'lr': 0.1, 'weight_decay': 0, 'mode': 'normal', 'rs': 0, 'model_name': 'resnet34', 'data': 'cifar10', 'device_id': '1', 'learnable_step': True, 'run_name': 'exclusive_resnet34', 'cut_point': [1, 2, 3], 'seed': 123, 'device': 'cuda:1'}
+2023-09-06 00:18:53,027 WARNING MsgRouterThr:1385796 [router.py:message_loop():77] message_loop has been closed
