@@ -53,7 +53,7 @@ class ResNet56_server_v1(nn.Module): # Dropout (or pruned) ResNet [width] for CI
 
         self.layer2 = self._make_layer(block, 32, num_blocks[1], stride=2)
         self.layer3 = self._make_layer(block, 64, num_blocks[2], stride=2)
-        self.fc = nn.Linear(64*block.expansion, num_classes)
+        self.linear = nn.Linear(64*block.expansion, num_classes)
 
         self.apply(_weights_init)
 
@@ -70,7 +70,7 @@ class ResNet56_server_v1(nn.Module): # Dropout (or pruned) ResNet [width] for CI
         out2 = self.layer3(out1)
         out = F.avg_pool2d(out2, out2.size()[3])
         out = out.view(out.size(0), -1)
-        logits = self.fc(out)
+        logits = self.linear(out)
         probas = F.softmax(logits, dim=1)
         return [out1, out2, logits], probas
 #---------------------------------------------------------------------
@@ -105,32 +105,24 @@ class ResNet56_server_v2(nn.Module): # Dropout (or pruned) ResNet [width] for CI
         super(ResNet56_server_v2, self).__init__()
         self.in_planes = 32
         self.layer3 = self._make_layer(block,64, num_blocks[2], stride=2)
-        self.fc = nn.Linear(64*block.expansion, num_classes)
+        self.linear = nn.Linear(64*block.expansion, num_classes)
 
         self.apply(_weights_init)
 
-    def _make_layer(self, block, planes, num_blocks, stride, Olayer = None, block_index = None, opt = False):
-        if opt:
-            ind = block_index
-            strides = [stride] + [1]*(num_blocks-1)
-            for stride in strides:
-                Olayer[f"{int(ind)}"] = block(self.in_planes, planes, stride)
-                self.in_planes = planes * block.expansion
-                ind += 1
-            return nn.Sequential(Olayer)
-        else:
-            strides = [stride] + [1]*(num_blocks-1)
-            layers = []
-            for stride in strides:
-                layers.append(block(self.in_planes, planes, stride))
-                self.in_planes = planes * block.expansion
-            return nn.Sequential(*layers)
+    def _make_layer(self, block, planes, num_blocks, stride):
+        strides = [stride] + [1]*(num_blocks-1)
+        layers = []
+        for stride in strides:
+            layers.append(block(self.in_planes, planes, stride))
+            self.in_planes = planes * block.expansion
+        return nn.Sequential(*layers)
+
 
     def forward(self, x):
         out1 = self.layer3(x)
         out = F.avg_pool2d(out1, out1.size()[3])
         out = out.view(out.size(0), -1)
-        logits = self.fc(out)
+        logits = self.linear(out)
         probas = F.softmax(logits, dim=1)
         return [out1, logits], probas
 #----------------------------------------------------------------------
@@ -166,7 +158,7 @@ class ResNet56_server_v3(nn.Module): # Dropout (or pruned) ResNet [width] for CI
         super(ResNet56_server_v3, self).__init__()
         self.in_planes = 64
 
-        self.fc = nn.Linear(64*block.expansion, num_classes)
+        self.linear = nn.Linear(64*block.expansion, num_classes)
 
         self.apply(_weights_init)
 
@@ -181,6 +173,6 @@ class ResNet56_server_v3(nn.Module): # Dropout (or pruned) ResNet [width] for CI
     def forward(self, x):
         out = F.avg_pool2d(x, x.size()[3])
         out = out.view(out.size(0), -1)
-        logits = self.fc(out)
+        logits = self.linear(out)
         probas = F.softmax(logits, dim=1)
         return [logits], probas

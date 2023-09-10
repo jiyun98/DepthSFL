@@ -7,7 +7,6 @@ from math import ceil as up
 
 from model.model_DDepthSFL.blocks import *
 from model.model_DDepthSFL.resnet18 import *
-from model.model_DDepthSFL.resnet34 import *
 from model.model_DDepthSFL.resnet50 import *
 from model.model_DDepthSFL.resnet56 import *
 from model.model_DDepthSFL.resnet101 import *
@@ -99,20 +98,20 @@ def resnet56_server(num_classes = 10, cut_point = 1):
 '''resnet101'''
 def resnet101_client(num_classes = 10, cut_point = 1):
     if cut_point == 1:
-        model = ResNet50_client_v2(block = BottleNeck, num_blocks = [3,4,23,3],  num_classes = num_classes)
+        model = ResNet50_client_v1(block = BottleNeck, num_blocks = [3,4,23,3],  num_classes = num_classes)
     elif cut_point == 2:
         model = ResNet50_client_v2(block = BottleNeck, num_blocks = [3,4,23,3],  num_classes = num_classes)
     elif cut_point == 3:
-        model = ResNet50_client_v2(block = BottleNeck, num_blocks = [3,4,23,3], num_classes = num_classes)
+        model = ResNet50_client_v3(block = BottleNeck, num_blocks = [3,4,23,3], num_classes = num_classes)
     return model
 
 def resnet101_server(num_classes = 10, cut_point = 1):
     if cut_point == 1:
-        model = ResNet50_server_v2(block = BottleNeck, num_blocks = [3,4,23,3], num_classes = num_classes)
+        model = ResNet50_server_v1(block = BottleNeck, num_blocks = [3,4,23,3], num_classes = num_classes)
     elif cut_point == 2:
         model = ResNet50_server_v2(block = BottleNeck, num_blocks = [3,4,23,3], num_classes = num_classes)
     elif cut_point == 3:
-        model = ResNet50_server_v2(block = BottleNeck, num_blocks = [3,4,23,3], num_classes = num_classes)
+        model = ResNet50_server_v3(block = BottleNeck, num_blocks = [3,4,23,3], num_classes = num_classes)
     return model
 
 '''resnet110'''
