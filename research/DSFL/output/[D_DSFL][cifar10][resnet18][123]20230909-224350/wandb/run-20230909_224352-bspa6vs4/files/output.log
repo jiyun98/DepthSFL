@@ -1,6 +1,0 @@
-Files already downloaded and verified
-Files already downloaded and verified
-[D_DSFL][cifar10][resnet18][123]20230909-224350
-[Epoch : 1][User 13 with cut_point 1] [C_Loss  1.879 | C_Acc 36.328] [S_Loss  6.547 | S_Acc 35.488]
-[Epoch : 1][User 28 with cut_point 2] [C_Loss  3.633 | C_Acc 41.582] [S_Loss  4.782 | S_Acc 33.398]
-[Epoch : 1][User 24 with cut_point 2] [C_Loss  3.656 | C_Acc 42.969] [S_Loss  4.902 | S_Acc 39.102]

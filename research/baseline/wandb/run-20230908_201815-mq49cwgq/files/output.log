@@ -1,8 +1,0 @@
-
-DepthFL_resnet18_on_cifar10_with_50_users_500_epochs_seed_123_level_[].txt
-Traceback (most recent call last):
-  File "/home/gyoon814/DepthSFL/research/baseline/depthfl.py", line 87, in <module>
-    weight, weight_a, loss, acc = local.train(net= copy.deepcopy(model_select), net_ax = copy.deepcopy(ax_model_select)) # weight_a는 리스트
-  File "/home/gyoon814/DepthSFL/research/baseline/train/train_fl.py", line 144, in train
-    if self.args.kd_opt:
-AttributeError: 'Namespace' object has no attribute 'kd_opt'
