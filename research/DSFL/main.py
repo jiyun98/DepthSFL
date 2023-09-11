@@ -40,7 +40,7 @@ if __name__ == '__main__':
     if args.method == 'dsfl':  
         main_DepthSFL(args)
         with open('./logs/learning_log.txt', 'a+') as f:     #  selected idx로 global model size 설정
-            f.write("[Method:{}], [Data:{}], [Model:{}], [Cutpoint:{}], [Seed:{}], [Epoch:{}], [BatchSize:{}], [Frac:{}], [Time:{}]".format(
+            f.write("[Method:{}], [Data:{}], [Model:{}], [Cutpoint:{}], [Seed:{}], [Epoch:{}], [BatchSize:{}], [Frac:{}], [Time:{}]\n".format(
                         args.method, args.data, args.model_name, args.cut_point, 
                         args.seed, args.epochs, args.bs, args.frac, timestamp))
    
@@ -49,17 +49,17 @@ if __name__ == '__main__':
         if args.kd_self_opt:
             args.method = 'sddsfl'
             with open('./logs/learning_log.txt', 'a+') as f: # selected idx로 global model size 설정
-                f.write("[Method:{}], [Data:{}], [Model:{}], [Cutpoint:{}], [Seed:{}], [Epoch:{}], [BatchSize:{}], [Frac:{}], [Time:{}]".format(
+                f.write("[Method:{}], [Data:{}], [Model:{}], [Cutpoint:{}], [Seed:{}], [Epoch:{}], [BatchSize:{}], [Frac:{}], [Time:{}]\n".format(
                             args.method, args.data, args.model_name, args.cut_point, 
                             args.seed, args.epochs, args.bs, args.frac, timestamp))
         elif args.kd_server_opt:
             args.method = 'kddsfl'
             with open('./logs/learning_log.txt', 'a+') as f: # selected idx로 global model size 설정
-                f.write("[Method:{}], [Data:{}], [Model:{}], [Cutpoint:{}], [Seed:{}], [Epoch:{}], [BatchSize:{}], [Frac:{}], [Time:{}]".format(
+                f.write("[Method:{}], [Data:{}], [Model:{}], [Cutpoint:{}], [Seed:{}], [Epoch:{}], [BatchSize:{}], [Frac:{}], [Time:{}]\n".format(
                             args.method, args.data, args.model_name, args.cut_point, 
                             args.seed, args.epochs, args.bs, args.frac, timestamp))
         else:
             with open('./logs/learning_log.txt', 'a+') as f: # selected idx로 global model size 설정
-                f.write("[Method:{}], [Data:{}], [Model:{}], [Cutpoint:{}], [Seed:{}], [Epoch:{}], [BatchSize:{}], [Frac:{}], [Time:{}]".format(
+                f.write("[Method:{}], [Data:{}], [Model:{}], [Cutpoint:{}], [Seed:{}], [Epoch:{}], [BatchSize:{}], [Frac:{}], [Time:{}]\n".format(
                             args.method, args.data, args.model_name, args.cut_point, 
                             args.seed, args.epochs, args.bs, args.frac, timestamp))
