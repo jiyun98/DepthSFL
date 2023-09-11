@@ -22,7 +22,8 @@ if __name__ == '__main__':
     # Argument setting
     args.device = 'cuda:' + args.device_id
     seed_everything(args.seed)
-    
+
+
     # filename setting
     args.name, wandb_name, timestamp = set_filename(args)
     filename = './output/' + args.name
@@ -42,28 +43,28 @@ if __name__ == '__main__':
     if args.method == 'exclusive':  # EXC
         main_exclusive(args)
         with open('./logs/learning_log.txt', 'a+') as f:     #  selected idx로 global model size 설정
-            f.write("[Method:{}], [Data:{}], [Model:{}], [Cutpoint:{}], [Select idx:{}], [Seed:{}], [Epoch:{}], [BatchSize:{}], [Frac:{}], [Time:{}]".format(
+            f.write("[Method:{}], [Data:{}], [Model:{}], [Cutpoint:{}], [Select idx:{}], [Seed:{}], [Epoch:{}], [BatchSize:{}], [Frac:{}], [Time:{}]\n ".format(
                         args.method, args.data, args.model_name, args.cut_point, args.selected_idx,
                         args.seed, args.epochs, args.bs, args.frac, timestamp))
    
     elif args.method == 'reduction':    # RED
         main_reduction(args)
         with open('./logs/learning_log.txt', 'a+') as f: # selected idx로 global model size 설정
-            f.write("[Method:{}], [Data:{}], [Model:{}], [Cutpoint:{}], [Select idx:{}], [Seed:{}], [Epoch:{}], [BatchSize:{}], [Frac:{}], [Time:{}]".format(
+            f.write("[Method:{}], [Data:{}], [Model:{}], [Cutpoint:{}], [Select idx:{}], [Seed:{}], [Epoch:{}], [BatchSize:{}], [Frac:{}], [Time:{}]\n".format(
                         args.method, args.data, args.model_name, args.cut_point, args.selected_idx,
                         args.seed, args.epochs, args.bs, args.frac, timestamp))
             
     elif args.method == 'fjord':    # FJO
         main_fjord(args)
         with open('./logs/learning_log.txt', 'a+') as f: # selected idx로 global model size 설정
-            f.write("[Method:{}], [Data:{}], [Model:{}], [Ps:{}], [Seed:{}], [Epoch:{}], [BatchSize:{}], [Frac:{}], [Time:{}]".format(
+            f.write("[Method:{}], [Data:{}], [Model:{}], [Ps:{}], [Seed:{}], [Epoch:{}], [BatchSize:{}], [Frac:{}], [Time:{}]\n".format(
                         args.method, args.data, args.model_name, args.ps, 
                         args.seed, args.epochs, args.bs, args.frac, timestamp))
 
     elif args.method == 'depthfl':  # DEP   # args.cut_point = [1,2,3,4]로 설정해주세요
         main_depthfl(args)
         with open('./logs/learning_log.txt', 'a+') as f: # selected idx로 global model size 설정
-            f.write("[Method:{}], [Data:{}], [Model:{}], [Cutpoint:{}], [KD:{}],[Seed:{}], [Epoch:{}], [BatchSize:{}], [Frac:{}], [Time:{}]".format(
+            f.write("[Method:{}], [Data:{}], [Model:{}], [Cutpoint:{}], [KD:{}],[Seed:{}], [Epoch:{}], [BatchSize:{}], [Frac:{}], [Time:{}]\n".format(
                         args.method, args.data, args.model_name, args.cut_point, args.kd_opt,
                         args.seed, args.epochs, args.bs, args.frac, timestamp))
      

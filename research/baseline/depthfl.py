@@ -1,7 +1,7 @@
 from train.extract_weight import extract_submodel_weight_from_global_fjord, extract_submodel_weight_from_global
 from train.train_fl import LocalUpdate_d, test_img_d
 from train.avg import *
-from train.model_assign_depthfl import *
+from train.model_assign import *
 from utils.options import args_parser_main
 from utils.utils import  seed_everything
 from data.dataset import load_data
@@ -21,7 +21,7 @@ def main_depthfl(args):
     args.cut_point = [1,2,3,4] # 4가 전체 모델
     args.num_models = len(args.cut_point)
 
-    local_models, auxiliary_models = model_assignment(
+    local_models, auxiliary_models = depth_model_assignment(
         args.cut_point, args.model_name, args.num_classes, args.device)
 
     net_glob = copy.deepcopy(local_models[-1])
@@ -80,7 +80,8 @@ def main_depthfl(args):
                 w_locals_a[i].append(weight_a[i])
             print('[Epoch : {}][User {} with cut point {}] [Loss  {:.3f} | Acc {:.3f}]'
                   .format(iter, idx, model_idx, loss, acc))
-            
+            wandb.log({"[Train] User {} loss".format(args.cut_point[model_idx]): loss,"[Train] User {} acc".format(args.cut_point[model_idx]): acc}, step = iter)
+
             loss_locals.append(copy.deepcopy(loss))
             acc_locals.append(copy.deepcopy(acc))
 
@@ -108,7 +109,7 @@ def main_depthfl(args):
 
                     acc_test , loss_test = test_img_d(model_e, dataset_test, args, model_a)
                     print("[Epoch {}]Testing accuracy with cut point {} :  {:.2f}  ".format(iter, ind+1,  acc_test))
-
+                    wandb.log({"[Test] User {} loss".format(args.cut_point[ind]): loss_test, "[Test] User {} acc".format(args.cut_point[ind]): acc_test}, step = iter)
                     test_acc_list.append(acc_test)
                 else:
                     model_e = copy.deepcopy(local_models[ind])
@@ -118,6 +119,7 @@ def main_depthfl(args):
 
                     acc_test , loss_test = test_img_d(model_e,  dataset_test, args)
                     print("[Epoch {}]Testing accuracy with cut point {} :  {:.2f} ".format(iter, ind+1,  acc_test))
+                    wandb.log({"[Test] User {} loss".format(args.cut_point[ind]): loss_test, "[Test] User {} acc".format(args.cut_point[ind]): acc_test}, step = iter)
 
                     test_acc_list.append(acc_test)
             acc_test_total.append(test_acc_list)
