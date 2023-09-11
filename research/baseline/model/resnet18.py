@@ -178,7 +178,7 @@ class ResNet18_FL(nn.Module):  # Dropout (or pruned) ResNet [width]
 #                FjORD
 # ---------------------------------------------------
 class ResNet18_fjord(nn.Module):  # Dropout (or pruned) ResNet [width] 
-    def __init__(self, block, num_blocks,  p_drop, num_classes=10, track = False):
+    def __init__(self, block, num_blocks,  p_drop = 1, num_classes=10, track = False):
         super(ResNet18_fjord, self).__init__()
         self.in_planes = up(64*p_drop)        
         # self.conv1 = nn.Conv2d(3, self.in_planes, kernel_size=7,
@@ -188,11 +188,11 @@ class ResNet18_fjord(nn.Module):  # Dropout (or pruned) ResNet [width]
         self.bn1 = nn.BatchNorm2d(self.in_planes, momentum=None, track_running_stats=track)
         self.maxpool = nn.MaxPool2d(kernel_size=3, stride=2, padding=1)
         
-        self.layer1 = self._make_layer(block, up(64*p_drop), num_blocks[0], stride=1, track=track)
-        self.layer2 = self._make_layer(block, up(128*p_drop), num_blocks[1], stride=2, track=track)
-        self.layer3 = self._make_layer(block, up(256*p_drop), num_blocks[2], stride=2, track=track)
-        self.layer4 = self._make_layer(block, up(512*p_drop), num_blocks[3], stride=2, track=track)
-        self.fc = nn.Linear(up(512*block.expansion*p_drop), num_classes)
+        self.layer1 = self._make_layer(block, 64*p_drop, num_blocks[0], stride=1, track=track)
+        self.layer2 = self._make_layer(block, 128*p_drop, num_blocks[1], stride=2, track=track)
+        self.layer3 = self._make_layer(block, 256*p_drop, num_blocks[2], stride=2, track=track)
+        self.layer4 = self._make_layer(block, 512*p_drop, num_blocks[3], stride=2, track=track)
+        self.linear = nn.Linear(up(512*block.expansion*p_drop), num_classes)
 
         self.apply(_weights_init)
     def _make_layer(self, block, planes, num_blocks, stride, track):
@@ -200,7 +200,7 @@ class ResNet18_fjord(nn.Module):  # Dropout (or pruned) ResNet [width]
         layers = []
         for stride in strides:
             layers.append(block(self.in_planes, planes, stride))
-            self.in_planes = planes * block.expansion
+            self.in_planes = up(planes * block.expansion)
         return nn.Sequential(*layers)
 
     def forward(self, x):
@@ -211,7 +211,7 @@ class ResNet18_fjord(nn.Module):  # Dropout (or pruned) ResNet [width]
         out = self.layer4(out)
         out = F.avg_pool2d(out, out.size()[3])
         out = out.view(out.size(0), -1)
-        logits = self.fc(out)
+        logits = self.linear(out)
         probas = F.softmax(logits, dim=1)
         return logits, probas
 

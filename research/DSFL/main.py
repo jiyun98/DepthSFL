@@ -16,7 +16,7 @@ if __name__ == '__main__':
     start_time = time.time()
 
     args = args_parser_main()
-
+    args.wandb = True
     # Argument setting
     args.device = 'cuda:' + args.device_id
     seed_everything(args.seed)
