@@ -16,6 +16,13 @@ import random
 def main_fjord(args):
     # Load dataset
     dataset_train, dataset_test, dict_users, args.num_classes = load_data(args)
+
+    if args.model == 'resnet18' or args.model == 'resnet34':
+        args.ps = [0.1, 0.25, 0.5, 1.0]
+    elif args.model == 'resnet50':
+        args.ps = [0.1, 0.25, 0.6, 1.0]
+
+
     args.num_models = len(args.ps)
 
     local_models = fjord_local_model_assignment(
@@ -78,7 +85,7 @@ def main_fjord(args):
 
             print('[Epoch : {}][User {} with dropout {}] [Loss  {:.3f} | Acc {:.3f}%]'
                   .format(iter, idx, p_select, loss, acc))
-            
+            wandb.log({"[Train] User {} loss".format(model_idx+1): loss,"[Train] User {} acc".format(model_idx+1): acc}, step = iter)
 
             loss_locals.append(copy.deepcopy(loss))
             acc_locals.append(copy.deepcopy(acc))
@@ -105,6 +112,7 @@ def main_fjord(args):
 
                 acc_test , loss_test = test_img(model_e, dataset_test, args)
                 print("[Epoch {}]Testing accuracy with dropout {} :  {:.2f}  ".format(iter,p, acc_test))
+                wandb.log({"[Test] User {} loss".format(ind+1): loss_test, "[Test] User {} acc".format(ind+1): acc_test}, step = iter)
 
                 test_acc_list.append(acc_test)
             acc_test_total.append(test_acc_list)
@@ -112,7 +120,7 @@ def main_fjord(args):
             print(program)
     print("finish")
 
-
+ 
     # Save output data to .excel file
     acc_test_arr = np.array(acc_test_total)
     file_name = './output/' + args.name + '/test_accuracy.txt'

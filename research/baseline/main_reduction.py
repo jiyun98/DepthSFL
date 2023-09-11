@@ -16,7 +16,7 @@ def main_reduction(args):
     # Load dataset
     dataset_train, dataset_test, dict_users, args.num_classes = load_data(args)
 
-    net_glob = global_model_assignment(args.selected_idx, args.model_name, args.device, args.num_classes)
+    net_glob = FL_model_assignment(args.selected_idx, args.model_name, args.device, args.num_classes)
     w_glob = net_glob.state_dict()
 
     lr = args.lr
@@ -52,7 +52,7 @@ def main_reduction(args):
             
             print('[Epoch : {}][User {} with split point {}] [Loss  {:.3f} | Acc {:.3f}]'
                   .format(iter, idx, args.selected_idx, loss, acc))
-            wandb.log({"[Train] Client {} loss".format(args.selected_idx): loss,"[Train] Client {} acc".format(args.selected_idx): acc}, step = iter)
+            wandb.log({"[Train] User {} loss".format(args.selected_idx): loss,"[Train] User {} acc".format(args.selected_idx): acc}, step = iter)
 
         w_glob = HeteroAvg(w_locals)
         net_glob.load_state_dict(w_glob)
@@ -61,7 +61,7 @@ def main_reduction(args):
         if iter % 10 == 0 :
             test_acc, test_loss = test_img(net_glob, dataset_test, args)
             acc_test_total.append(test_acc)
-            wandb.log({"[Test] loss": test_loss,"[Test] acc": test_acc}, step = iter)
+            wandb.log({"[Test] User {} loss".format(args.selected_idx): test_loss,"[Test] User {} acc".format(args.selected_idx): test_acc}, step = iter)
 #     
     print("finish")
 
