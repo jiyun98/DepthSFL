@@ -27,14 +27,14 @@ def args_parser_main():
     parser.add_argument('--learnable_step', type=bool, default=True)
 
     
-    parser.add_argument('--ps', default = [0.25,0.5,1.0])
+    parser.add_argument('--ps', default =  [0.1, 0.25, 0.6, 1.0]) # [0.1, 0.25, 0.5, 1.0])
 
     parser.add_argument('--run_name',type=str,default = 'vanilla')
     parser.add_argument('--cut_point', default = [1,2,3])
     parser.add_argument('--seed', type = int, default = 123)
     
     parser.add_argument('--T', type = int, default = 4)
-    parser.add_argument('--kd_opt', default = False)
+    parser.add_argument('--kd_opt', action='store_true')
     args = parser.parse_args()
 
     return args

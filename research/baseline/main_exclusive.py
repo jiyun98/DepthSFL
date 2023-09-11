@@ -18,7 +18,7 @@ def main_exclusive(args):
     dataset_train, dataset_test, dict_users, args.num_classes = load_data(args)
     num_models = len(args.cut_point)
 
-    net_glob = global_model_assignment(args.selected_idx, args.model_name, args.device)
+    net_glob = FL_model_assignment(args.selected_idx, args.model_name, args.device, args.num_classes)
     w_glob = net_glob.state_dict()
 
     lr = args.lr
@@ -47,7 +47,7 @@ def main_exclusive(args):
         idxs_users = np.random.choice(selected_list, m, replace=False)  # 전체 클라이언트 중 랜덤으로 학습할 참여 클라이언트 선택
         model_idx = args.selected_idx - 1
         for idx in idxs_users:
-            dev_spec_idx = idx//(args.num_users//num_models) # 사실 굳이 필요 없음..나중에 선택한 글로벌 모델 크기가 4,3이 되면 그 때는 필요해지겠지
+            #dev_spec_idx = idx//(args.num_users//num_models) # 사실 굳이 필요 없음..나중에 선택한 글로벌 모델 크기가 4,3이 되면 그 때는 필요해지겠지
             local = LocalUpdate(args, dataset = dataset_train, idxs = dict_users[idx])
             w, loss, acc = local.train(net = copy.deepcopy(net_glob).to(args.device))
 
@@ -57,8 +57,8 @@ def main_exclusive(args):
             acc_locals.append(copy.deepcopy(acc))
             
             print('[Epoch : {}][User {} with split point {}] [Loss  {:.3f} | Acc {:.3f}]'
-                  .format(iter, idx, dev_spec_idx, loss, acc)) # 
-            wandb.log({"[Train] Client {} loss".format(args.cut_point[model_idx]): loss,"[Train] Client {} acc".format(args.cut_point[model_idx]): acc}, step = iter)
+                  .format(iter, idx, model_idx, loss, acc)) # 
+            wandb.log({"[Train] User {} loss".format(args.selected_idx): loss,"[Train] User {} acc".format(args.selected_idx): acc}, step = iter)
 
             
         w_glob = HeteroAvg(w_locals)
@@ -68,8 +68,7 @@ def main_exclusive(args):
         if iter % 10 == 0 :
             test_acc, test_loss = test_img(net_glob, dataset_test, args)
             acc_test_total.append(test_acc)
-            wandb.log({"[Test] loss": test_loss,"[Test] acc": test_acc}, step = iter)
-
+            wandb.log({"[Test] User {} loss".format(args.selected_idx): test_loss,"[Test] User {} acc".format(args.selected_idx): test_acc}, step = iter)
 #     
     print("finish")
 
