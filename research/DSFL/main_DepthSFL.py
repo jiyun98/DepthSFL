@@ -19,7 +19,7 @@ def main_DepthSFL(args):
     
     # local model definition
     local_cmodels, local_smodels, auxiliary_models = model_assignment(args.cut_point, args.model_name, args.num_classes, args.device)
-
+    
     # Global model definition
     net_glob_client, net_glob_server = global_model_assignment(args.cut_point, args.model_name, args.device, args.num_classes)
 
