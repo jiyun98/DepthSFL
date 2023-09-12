@@ -17,13 +17,16 @@ def main_fjord(args):
     # Load dataset
     dataset_train, dataset_test, dict_users, args.num_classes = load_data(args)
 
-    if args.model == 'resnet18' or args.model == 'resnet34':
+    if args.model_name == 'resnet18' or args.model_name == 'resnet34':
         args.ps = [0.1, 0.25, 0.5, 1.0]
-    elif args.model == 'resnet50':
+    elif args.model_name == 'resnet50':
         args.ps = [0.1, 0.25, 0.6, 1.0]
-
-
+    elif args.model_name == 'resnet101':
+        args.ps = [0.1, 0.2, 0.8, 1.0]
+    elif args.model_name == 'resnet56' or args.model_name == 'resnet110':
+        args.ps = [0.2,0.5, 1.0]
     args.num_models = len(args.ps)
+
 
     local_models = fjord_local_model_assignment(
         args.ps, args.model_name, args.device, args.num_classes)
@@ -68,7 +71,7 @@ def main_fjord(args):
                 dev_spec_idx = 0    
                 model_idx = 0       
             else:
-                dev_spec_idx = min(idx//(args.num_users//args.num_models), args.num_models-1) # 균등하게 모델이 분포되어 있는 것 같음 0 ~ args.num_models
+                dev_spec_idx = min(idx//(args.num_users//args.num_models), args.num_models-2) # 균등하게 모델이 분포되어 있는 것 같음 0 ~ args.num_models
                 model_idx = random.choice(mlist[0:dev_spec_idx+1])
 
             p_select = args.ps[model_idx] # 해당하는 모델에 대한 p 값 얻어옴
@@ -83,7 +86,7 @@ def main_fjord(args):
 
             w_locals.append([copy.deepcopy(weight), model_idx])
 
-            print('[Epoch : {}][User {} with dropout {}] [Loss  {:.3f} | Acc {:.3f}%]'
+            print('[Epoch : {}][User {} with dropout {}] [Loss  {:.3f} | Acc {:.3f}]'
                   .format(iter, idx, p_select, loss, acc))
             wandb.log({"[Train] User {} loss".format(model_idx+1): loss,"[Train] User {} acc".format(model_idx+1): acc}, step = iter)
 

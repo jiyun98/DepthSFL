@@ -61,8 +61,9 @@ def main_depthfl(args):
                 dev_spec_idx = 0    
                 model_idx = 0       
             else:
-                dev_spec_idx = min(idx//(args.num_users//args.num_models), args.num_models-1) # 균등하게 모델이 분포되어 있는 것 같음 0 ~ args.num_models
+                dev_spec_idx = min(idx//(args.num_users//args.num_models-1), args.num_models-2) # 균등하게 모델이 분포되어 있는 것 같음 0 ~ args.num_models
                 model_idx = dev_spec_idx # random.choice(mlist[0:dev_spec_idx+1])
+
 
             ax_model_select = auxiliary_models[:min(model_idx+1, args.num_models-1)]
 
