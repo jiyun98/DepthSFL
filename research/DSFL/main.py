@@ -10,7 +10,7 @@ from utils.options import args_parser_main
 from utils.utils import *
 from main_DepthSFL import *
 from main_DDepthSFL import *
-
+ 
 
 if __name__ == '__main__':
     start_time = time.time()
@@ -20,6 +20,7 @@ if __name__ == '__main__':
     # Argument setting
     args.device = 'cuda:' + args.device_id
     seed_everything(args.seed)
+
     
     # filename setting
     args.name, wandb_name, timestamp = set_filename(args)
