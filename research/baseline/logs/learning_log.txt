@@ -1,0 +1,5 @@
+[Method:exclusive], [Data:cifar10], [Model:resnet101], [Cutpoint:[1, 2, 3]], [Select idx:3], [Seed:123], [Epoch:500], [BatchSize:64], [Frac:0.1], [Time:20230911-170456]
+ [Method:reduction], [Data:cifar10], [Model:resnet101], [Cutpoint:[1, 2, 3]], [Select idx:1], [Seed:123], [Epoch:500], [BatchSize:64], [Frac:0.1], [Time:20230912-074855]
+[Method:exclusive], [Data:cifar10], [Model:resnet110], [Cutpoint:[1, 2, 3]], [Select idx:3], [Seed:123], [Epoch:500], [BatchSize:64], [Frac:0.1], [Time:20230911-170545]
+ [Method:fjord], [Data:cifar10], [Model:resnet101], [Ps:[0.1, 0.2, 0.8, 1.0]], [Seed:123], [Epoch:500], [BatchSize:64], [Frac:0.1], [Time:20230912-093843]
+[Method:reduction], [Data:cifar10], [Model:resnet110], [Cutpoint:[1, 2, 3]], [Select idx:1], [Seed:123], [Epoch:500], [BatchSize:64], [Frac:0.1], [Time:20230912-125424]
