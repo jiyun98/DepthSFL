@@ -23,8 +23,8 @@ if __name__ == '__main__':
 
     
     # filename setting
-    args.name, wandb_name, timestamp = set_filename(args)
-    filename = './output/' + args.name
+    args.name, wandb_name, timestamp, args.method_name = set_filename(args)
+    filename = './output/{}/'.format(args.method_name) + args.name
 
     if not os.path.exists(filename):
         os.makedirs(filename)

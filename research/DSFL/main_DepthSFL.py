@@ -139,8 +139,8 @@ def main_DepthSFL(args):
     # Save output data to .excel file
     acc_test_arr_c = np.array(acc_test_total_c)
     acc_test_arr_s = np.array(acc_test_total_s)
-    file_name_c = './output/' + args.name + '/[client]test_accuracy.txt'
-    file_name_s = './output/' + args.name + '/[server]test_accuracy.txt'
+    file_name_c = './output/{}/'.format(args.method_name) + args.name + '/[client]test_accuracy.txt'
+    file_name_s = './output/{}/'.format(args.method_name) + args.name + '/[server]test_accuracy.txt'
 
 
     np.savetxt(file_name_c, acc_test_arr_c)

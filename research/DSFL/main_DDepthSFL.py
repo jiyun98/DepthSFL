@@ -147,11 +147,11 @@ def main_DDepthSFL(args):
     # Save output data to .excel file
     acc_test_arr_c = np.array(acc_test_total_c)
     acc_test_arr_s = np.array(acc_test_total_s)
-    file_name_c = './output/' + args.name + '/[client]test_accuracy.txt'
-    file_name_s = './output/' + args.name + '/[server]test_accuracy.txt'
+    file_name_c = './output/{}/'.format(args.method_name) + args.name + '/[client]test_accuracy.txt'
+    file_name_s = './output/{}/'.format(args.method_name) + args.name + '/[server]test_accuracy.txt'
 
     np.savetxt(file_name_c, acc_test_arr_c)
-#     np.savetxt(file_name_s, acc_test_arr_s)
+    np.savetxt(file_name_s, acc_test_arr_s)
 # 
 #     # Save the final trained model
 #     torch.save(net_glob_client.state_dict(), "./saved/saved_model/{}/client/client_{}_{}_on_{}_with_{}_users_split_point_{}_epochs_{}_seed_{}.pth".format(
