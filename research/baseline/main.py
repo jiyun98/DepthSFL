@@ -18,15 +18,15 @@ if __name__ == '__main__':
     start_time = time.time()
 
     args = args_parser_main()
-
+    args.kd_opt = True # depthfl 은 필수임!
     # Argument setting
     args.device = 'cuda:' + args.device_id
     seed_everything(args.seed)
 
 
     # filename setting
-    args.name, wandb_name, timestamp = set_filename(args)
-    filename = './output/' + args.name
+    args.name, wandb_name, timestamp, method_name = set_filename(args)
+    filename = './output/{}/'.format(method_name) + args.name
 
     if not os.path.exists(filename):
         os.makedirs(filename)

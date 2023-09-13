@@ -28,6 +28,7 @@ def main_depthfl(args):
     net_glob.to(args.device)
     w_glob = net_glob.state_dict()
     
+    acc_test_total = []
 
     program = args.name
     print(program)
@@ -41,7 +42,6 @@ def main_depthfl(args):
 
         loss_locals = []
         acc_locals = []
-        acc_test_total = []
         
         w_glob = net_glob.state_dict()
 
@@ -131,6 +131,6 @@ def main_depthfl(args):
 
     # Save output data to .excel file
     acc_test_arr = np.array(acc_test_total)
-    file_name = './output/' + args.name + '/test_accuracy.txt'
+    file_name = './output/DEP_KD/' + args.name + '/test_accuracy.txt'
     np.savetxt(file_name, acc_test_arr)
 

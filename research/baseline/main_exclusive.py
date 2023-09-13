@@ -73,7 +73,7 @@ def main_exclusive(args):
     print("finish")
 
     acc_test_arr = np.array(acc_test_total)
-    file_name = './output/' + args.name + '/test_accuracy.txt'
+    file_name = './output/EXC/' + args.name + '/test_accuracy.txt'
     np.savetxt(file_name, acc_test_arr)
 
     

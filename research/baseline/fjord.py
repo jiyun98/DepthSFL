@@ -44,7 +44,8 @@ def main_fjord(args):
 
     program = args.name
     print(program)
-
+    
+    acc_test_total = []
     for iter in range(1,args.epochs+1):
         # learning rate update
         if iter == args.epochs/2:
@@ -54,7 +55,6 @@ def main_fjord(args):
 
         loss_locals = []
         acc_locals = []
-        acc_test_total = []
 
         w_glob = net_glob.state_dict()
 
@@ -126,7 +126,7 @@ def main_fjord(args):
  
     # Save output data to .excel file
     acc_test_arr = np.array(acc_test_total)
-    file_name = './output/' + args.name + '/test_accuracy.txt'
+    file_name = './output/FJO/' + args.name + '/test_accuracy.txt'
     np.savetxt(file_name, acc_test_arr)
 
     

@@ -28,7 +28,7 @@ def set_filename(args):
     timestamp = datetime.now().strftime("%Y%m%d-%H%M%S")
     name = '[' + method_name + ']'+'['+ str(args.data) +']'+ '['+ str(args.model_name) +']' + '['+ str(args.seed) +']' + timestamp
     wandb_name = '[' + method_name + ']'+'['+ str(args.data) +']'+ '['+ str(args.model_name) +']' + '['+ str(args.seed) +']' 
-    return name, wandb_name, timestamp
+    return name, wandb_name, timestamp, method_name
 
 def get_logger(logpath, filepath, package_files=[], displaying=True, saving=True, debug=False):
     logger = logging.getLogger()
