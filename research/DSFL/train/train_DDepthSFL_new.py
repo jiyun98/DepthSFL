@@ -153,8 +153,6 @@ class LocalUpdate_server(object):
         epoch_loss_s = []
         epoch_acc_s = []
 
-        kd_server_logits = []
-
         for iter in range(self.args.local_ep):
             batch_loss_s = []
             batch_acc_s = []
@@ -189,9 +187,6 @@ class LocalUpdate_server(object):
 
                 batch_loss_s.append(loss.item())
                 batch_acc_s.append(acc.item())
-
-                if iter == self.args.local_ep - 1 and self.args.kd_server_opt:
-                    kd_server_logits.append(fx_server[-1].clone())
             epoch_loss_s.append(sum(batch_loss_s)/len(batch_loss_s))
             epoch_acc_s.append(sum(batch_acc_s)/len(batch_acc_s))
         server_loss = sum(epoch_loss_s)/len(epoch_loss_s)
@@ -202,7 +197,7 @@ class LocalUpdate_server(object):
 
 
 
-        return net_server.state_dict(), weight_a_s, kd_server_logits, self.args, server_loss, server_acc
+        return net_server.state_dict(), weight_a_s,  self.args, server_loss, server_acc
 
 
 def test_img(net_c, net_s, net_a, datatest, args):
