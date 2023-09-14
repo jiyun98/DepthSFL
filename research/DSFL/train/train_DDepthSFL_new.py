@@ -150,6 +150,10 @@ class LocalUpdate_server(object):
         criterion_KD =  SoftTarget(self.args.T)
 
         
+        net_server.train()
+        net_server.zero_grad()
+        optimizer_server.zero_grad()
+
         epoch_loss_s = []
         epoch_acc_s = []
 
