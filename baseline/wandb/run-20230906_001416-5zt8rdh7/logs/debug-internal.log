@@ -1,0 +1,471 @@
+2023-09-06 00:14:16,595 INFO    StreamThr :1384031 [internal.py:wandb_internal():86] W&B internal server running at pid: 1384031, started at: 2023-09-06 00:14:16.594476
+2023-09-06 00:14:16,598 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: status
+2023-09-06 00:14:16,601 INFO    WriterThread:1384031 [datastore.py:open_for_write():85] open: /home/gyoon814/research/baseline/wandb/run-20230906_001416-5zt8rdh7/run-5zt8rdh7.wandb
+2023-09-06 00:14:16,602 DEBUG   SenderThread:1384031 [sender.py:send():369] send: header
+2023-09-06 00:14:16,617 DEBUG   SenderThread:1384031 [sender.py:send():369] send: run
+2023-09-06 00:14:17,332 INFO    SenderThread:1384031 [dir_watcher.py:__init__():211] watching files in: /home/gyoon814/research/baseline/wandb/run-20230906_001416-5zt8rdh7/files
+2023-09-06 00:14:17,333 INFO    SenderThread:1384031 [sender.py:_start_run_threads():1100] run started: 5zt8rdh7 with start time 1693926856.591226
+2023-09-06 00:14:17,334 DEBUG   SenderThread:1384031 [sender.py:send_request():396] send_request: summary_record
+2023-09-06 00:14:17,334 INFO    SenderThread:1384031 [sender.py:_save_file():1354] saving file wandb-summary.json with policy end
+2023-09-06 00:14:17,347 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: check_version
+2023-09-06 00:14:17,348 DEBUG   SenderThread:1384031 [sender.py:send_request():396] send_request: check_version
+2023-09-06 00:14:17,416 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: run_start
+2023-09-06 00:14:17,427 DEBUG   HandlerThread:1384031 [system_info.py:__init__():31] System info init
+2023-09-06 00:14:17,427 DEBUG   HandlerThread:1384031 [system_info.py:__init__():46] System info init done
+2023-09-06 00:14:17,427 INFO    HandlerThread:1384031 [system_monitor.py:start():181] Starting system monitor
+2023-09-06 00:14:17,427 INFO    SystemMonitor:1384031 [system_monitor.py:_start():145] Starting system asset monitoring threads
+2023-09-06 00:14:17,428 INFO    HandlerThread:1384031 [system_monitor.py:probe():201] Collecting system info
+2023-09-06 00:14:17,428 INFO    SystemMonitor:1384031 [interfaces.py:start():190] Started cpu monitoring
+2023-09-06 00:14:17,429 INFO    SystemMonitor:1384031 [interfaces.py:start():190] Started disk monitoring
+2023-09-06 00:14:17,430 INFO    SystemMonitor:1384031 [interfaces.py:start():190] Started gpu monitoring
+2023-09-06 00:14:17,432 INFO    SystemMonitor:1384031 [interfaces.py:start():190] Started memory monitoring
+2023-09-06 00:14:17,433 INFO    SystemMonitor:1384031 [interfaces.py:start():190] Started network monitoring
+2023-09-06 00:14:17,464 DEBUG   HandlerThread:1384031 [system_info.py:probe():195] Probing system
+2023-09-06 00:14:17,472 DEBUG   HandlerThread:1384031 [system_info.py:_probe_git():180] Probing git
+2023-09-06 00:14:17,487 DEBUG   HandlerThread:1384031 [system_info.py:_probe_git():188] Probing git done
+2023-09-06 00:14:17,487 DEBUG   HandlerThread:1384031 [system_info.py:probe():240] Probing system done
+2023-09-06 00:14:17,487 DEBUG   HandlerThread:1384031 [system_monitor.py:probe():210] {'os': 'Linux-5.15.0-78-generic-x86_64-with-glibc2.31', 'python': '3.9.16', 'heartbeatAt': '2023-09-05T15:14:17.464862', 'startedAt': '2023-09-05T15:14:16.587275', 'docker': None, 'cuda': None, 'args': ('--run_name', 'reduction_resnet18_1', '--device_id', '0'), 'state': 'running', 'program': '/home/gyoon814/research/baseline/main_reduction.py', 'codePath': 'research/baseline/main_reduction.py', 'git': {'remote': None, 'commit': 'cf72a459653ee26ebef1e3a2c8f73d3d6f85ea66'}, 'email': 'gyoon814@kaist.ac.kr', 'root': '/home/gyoon814', 'host': 'user-X299-UD4-Pro', 'username': 'gyoon814', 'executable': '/home/gyoon814/anaconda3/envs/SFL/bin/python', 'cpu_count': 10, 'cpu_count_logical': 20, 'cpu_freq': {'current': 3552.1239499999997, 'min': 1200.0, 'max': 4560.0}, 'cpu_freq_per_core': [{'current': 3700.0, 'min': 1200.0, 'max': 4500.0}, {'current': 3700.0, 'min': 1200.0, 'max': 4500.0}, {'current': 3700.0, 'min': 1200.0, 'max': 4600.0}, {'current': 3700.0, 'min': 1200.0, 'max': 4700.0}, {'current': 3700.0, 'min': 1200.0, 'max': 4500.0}, {'current': 3700.0, 'min': 1200.0, 'max': 4500.0}, {'current': 3700.0, 'min': 1200.0, 'max': 4500.0}, {'current': 3206.946, 'min': 1200.0, 'max': 4700.0}, {'current': 1235.533, 'min': 1200.0, 'max': 4600.0}, {'current': 3700.0, 'min': 1200.0, 'max': 4500.0}, {'current': 3700.0, 'min': 1200.0, 'max': 4500.0}, {'current': 3700.0, 'min': 1200.0, 'max': 4500.0}, {'current': 3700.0, 'min': 1200.0, 'max': 4600.0}, {'current': 3700.0, 'min': 1200.0, 'max': 4700.0}, {'current': 3700.0, 'min': 1200.0, 'max': 4500.0}, {'current': 3700.0, 'min': 1200.0, 'max': 4500.0}, {'current': 3700.0, 'min': 1200.0, 'max': 4500.0}, {'current': 3700.0, 'min': 1200.0, 'max': 4700.0}, {'current': 3700.0, 'min': 1200.0, 'max': 4600.0}, {'current': 3700.0, 'min': 1200.0, 'max': 4500.0}], 'disk': {'total': 467.8895797729492, 'used': 228.78928756713867}, 'gpu': 'NVIDIA GeForce RTX 3090', 'gpu_count': 2, 'gpu_devices': [{'name': 'NVIDIA GeForce RTX 3090', 'memory_total': 25769803776}, {'name': 'NVIDIA GeForce RTX 3090', 'memory_total': 25769803776}], 'memory': {'total': 251.38914108276367}}
+2023-09-06 00:14:17,487 INFO    HandlerThread:1384031 [system_monitor.py:probe():211] Finished collecting system info
+2023-09-06 00:14:17,487 INFO    HandlerThread:1384031 [system_monitor.py:probe():214] Publishing system info
+2023-09-06 00:14:17,487 DEBUG   HandlerThread:1384031 [system_info.py:_save_pip():51] Saving list of pip packages installed into the current environment
+2023-09-06 00:14:17,488 DEBUG   HandlerThread:1384031 [system_info.py:_save_pip():67] Saving pip packages done
+2023-09-06 00:14:17,488 DEBUG   HandlerThread:1384031 [system_info.py:_save_conda():74] Saving list of conda packages installed into the current environment
+2023-09-06 00:14:18,336 INFO    Thread-12 :1384031 [dir_watcher.py:_on_file_created():272] file/dir created: /home/gyoon814/research/baseline/wandb/run-20230906_001416-5zt8rdh7/files/requirements.txt
+2023-09-06 00:14:18,337 INFO    Thread-12 :1384031 [dir_watcher.py:_on_file_created():272] file/dir created: /home/gyoon814/research/baseline/wandb/run-20230906_001416-5zt8rdh7/files/wandb-summary.json
+2023-09-06 00:14:18,338 INFO    Thread-12 :1384031 [dir_watcher.py:_on_file_created():272] file/dir created: /home/gyoon814/research/baseline/wandb/run-20230906_001416-5zt8rdh7/files/conda-environment.yaml
+2023-09-06 00:14:19,079 DEBUG   HandlerThread:1384031 [system_info.py:_save_conda():86] Saving conda packages done
+2023-09-06 00:14:19,080 INFO    HandlerThread:1384031 [system_monitor.py:probe():216] Finished publishing system info
+2023-09-06 00:14:19,084 DEBUG   SenderThread:1384031 [sender.py:send():369] send: files
+2023-09-06 00:14:19,084 INFO    SenderThread:1384031 [sender.py:_save_file():1354] saving file wandb-metadata.json with policy now
+2023-09-06 00:14:19,093 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-06 00:14:19,093 DEBUG   SenderThread:1384031 [sender.py:send_request():396] send_request: stop_status
+2023-09-06 00:14:19,334 INFO    Thread-12 :1384031 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/baseline/wandb/run-20230906_001416-5zt8rdh7/files/conda-environment.yaml
+2023-09-06 00:14:19,337 INFO    Thread-12 :1384031 [dir_watcher.py:_on_file_created():272] file/dir created: /home/gyoon814/research/baseline/wandb/run-20230906_001416-5zt8rdh7/files/wandb-metadata.json
+2023-09-06 00:14:19,354 DEBUG   SenderThread:1384031 [sender.py:send():369] send: telemetry
+2023-09-06 00:14:19,355 DEBUG   SenderThread:1384031 [sender.py:send():369] send: telemetry
+2023-09-06 00:14:19,355 DEBUG   SenderThread:1384031 [sender.py:send():369] send: run
+2023-09-06 00:14:19,647 INFO    SenderThread:1384031 [sender.py:send_run():978] updated run: 5zt8rdh7
+2023-09-06 00:14:19,647 DEBUG   SenderThread:1384031 [sender.py:send():369] send: config
+2023-09-06 00:14:19,867 INFO    wandb-upload_0:1384031 [upload_job.py:push():133] Uploaded file /tmp/tmpr3064lh0wandb/h6z0227l-wandb-metadata.json
+2023-09-06 00:14:20,335 INFO    Thread-12 :1384031 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/baseline/wandb/run-20230906_001416-5zt8rdh7/files/config.yaml
+2023-09-06 00:14:20,335 INFO    Thread-12 :1384031 [dir_watcher.py:_on_file_created():272] file/dir created: /home/gyoon814/research/baseline/wandb/run-20230906_001416-5zt8rdh7/files/output.log
+2023-09-06 00:14:22,239 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: status_report
+2023-09-06 00:14:22,336 INFO    Thread-12 :1384031 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/baseline/wandb/run-20230906_001416-5zt8rdh7/files/output.log
+2023-09-06 00:14:24,633 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-06 00:14:26,338 INFO    Thread-12 :1384031 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/baseline/wandb/run-20230906_001416-5zt8rdh7/files/output.log
+2023-09-06 00:14:26,877 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-06 00:14:27,878 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: status_report
+2023-09-06 00:14:28,339 INFO    Thread-12 :1384031 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/baseline/wandb/run-20230906_001416-5zt8rdh7/files/output.log
+2023-09-06 00:14:29,124 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-06 00:14:30,340 INFO    Thread-12 :1384031 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/baseline/wandb/run-20230906_001416-5zt8rdh7/files/output.log
+2023-09-06 00:14:31,481 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-06 00:14:32,341 INFO    Thread-12 :1384031 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/baseline/wandb/run-20230906_001416-5zt8rdh7/files/output.log
+2023-09-06 00:14:33,482 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: status_report
+2023-09-06 00:14:33,767 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-06 00:14:34,094 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-06 00:14:34,094 DEBUG   SenderThread:1384031 [sender.py:send_request():396] send_request: stop_status
+2023-09-06 00:14:34,342 INFO    Thread-12 :1384031 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/baseline/wandb/run-20230906_001416-5zt8rdh7/files/output.log
+2023-09-06 00:14:36,678 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-06 00:14:36,681 DEBUG   SenderThread:1384031 [sender.py:send():369] send: history
+2023-09-06 00:14:36,681 DEBUG   SenderThread:1384031 [sender.py:send_request():396] send_request: summary_record
+2023-09-06 00:14:36,684 INFO    SenderThread:1384031 [sender.py:_save_file():1354] saving file wandb-summary.json with policy end
+2023-09-06 00:14:37,343 INFO    Thread-12 :1384031 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/baseline/wandb/run-20230906_001416-5zt8rdh7/files/wandb-summary.json
+2023-09-06 00:14:38,344 INFO    Thread-12 :1384031 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/baseline/wandb/run-20230906_001416-5zt8rdh7/files/output.log
+2023-09-06 00:14:38,685 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: status_report
+2023-09-06 00:14:38,997 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-06 00:14:40,345 INFO    Thread-12 :1384031 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/baseline/wandb/run-20230906_001416-5zt8rdh7/files/output.log
+2023-09-06 00:14:41,440 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-06 00:14:42,346 INFO    Thread-12 :1384031 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/baseline/wandb/run-20230906_001416-5zt8rdh7/files/output.log
+2023-09-06 00:14:43,827 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-06 00:14:43,828 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: status_report
+2023-09-06 00:14:44,347 INFO    Thread-12 :1384031 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/baseline/wandb/run-20230906_001416-5zt8rdh7/files/output.log
+2023-09-06 00:14:46,123 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-06 00:14:46,348 INFO    Thread-12 :1384031 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/baseline/wandb/run-20230906_001416-5zt8rdh7/files/output.log
+2023-09-06 00:14:49,093 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-06 00:14:49,094 DEBUG   SenderThread:1384031 [sender.py:send_request():396] send_request: stop_status
+2023-09-06 00:14:49,165 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-06 00:14:49,344 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: status_report
+2023-09-06 00:14:49,621 DEBUG   SenderThread:1384031 [sender.py:send():369] send: history
+2023-09-06 00:14:49,622 DEBUG   SenderThread:1384031 [sender.py:send_request():396] send_request: summary_record
+2023-09-06 00:14:49,625 INFO    SenderThread:1384031 [sender.py:_save_file():1354] saving file wandb-summary.json with policy end
+2023-09-06 00:14:50,349 INFO    Thread-12 :1384031 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/baseline/wandb/run-20230906_001416-5zt8rdh7/files/wandb-summary.json
+2023-09-06 00:14:50,350 INFO    Thread-12 :1384031 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/baseline/wandb/run-20230906_001416-5zt8rdh7/files/output.log
+2023-09-06 00:14:50,350 INFO    Thread-12 :1384031 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/baseline/wandb/run-20230906_001416-5zt8rdh7/files/config.yaml
+2023-09-06 00:14:51,494 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-06 00:14:52,351 INFO    Thread-12 :1384031 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/baseline/wandb/run-20230906_001416-5zt8rdh7/files/output.log
+2023-09-06 00:14:53,770 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-06 00:14:54,352 INFO    Thread-12 :1384031 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/baseline/wandb/run-20230906_001416-5zt8rdh7/files/output.log
+2023-09-06 00:14:54,771 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: status_report
+2023-09-06 00:14:56,119 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-06 00:14:56,352 INFO    Thread-12 :1384031 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/baseline/wandb/run-20230906_001416-5zt8rdh7/files/output.log
+2023-09-06 00:14:58,534 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-06 00:15:00,354 INFO    Thread-12 :1384031 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/baseline/wandb/run-20230906_001416-5zt8rdh7/files/output.log
+2023-09-06 00:15:00,535 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: status_report
+2023-09-06 00:15:01,505 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-06 00:15:01,506 DEBUG   SenderThread:1384031 [sender.py:send():369] send: history
+2023-09-06 00:15:01,507 DEBUG   SenderThread:1384031 [sender.py:send_request():396] send_request: summary_record
+2023-09-06 00:15:01,507 INFO    SenderThread:1384031 [sender.py:_save_file():1354] saving file wandb-summary.json with policy end
+2023-09-06 00:15:02,355 INFO    Thread-12 :1384031 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/baseline/wandb/run-20230906_001416-5zt8rdh7/files/wandb-summary.json
+2023-09-06 00:15:02,356 INFO    Thread-12 :1384031 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/baseline/wandb/run-20230906_001416-5zt8rdh7/files/output.log
+2023-09-06 00:15:03,838 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-06 00:15:04,094 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-06 00:15:04,094 DEBUG   SenderThread:1384031 [sender.py:send_request():396] send_request: stop_status
+2023-09-06 00:15:04,356 INFO    Thread-12 :1384031 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/baseline/wandb/run-20230906_001416-5zt8rdh7/files/output.log
+2023-09-06 00:15:06,175 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-06 00:15:06,176 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: status_report
+2023-09-06 00:15:06,357 INFO    Thread-12 :1384031 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/baseline/wandb/run-20230906_001416-5zt8rdh7/files/output.log
+2023-09-06 00:15:08,492 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-06 00:15:10,359 INFO    Thread-12 :1384031 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/baseline/wandb/run-20230906_001416-5zt8rdh7/files/output.log
+2023-09-06 00:15:10,892 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-06 00:15:11,893 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: status_report
+2023-09-06 00:15:12,360 INFO    Thread-12 :1384031 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/baseline/wandb/run-20230906_001416-5zt8rdh7/files/output.log
+2023-09-06 00:15:13,942 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-06 00:15:13,943 DEBUG   SenderThread:1384031 [sender.py:send():369] send: history
+2023-09-06 00:15:13,943 DEBUG   SenderThread:1384031 [sender.py:send_request():396] send_request: summary_record
+2023-09-06 00:15:13,944 INFO    SenderThread:1384031 [sender.py:_save_file():1354] saving file wandb-summary.json with policy end
+2023-09-06 00:15:14,361 INFO    Thread-12 :1384031 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/baseline/wandb/run-20230906_001416-5zt8rdh7/files/wandb-summary.json
+2023-09-06 00:15:14,361 INFO    Thread-12 :1384031 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/baseline/wandb/run-20230906_001416-5zt8rdh7/files/output.log
+2023-09-06 00:15:16,289 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-06 00:15:16,362 INFO    Thread-12 :1384031 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/baseline/wandb/run-20230906_001416-5zt8rdh7/files/output.log
+2023-09-06 00:15:17,291 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: status_report
+2023-09-06 00:15:17,434 DEBUG   SystemMonitor:1384031 [system_monitor.py:_start():159] Starting system metrics aggregation loop
+2023-09-06 00:15:17,436 DEBUG   SenderThread:1384031 [sender.py:send():369] send: stats
+2023-09-06 00:15:18,664 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-06 00:15:19,094 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-06 00:15:19,095 DEBUG   SenderThread:1384031 [sender.py:send_request():396] send_request: stop_status
+2023-09-06 00:15:20,363 INFO    Thread-12 :1384031 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/baseline/wandb/run-20230906_001416-5zt8rdh7/files/output.log
+2023-09-06 00:15:20,970 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-06 00:15:22,971 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: status_report
+2023-09-06 00:15:23,298 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-06 00:15:23,365 INFO    Thread-12 :1384031 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/baseline/wandb/run-20230906_001416-5zt8rdh7/files/output.log
+2023-09-06 00:15:25,366 INFO    Thread-12 :1384031 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/baseline/wandb/run-20230906_001416-5zt8rdh7/files/output.log
+2023-09-06 00:15:26,357 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-06 00:15:26,359 DEBUG   SenderThread:1384031 [sender.py:send():369] send: history
+2023-09-06 00:15:26,359 DEBUG   SenderThread:1384031 [sender.py:send_request():396] send_request: summary_record
+2023-09-06 00:15:26,362 INFO    SenderThread:1384031 [sender.py:_save_file():1354] saving file wandb-summary.json with policy end
+2023-09-06 00:15:26,366 INFO    Thread-12 :1384031 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/baseline/wandb/run-20230906_001416-5zt8rdh7/files/wandb-summary.json
+2023-09-06 00:15:28,364 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: status_report
+2023-09-06 00:15:28,642 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-06 00:15:29,368 INFO    Thread-12 :1384031 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/baseline/wandb/run-20230906_001416-5zt8rdh7/files/output.log
+2023-09-06 00:15:30,955 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-06 00:15:31,369 INFO    Thread-12 :1384031 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/baseline/wandb/run-20230906_001416-5zt8rdh7/files/output.log
+2023-09-06 00:15:33,370 INFO    Thread-12 :1384031 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/baseline/wandb/run-20230906_001416-5zt8rdh7/files/output.log
+2023-09-06 00:15:33,373 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-06 00:15:33,373 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: status_report
+2023-09-06 00:15:34,094 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-06 00:15:34,095 DEBUG   SenderThread:1384031 [sender.py:send_request():396] send_request: stop_status
+2023-09-06 00:15:35,371 INFO    Thread-12 :1384031 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/baseline/wandb/run-20230906_001416-5zt8rdh7/files/output.log
+2023-09-06 00:15:35,613 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-06 00:15:37,372 INFO    Thread-12 :1384031 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/baseline/wandb/run-20230906_001416-5zt8rdh7/files/output.log
+2023-09-06 00:15:38,511 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-06 00:15:38,512 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: status_report
+2023-09-06 00:15:38,513 DEBUG   SenderThread:1384031 [sender.py:send():369] send: history
+2023-09-06 00:15:38,513 DEBUG   SenderThread:1384031 [sender.py:send_request():396] send_request: summary_record
+2023-09-06 00:15:38,514 INFO    SenderThread:1384031 [sender.py:_save_file():1354] saving file wandb-summary.json with policy end
+2023-09-06 00:15:39,373 INFO    Thread-12 :1384031 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/baseline/wandb/run-20230906_001416-5zt8rdh7/files/wandb-summary.json
+2023-09-06 00:15:40,811 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-06 00:15:41,374 INFO    Thread-12 :1384031 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/baseline/wandb/run-20230906_001416-5zt8rdh7/files/output.log
+2023-09-06 00:15:43,050 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-06 00:15:43,375 INFO    Thread-12 :1384031 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/baseline/wandb/run-20230906_001416-5zt8rdh7/files/output.log
+2023-09-06 00:15:44,051 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: status_report
+2023-09-06 00:15:45,376 INFO    Thread-12 :1384031 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/baseline/wandb/run-20230906_001416-5zt8rdh7/files/output.log
+2023-09-06 00:15:45,440 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-06 00:15:47,377 INFO    Thread-12 :1384031 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/baseline/wandb/run-20230906_001416-5zt8rdh7/files/output.log
+2023-09-06 00:15:47,437 DEBUG   SenderThread:1384031 [sender.py:send():369] send: stats
+2023-09-06 00:15:47,761 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-06 00:15:49,094 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-06 00:15:49,095 DEBUG   SenderThread:1384031 [sender.py:send_request():396] send_request: stop_status
+2023-09-06 00:15:49,378 INFO    Thread-12 :1384031 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/baseline/wandb/run-20230906_001416-5zt8rdh7/files/output.log
+2023-09-06 00:15:49,409 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: status_report
+2023-09-06 00:15:50,739 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-06 00:15:50,741 DEBUG   SenderThread:1384031 [sender.py:send():369] send: history
+2023-09-06 00:15:50,741 DEBUG   SenderThread:1384031 [sender.py:send_request():396] send_request: summary_record
+2023-09-06 00:15:50,742 INFO    SenderThread:1384031 [sender.py:_save_file():1354] saving file wandb-summary.json with policy end
+2023-09-06 00:15:51,379 INFO    Thread-12 :1384031 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/baseline/wandb/run-20230906_001416-5zt8rdh7/files/wandb-summary.json
+2023-09-06 00:15:53,065 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-06 00:15:53,380 INFO    Thread-12 :1384031 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/baseline/wandb/run-20230906_001416-5zt8rdh7/files/output.log
+2023-09-06 00:15:55,066 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: status_report
+2023-09-06 00:15:55,381 INFO    Thread-12 :1384031 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/baseline/wandb/run-20230906_001416-5zt8rdh7/files/output.log
+2023-09-06 00:15:55,502 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-06 00:15:57,382 INFO    Thread-12 :1384031 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/baseline/wandb/run-20230906_001416-5zt8rdh7/files/output.log
+2023-09-06 00:15:57,867 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-06 00:15:59,383 INFO    Thread-12 :1384031 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/baseline/wandb/run-20230906_001416-5zt8rdh7/files/output.log
+2023-09-06 00:16:00,150 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-06 00:16:00,150 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: status_report
+2023-09-06 00:16:01,384 INFO    Thread-12 :1384031 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/baseline/wandb/run-20230906_001416-5zt8rdh7/files/output.log
+2023-09-06 00:16:03,121 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-06 00:16:03,122 DEBUG   SenderThread:1384031 [sender.py:send():369] send: history
+2023-09-06 00:16:03,122 DEBUG   SenderThread:1384031 [sender.py:send_request():396] send_request: summary_record
+2023-09-06 00:16:03,123 INFO    SenderThread:1384031 [sender.py:_save_file():1354] saving file wandb-summary.json with policy end
+2023-09-06 00:16:03,385 INFO    Thread-12 :1384031 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/baseline/wandb/run-20230906_001416-5zt8rdh7/files/wandb-summary.json
+2023-09-06 00:16:04,094 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-06 00:16:04,095 DEBUG   SenderThread:1384031 [sender.py:send_request():396] send_request: stop_status
+2023-09-06 00:16:05,386 INFO    Thread-12 :1384031 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/baseline/wandb/run-20230906_001416-5zt8rdh7/files/output.log
+2023-09-06 00:16:05,456 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: status_report
+2023-09-06 00:16:05,647 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-06 00:16:07,387 INFO    Thread-12 :1384031 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/baseline/wandb/run-20230906_001416-5zt8rdh7/files/output.log
+2023-09-06 00:16:08,039 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-06 00:16:09,388 INFO    Thread-12 :1384031 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/baseline/wandb/run-20230906_001416-5zt8rdh7/files/output.log
+2023-09-06 00:16:10,453 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-06 00:16:11,455 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: status_report
+2023-09-06 00:16:12,867 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-06 00:16:13,390 INFO    Thread-12 :1384031 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/baseline/wandb/run-20230906_001416-5zt8rdh7/files/output.log
+2023-09-06 00:16:15,391 INFO    Thread-12 :1384031 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/baseline/wandb/run-20230906_001416-5zt8rdh7/files/output.log
+2023-09-06 00:16:15,723 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-06 00:16:15,723 DEBUG   SenderThread:1384031 [sender.py:send():369] send: history
+2023-09-06 00:16:15,724 DEBUG   SenderThread:1384031 [sender.py:send_request():396] send_request: summary_record
+2023-09-06 00:16:15,724 INFO    SenderThread:1384031 [sender.py:_save_file():1354] saving file wandb-summary.json with policy end
+2023-09-06 00:16:16,391 INFO    Thread-12 :1384031 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/baseline/wandb/run-20230906_001416-5zt8rdh7/files/wandb-summary.json
+2023-09-06 00:16:16,725 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: status_report
+2023-09-06 00:16:17,392 INFO    Thread-12 :1384031 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/baseline/wandb/run-20230906_001416-5zt8rdh7/files/output.log
+2023-09-06 00:16:17,438 DEBUG   SenderThread:1384031 [sender.py:send():369] send: stats
+2023-09-06 00:16:18,062 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-06 00:16:19,094 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-06 00:16:19,095 DEBUG   SenderThread:1384031 [sender.py:send_request():396] send_request: stop_status
+2023-09-06 00:16:19,393 INFO    Thread-12 :1384031 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/baseline/wandb/run-20230906_001416-5zt8rdh7/files/output.log
+2023-09-06 00:16:20,418 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-06 00:16:22,420 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: status_report
+2023-09-06 00:16:22,752 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-06 00:16:23,395 INFO    Thread-12 :1384031 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/baseline/wandb/run-20230906_001416-5zt8rdh7/files/output.log
+2023-09-06 00:16:25,105 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-06 00:16:25,395 INFO    Thread-12 :1384031 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/baseline/wandb/run-20230906_001416-5zt8rdh7/files/output.log
+2023-09-06 00:16:27,397 INFO    Thread-12 :1384031 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/baseline/wandb/run-20230906_001416-5zt8rdh7/files/output.log
+2023-09-06 00:16:27,551 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-06 00:16:27,552 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: status_report
+2023-09-06 00:16:29,397 INFO    Thread-12 :1384031 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/baseline/wandb/run-20230906_001416-5zt8rdh7/files/output.log
+2023-09-06 00:16:29,885 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-06 00:16:29,887 DEBUG   SenderThread:1384031 [sender.py:send():369] send: history
+2023-09-06 00:16:29,888 DEBUG   SenderThread:1384031 [sender.py:send_request():396] send_request: summary_record
+2023-09-06 00:16:29,888 INFO    SenderThread:1384031 [sender.py:_save_file():1354] saving file wandb-summary.json with policy end
+2023-09-06 00:16:30,398 INFO    Thread-12 :1384031 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/baseline/wandb/run-20230906_001416-5zt8rdh7/files/wandb-summary.json
+2023-09-06 00:16:31,398 INFO    Thread-12 :1384031 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/baseline/wandb/run-20230906_001416-5zt8rdh7/files/output.log
+2023-09-06 00:16:32,268 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-06 00:16:33,270 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: status_report
+2023-09-06 00:16:33,399 INFO    Thread-12 :1384031 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/baseline/wandb/run-20230906_001416-5zt8rdh7/files/output.log
+2023-09-06 00:16:34,094 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-06 00:16:34,095 DEBUG   SenderThread:1384031 [sender.py:send_request():396] send_request: stop_status
+2023-09-06 00:16:34,602 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-06 00:16:36,931 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-06 00:16:37,401 INFO    Thread-12 :1384031 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/baseline/wandb/run-20230906_001416-5zt8rdh7/files/output.log
+2023-09-06 00:16:38,933 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: status_report
+2023-09-06 00:16:39,245 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-06 00:16:39,402 INFO    Thread-12 :1384031 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/baseline/wandb/run-20230906_001416-5zt8rdh7/files/output.log
+2023-09-06 00:16:41,403 INFO    Thread-12 :1384031 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/baseline/wandb/run-20230906_001416-5zt8rdh7/files/output.log
+2023-09-06 00:16:42,310 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-06 00:16:42,312 DEBUG   SenderThread:1384031 [sender.py:send():369] send: history
+2023-09-06 00:16:42,312 DEBUG   SenderThread:1384031 [sender.py:send_request():396] send_request: summary_record
+2023-09-06 00:16:42,313 INFO    SenderThread:1384031 [sender.py:_save_file():1354] saving file wandb-summary.json with policy end
+2023-09-06 00:16:42,403 INFO    Thread-12 :1384031 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/baseline/wandb/run-20230906_001416-5zt8rdh7/files/wandb-summary.json
+2023-09-06 00:16:43,403 INFO    Thread-12 :1384031 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/baseline/wandb/run-20230906_001416-5zt8rdh7/files/output.log
+2023-09-06 00:16:44,314 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: status_report
+2023-09-06 00:16:44,654 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-06 00:16:46,851 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-06 00:16:47,405 INFO    Thread-12 :1384031 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/baseline/wandb/run-20230906_001416-5zt8rdh7/files/output.log
+2023-09-06 00:16:47,440 DEBUG   SenderThread:1384031 [sender.py:send():369] send: stats
+2023-09-06 00:16:49,095 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-06 00:16:49,095 DEBUG   SenderThread:1384031 [sender.py:send_request():396] send_request: stop_status
+2023-09-06 00:16:49,191 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-06 00:16:49,406 INFO    Thread-12 :1384031 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/baseline/wandb/run-20230906_001416-5zt8rdh7/files/output.log
+2023-09-06 00:16:49,451 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: status_report
+2023-09-06 00:16:51,407 INFO    Thread-12 :1384031 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/baseline/wandb/run-20230906_001416-5zt8rdh7/files/output.log
+2023-09-06 00:16:51,641 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-06 00:16:53,408 INFO    Thread-12 :1384031 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/baseline/wandb/run-20230906_001416-5zt8rdh7/files/output.log
+2023-09-06 00:16:54,643 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: status_report
+2023-09-06 00:16:54,712 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-06 00:16:54,714 DEBUG   SenderThread:1384031 [sender.py:send():369] send: history
+2023-09-06 00:16:54,714 DEBUG   SenderThread:1384031 [sender.py:send_request():396] send_request: summary_record
+2023-09-06 00:16:54,715 INFO    SenderThread:1384031 [sender.py:_save_file():1354] saving file wandb-summary.json with policy end
+2023-09-06 00:16:55,409 INFO    Thread-12 :1384031 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/baseline/wandb/run-20230906_001416-5zt8rdh7/files/wandb-summary.json
+2023-09-06 00:16:57,060 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-06 00:16:57,410 INFO    Thread-12 :1384031 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/baseline/wandb/run-20230906_001416-5zt8rdh7/files/output.log
+2023-09-06 00:16:59,346 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-06 00:16:59,411 INFO    Thread-12 :1384031 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/baseline/wandb/run-20230906_001416-5zt8rdh7/files/output.log
+2023-09-06 00:17:00,347 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: status_report
+2023-09-06 00:17:01,412 INFO    Thread-12 :1384031 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/baseline/wandb/run-20230906_001416-5zt8rdh7/files/output.log
+2023-09-06 00:17:01,708 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-06 00:17:03,413 INFO    Thread-12 :1384031 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/baseline/wandb/run-20230906_001416-5zt8rdh7/files/output.log
+2023-09-06 00:17:04,095 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-06 00:17:04,096 DEBUG   SenderThread:1384031 [sender.py:send_request():396] send_request: stop_status
+2023-09-06 00:17:04,118 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-06 00:17:05,478 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: status_report
+2023-09-06 00:17:07,134 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-06 00:17:07,136 DEBUG   SenderThread:1384031 [sender.py:send():369] send: history
+2023-09-06 00:17:07,136 DEBUG   SenderThread:1384031 [sender.py:send_request():396] send_request: summary_record
+2023-09-06 00:17:07,137 INFO    SenderThread:1384031 [sender.py:_save_file():1354] saving file wandb-summary.json with policy end
+2023-09-06 00:17:07,415 INFO    Thread-12 :1384031 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/baseline/wandb/run-20230906_001416-5zt8rdh7/files/wandb-summary.json
+2023-09-06 00:17:07,415 INFO    Thread-12 :1384031 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/baseline/wandb/run-20230906_001416-5zt8rdh7/files/output.log
+2023-09-06 00:17:09,416 INFO    Thread-12 :1384031 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/baseline/wandb/run-20230906_001416-5zt8rdh7/files/output.log
+2023-09-06 00:17:09,421 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-06 00:17:11,417 INFO    Thread-12 :1384031 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/baseline/wandb/run-20230906_001416-5zt8rdh7/files/output.log
+2023-09-06 00:17:11,423 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: status_report
+2023-09-06 00:17:11,711 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-06 00:17:13,418 INFO    Thread-12 :1384031 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/baseline/wandb/run-20230906_001416-5zt8rdh7/files/output.log
+2023-09-06 00:17:14,138 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-06 00:17:15,418 INFO    Thread-12 :1384031 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/baseline/wandb/run-20230906_001416-5zt8rdh7/files/output.log
+2023-09-06 00:17:16,425 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-06 00:17:16,427 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: status_report
+2023-09-06 00:17:17,419 INFO    Thread-12 :1384031 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/baseline/wandb/run-20230906_001416-5zt8rdh7/files/output.log
+2023-09-06 00:17:17,441 DEBUG   SenderThread:1384031 [sender.py:send():369] send: stats
+2023-09-06 00:17:19,095 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: stop_status
+2023-09-06 00:17:19,096 DEBUG   SenderThread:1384031 [sender.py:send_request():396] send_request: stop_status
+2023-09-06 00:17:19,387 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-06 00:17:19,388 DEBUG   SenderThread:1384031 [sender.py:send():369] send: history
+2023-09-06 00:17:19,389 DEBUG   SenderThread:1384031 [sender.py:send_request():396] send_request: summary_record
+2023-09-06 00:17:19,389 INFO    SenderThread:1384031 [sender.py:_save_file():1354] saving file wandb-summary.json with policy end
+2023-09-06 00:17:19,420 INFO    Thread-12 :1384031 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/baseline/wandb/run-20230906_001416-5zt8rdh7/files/wandb-summary.json
+2023-09-06 00:17:21,421 INFO    Thread-12 :1384031 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/baseline/wandb/run-20230906_001416-5zt8rdh7/files/output.log
+2023-09-06 00:17:21,690 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-06 00:17:21,691 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: status_report
+2023-09-06 00:17:23,422 INFO    Thread-12 :1384031 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/baseline/wandb/run-20230906_001416-5zt8rdh7/files/output.log
+2023-09-06 00:17:24,070 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-06 00:17:25,423 INFO    Thread-12 :1384031 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/baseline/wandb/run-20230906_001416-5zt8rdh7/files/output.log
+2023-09-06 00:17:26,376 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-06 00:17:27,377 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: status_report
+2023-09-06 00:17:27,423 INFO    Thread-12 :1384031 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/baseline/wandb/run-20230906_001416-5zt8rdh7/files/output.log
+2023-09-06 00:17:28,665 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-06 00:17:31,426 INFO    Thread-12 :1384031 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/baseline/wandb/run-20230906_001416-5zt8rdh7/files/output.log
+2023-09-06 00:17:31,590 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: partial_history
+2023-09-06 00:17:31,592 DEBUG   SenderThread:1384031 [sender.py:send():369] send: history
+2023-09-06 00:17:31,592 DEBUG   SenderThread:1384031 [sender.py:send_request():396] send_request: summary_record
+2023-09-06 00:17:31,593 INFO    SenderThread:1384031 [sender.py:_save_file():1354] saving file wandb-summary.json with policy end
+2023-09-06 00:17:32,082 DEBUG   SenderThread:1384031 [sender.py:send():369] send: exit
+2023-09-06 00:17:32,082 INFO    SenderThread:1384031 [sender.py:send_exit():574] handling exit code: 255
+2023-09-06 00:17:32,082 INFO    SenderThread:1384031 [sender.py:send_exit():576] handling runtime: 194
+2023-09-06 00:17:32,083 INFO    SenderThread:1384031 [sender.py:_save_file():1354] saving file wandb-summary.json with policy end
+2023-09-06 00:17:32,083 INFO    SenderThread:1384031 [sender.py:send_exit():582] send defer
+2023-09-06 00:17:32,083 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: defer
+2023-09-06 00:17:32,083 INFO    HandlerThread:1384031 [handler.py:handle_request_defer():170] handle defer: 0
+2023-09-06 00:17:32,084 DEBUG   SenderThread:1384031 [sender.py:send_request():396] send_request: defer
+2023-09-06 00:17:32,084 INFO    SenderThread:1384031 [sender.py:send_request_defer():598] handle sender defer: 0
+2023-09-06 00:17:32,084 INFO    SenderThread:1384031 [sender.py:transition_state():602] send defer: 1
+2023-09-06 00:17:32,084 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: defer
+2023-09-06 00:17:32,084 INFO    HandlerThread:1384031 [handler.py:handle_request_defer():170] handle defer: 1
+2023-09-06 00:17:32,085 DEBUG   SenderThread:1384031 [sender.py:send_request():396] send_request: defer
+2023-09-06 00:17:32,085 INFO    SenderThread:1384031 [sender.py:send_request_defer():598] handle sender defer: 1
+2023-09-06 00:17:32,085 INFO    SenderThread:1384031 [sender.py:transition_state():602] send defer: 2
+2023-09-06 00:17:32,085 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: defer
+2023-09-06 00:17:32,085 INFO    HandlerThread:1384031 [handler.py:handle_request_defer():170] handle defer: 2
+2023-09-06 00:17:32,085 INFO    HandlerThread:1384031 [system_monitor.py:finish():190] Stopping system monitor
+2023-09-06 00:17:32,085 DEBUG   SystemMonitor:1384031 [system_monitor.py:_start():166] Finished system metrics aggregation loop
+2023-09-06 00:17:32,086 INFO    HandlerThread:1384031 [interfaces.py:finish():202] Joined cpu monitor
+2023-09-06 00:17:32,086 DEBUG   SystemMonitor:1384031 [system_monitor.py:_start():170] Publishing last batch of metrics
+2023-09-06 00:17:32,086 INFO    HandlerThread:1384031 [interfaces.py:finish():202] Joined disk monitor
+2023-09-06 00:17:32,166 INFO    HandlerThread:1384031 [interfaces.py:finish():202] Joined gpu monitor
+2023-09-06 00:17:32,166 INFO    HandlerThread:1384031 [interfaces.py:finish():202] Joined memory monitor
+2023-09-06 00:17:32,166 INFO    HandlerThread:1384031 [interfaces.py:finish():202] Joined network monitor
+2023-09-06 00:17:32,167 DEBUG   SenderThread:1384031 [sender.py:send_request():396] send_request: defer
+2023-09-06 00:17:32,167 INFO    SenderThread:1384031 [sender.py:send_request_defer():598] handle sender defer: 2
+2023-09-06 00:17:32,167 INFO    SenderThread:1384031 [sender.py:transition_state():602] send defer: 3
+2023-09-06 00:17:32,167 DEBUG   SenderThread:1384031 [sender.py:send():369] send: stats
+2023-09-06 00:17:32,168 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: defer
+2023-09-06 00:17:32,168 INFO    HandlerThread:1384031 [handler.py:handle_request_defer():170] handle defer: 3
+2023-09-06 00:17:32,168 DEBUG   SenderThread:1384031 [sender.py:send():369] send: history
+2023-09-06 00:17:32,169 DEBUG   SenderThread:1384031 [sender.py:send_request():396] send_request: summary_record
+2023-09-06 00:17:32,169 INFO    SenderThread:1384031 [sender.py:_save_file():1354] saving file wandb-summary.json with policy end
+2023-09-06 00:17:32,169 DEBUG   SenderThread:1384031 [sender.py:send_request():396] send_request: defer
+2023-09-06 00:17:32,169 INFO    SenderThread:1384031 [sender.py:send_request_defer():598] handle sender defer: 3
+2023-09-06 00:17:32,169 INFO    SenderThread:1384031 [sender.py:transition_state():602] send defer: 4
+2023-09-06 00:17:32,169 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: defer
+2023-09-06 00:17:32,169 INFO    HandlerThread:1384031 [handler.py:handle_request_defer():170] handle defer: 4
+2023-09-06 00:17:32,169 DEBUG   SenderThread:1384031 [sender.py:send_request():396] send_request: defer
+2023-09-06 00:17:32,169 INFO    SenderThread:1384031 [sender.py:send_request_defer():598] handle sender defer: 4
+2023-09-06 00:17:32,169 INFO    SenderThread:1384031 [sender.py:transition_state():602] send defer: 5
+2023-09-06 00:17:32,169 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: defer
+2023-09-06 00:17:32,170 INFO    HandlerThread:1384031 [handler.py:handle_request_defer():170] handle defer: 5
+2023-09-06 00:17:32,170 DEBUG   SenderThread:1384031 [sender.py:send():369] send: summary
+2023-09-06 00:17:32,170 INFO    SenderThread:1384031 [sender.py:_save_file():1354] saving file wandb-summary.json with policy end
+2023-09-06 00:17:32,170 DEBUG   SenderThread:1384031 [sender.py:send_request():396] send_request: defer
+2023-09-06 00:17:32,170 INFO    SenderThread:1384031 [sender.py:send_request_defer():598] handle sender defer: 5
+2023-09-06 00:17:32,170 INFO    SenderThread:1384031 [sender.py:transition_state():602] send defer: 6
+2023-09-06 00:17:32,170 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: defer
+2023-09-06 00:17:32,171 INFO    HandlerThread:1384031 [handler.py:handle_request_defer():170] handle defer: 6
+2023-09-06 00:17:32,171 DEBUG   SenderThread:1384031 [sender.py:send_request():396] send_request: defer
+2023-09-06 00:17:32,171 INFO    SenderThread:1384031 [sender.py:send_request_defer():598] handle sender defer: 6
+2023-09-06 00:17:32,171 INFO    SenderThread:1384031 [sender.py:transition_state():602] send defer: 7
+2023-09-06 00:17:32,171 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: status_report
+2023-09-06 00:17:32,171 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: defer
+2023-09-06 00:17:32,171 INFO    HandlerThread:1384031 [handler.py:handle_request_defer():170] handle defer: 7
+2023-09-06 00:17:32,171 DEBUG   SenderThread:1384031 [sender.py:send_request():396] send_request: defer
+2023-09-06 00:17:32,171 INFO    SenderThread:1384031 [sender.py:send_request_defer():598] handle sender defer: 7
+2023-09-06 00:17:32,426 INFO    Thread-12 :1384031 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/baseline/wandb/run-20230906_001416-5zt8rdh7/files/wandb-summary.json
+2023-09-06 00:17:33,082 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: poll_exit
+2023-09-06 00:17:33,427 INFO    Thread-12 :1384031 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/baseline/wandb/run-20230906_001416-5zt8rdh7/files/output.log
+2023-09-06 00:17:34,086 INFO    SenderThread:1384031 [sender.py:transition_state():602] send defer: 8
+2023-09-06 00:17:34,087 DEBUG   SenderThread:1384031 [sender.py:send_request():396] send_request: poll_exit
+2023-09-06 00:17:34,088 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: defer
+2023-09-06 00:17:34,088 INFO    HandlerThread:1384031 [handler.py:handle_request_defer():170] handle defer: 8
+2023-09-06 00:17:34,088 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: poll_exit
+2023-09-06 00:17:34,089 DEBUG   SenderThread:1384031 [sender.py:send_request():396] send_request: defer
+2023-09-06 00:17:34,089 INFO    SenderThread:1384031 [sender.py:send_request_defer():598] handle sender defer: 8
+2023-09-06 00:17:34,089 INFO    SenderThread:1384031 [job_builder.py:build():240] Attempting to build job artifact
+2023-09-06 00:17:34,090 INFO    SenderThread:1384031 [job_builder.py:build():274] no source found
+2023-09-06 00:17:34,090 INFO    SenderThread:1384031 [sender.py:transition_state():602] send defer: 9
+2023-09-06 00:17:34,090 DEBUG   SenderThread:1384031 [sender.py:send_request():396] send_request: poll_exit
+2023-09-06 00:17:34,090 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: defer
+2023-09-06 00:17:34,090 INFO    HandlerThread:1384031 [handler.py:handle_request_defer():170] handle defer: 9
+2023-09-06 00:17:34,091 DEBUG   SenderThread:1384031 [sender.py:send_request():396] send_request: defer
+2023-09-06 00:17:34,091 INFO    SenderThread:1384031 [sender.py:send_request_defer():598] handle sender defer: 9
+2023-09-06 00:17:34,091 INFO    SenderThread:1384031 [dir_watcher.py:finish():359] shutting down directory watcher
+2023-09-06 00:17:34,427 INFO    Thread-12 :1384031 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/gyoon814/research/baseline/wandb/run-20230906_001416-5zt8rdh7/files/output.log
+2023-09-06 00:17:34,428 INFO    SenderThread:1384031 [dir_watcher.py:finish():389] scan: /home/gyoon814/research/baseline/wandb/run-20230906_001416-5zt8rdh7/files
+2023-09-06 00:17:34,428 INFO    SenderThread:1384031 [dir_watcher.py:finish():403] scan save: /home/gyoon814/research/baseline/wandb/run-20230906_001416-5zt8rdh7/files/wandb-summary.json wandb-summary.json
+2023-09-06 00:17:34,429 INFO    SenderThread:1384031 [dir_watcher.py:finish():403] scan save: /home/gyoon814/research/baseline/wandb/run-20230906_001416-5zt8rdh7/files/conda-environment.yaml conda-environment.yaml
+2023-09-06 00:17:34,429 INFO    SenderThread:1384031 [dir_watcher.py:finish():403] scan save: /home/gyoon814/research/baseline/wandb/run-20230906_001416-5zt8rdh7/files/requirements.txt requirements.txt
+2023-09-06 00:17:34,435 INFO    SenderThread:1384031 [dir_watcher.py:finish():403] scan save: /home/gyoon814/research/baseline/wandb/run-20230906_001416-5zt8rdh7/files/output.log output.log
+2023-09-06 00:17:34,441 INFO    SenderThread:1384031 [dir_watcher.py:finish():403] scan save: /home/gyoon814/research/baseline/wandb/run-20230906_001416-5zt8rdh7/files/config.yaml config.yaml
+2023-09-06 00:17:34,452 INFO    SenderThread:1384031 [dir_watcher.py:finish():403] scan save: /home/gyoon814/research/baseline/wandb/run-20230906_001416-5zt8rdh7/files/wandb-metadata.json wandb-metadata.json
+2023-09-06 00:17:34,452 INFO    SenderThread:1384031 [sender.py:transition_state():602] send defer: 10
+2023-09-06 00:17:34,452 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: defer
+2023-09-06 00:17:34,452 INFO    HandlerThread:1384031 [handler.py:handle_request_defer():170] handle defer: 10
+2023-09-06 00:17:34,459 DEBUG   SenderThread:1384031 [sender.py:send_request():396] send_request: defer
+2023-09-06 00:17:34,459 INFO    SenderThread:1384031 [sender.py:send_request_defer():598] handle sender defer: 10
+2023-09-06 00:17:34,459 INFO    SenderThread:1384031 [file_pusher.py:finish():159] shutting down file pusher
+2023-09-06 00:17:35,078 INFO    wandb-upload_3:1384031 [upload_job.py:push():133] Uploaded file /home/gyoon814/research/baseline/wandb/run-20230906_001416-5zt8rdh7/files/output.log
+2023-09-06 00:17:35,089 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: poll_exit
+2023-09-06 00:17:35,089 DEBUG   SenderThread:1384031 [sender.py:send_request():396] send_request: poll_exit
+2023-09-06 00:17:35,210 INFO    wandb-upload_1:1384031 [upload_job.py:push():133] Uploaded file /home/gyoon814/research/baseline/wandb/run-20230906_001416-5zt8rdh7/files/conda-environment.yaml
+2023-09-06 00:17:35,247 INFO    wandb-upload_2:1384031 [upload_job.py:push():133] Uploaded file /home/gyoon814/research/baseline/wandb/run-20230906_001416-5zt8rdh7/files/requirements.txt
+2023-09-06 00:17:35,255 INFO    wandb-upload_0:1384031 [upload_job.py:push():133] Uploaded file /home/gyoon814/research/baseline/wandb/run-20230906_001416-5zt8rdh7/files/wandb-summary.json
+2023-09-06 00:17:35,511 INFO    wandb-upload_4:1384031 [upload_job.py:push():133] Uploaded file /home/gyoon814/research/baseline/wandb/run-20230906_001416-5zt8rdh7/files/config.yaml
+2023-09-06 00:17:35,712 INFO    Thread-11 :1384031 [sender.py:transition_state():602] send defer: 11
+2023-09-06 00:17:35,712 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: defer
+2023-09-06 00:17:35,713 INFO    HandlerThread:1384031 [handler.py:handle_request_defer():170] handle defer: 11
+2023-09-06 00:17:35,713 DEBUG   SenderThread:1384031 [sender.py:send_request():396] send_request: defer
+2023-09-06 00:17:35,713 INFO    SenderThread:1384031 [sender.py:send_request_defer():598] handle sender defer: 11
+2023-09-06 00:17:35,713 INFO    SenderThread:1384031 [file_pusher.py:join():164] waiting for file pusher
+2023-09-06 00:17:35,714 INFO    SenderThread:1384031 [sender.py:transition_state():602] send defer: 12
+2023-09-06 00:17:35,714 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: defer
+2023-09-06 00:17:35,714 INFO    HandlerThread:1384031 [handler.py:handle_request_defer():170] handle defer: 12
+2023-09-06 00:17:35,714 DEBUG   SenderThread:1384031 [sender.py:send_request():396] send_request: defer
+2023-09-06 00:17:35,714 INFO    SenderThread:1384031 [sender.py:send_request_defer():598] handle sender defer: 12
+2023-09-06 00:17:36,090 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: poll_exit
+2023-09-06 00:17:36,546 INFO    SenderThread:1384031 [sender.py:transition_state():602] send defer: 13
+2023-09-06 00:17:36,546 DEBUG   SenderThread:1384031 [sender.py:send_request():396] send_request: poll_exit
+2023-09-06 00:17:36,546 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: defer
+2023-09-06 00:17:36,547 INFO    HandlerThread:1384031 [handler.py:handle_request_defer():170] handle defer: 13
+2023-09-06 00:17:36,547 DEBUG   SenderThread:1384031 [sender.py:send_request():396] send_request: defer
+2023-09-06 00:17:36,547 INFO    SenderThread:1384031 [sender.py:send_request_defer():598] handle sender defer: 13
+2023-09-06 00:17:36,548 INFO    SenderThread:1384031 [sender.py:transition_state():602] send defer: 14
+2023-09-06 00:17:36,548 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: defer
+2023-09-06 00:17:36,548 INFO    HandlerThread:1384031 [handler.py:handle_request_defer():170] handle defer: 14
+2023-09-06 00:17:36,548 DEBUG   SenderThread:1384031 [sender.py:send():369] send: final
+2023-09-06 00:17:36,549 DEBUG   SenderThread:1384031 [sender.py:send():369] send: footer
+2023-09-06 00:17:36,549 DEBUG   SenderThread:1384031 [sender.py:send_request():396] send_request: defer
+2023-09-06 00:17:36,549 INFO    SenderThread:1384031 [sender.py:send_request_defer():598] handle sender defer: 14
+2023-09-06 00:17:36,549 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: poll_exit
+2023-09-06 00:17:36,550 DEBUG   SenderThread:1384031 [sender.py:send_request():396] send_request: poll_exit
+2023-09-06 00:17:36,550 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: poll_exit
+2023-09-06 00:17:36,551 DEBUG   SenderThread:1384031 [sender.py:send_request():396] send_request: poll_exit
+2023-09-06 00:17:36,551 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: server_info
+2023-09-06 00:17:36,551 DEBUG   SenderThread:1384031 [sender.py:send_request():396] send_request: server_info
+2023-09-06 00:17:36,553 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: get_summary
+2023-09-06 00:17:36,554 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: sampled_history
+2023-09-06 00:17:36,971 INFO    MainThread:1384031 [wandb_run.py:_footer_history_summary_info():3464] rendering history
+2023-09-06 00:17:36,972 INFO    MainThread:1384031 [wandb_run.py:_footer_history_summary_info():3496] rendering summary
+2023-09-06 00:17:36,972 INFO    MainThread:1384031 [wandb_run.py:_footer_sync_info():3423] logging synced files
+2023-09-06 00:17:36,973 DEBUG   HandlerThread:1384031 [handler.py:handle_request():144] handle_request: shutdown
+2023-09-06 00:17:36,973 INFO    HandlerThread:1384031 [handler.py:finish():854] shutting down handler
+2023-09-06 00:17:37,552 INFO    WriterThread:1384031 [datastore.py:close():298] close: /home/gyoon814/research/baseline/wandb/run-20230906_001416-5zt8rdh7/run-5zt8rdh7.wandb
+2023-09-06 00:17:37,971 INFO    SenderThread:1384031 [sender.py:finish():1526] shutting down sender
+2023-09-06 00:17:37,971 INFO    SenderThread:1384031 [file_pusher.py:finish():159] shutting down file pusher
+2023-09-06 00:17:37,971 INFO    SenderThread:1384031 [file_pusher.py:join():164] waiting for file pusher
