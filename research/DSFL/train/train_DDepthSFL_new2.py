@@ -53,7 +53,7 @@ class LocalUpdate_client(object):
             ax.train()
             params += list(ax.parameters())
 
-        optimizer_client = torch.optim.SGD(params, lr = self.args.lr, momentum=self.args.momentum, weight_decay=self.args.weight_decay)
+        optimizer_client = torch.optim.SGD(params, lr = self.args.lr_server, momentum=self.args.momentum, weight_decay=self.args.weight_decay)
 
         criterion = nn.CrossEntropyLoss() 
         criterion_KD =  SoftTarget(self.args.T)
@@ -145,7 +145,7 @@ class LocalUpdate_server(object):
             ax.train()
             params += list(ax.parameters())
 
-        optimizer_server = torch.optim.SGD(params, lr = self.args.lr_server, momentum = self.args.momentum, weight_decay = self.args.weight_decay)
+        optimizer_server = torch.optim.SGD(params, lr = self.args.lr, momentum = self.args.momentum, weight_decay = self.args.weight_decay)
         criterion = nn.CrossEntropyLoss()  
         criterion_KD =  SoftTarget(self.args.T)
 

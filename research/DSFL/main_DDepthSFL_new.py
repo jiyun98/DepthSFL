@@ -46,8 +46,10 @@ def main_DDepthSFL(args):
         if args.learnable_step:
             if iter == args.epochs/2:
                 args.lr = args.lr*0.1
+                args.lr_server = args.lr_server * 0.1
             elif iter == 3*args.epochs/4:
                 args.lr = args.lr*0.1
+                args.lr_server = args.lr_server * 0.1
 
         w_glob_client = net_glob_client.state_dict()
         w_glob_server = net_glob_server.state_dict()

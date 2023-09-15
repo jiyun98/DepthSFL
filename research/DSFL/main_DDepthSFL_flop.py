@@ -18,7 +18,7 @@ from torchvision import datasets, transforms
 from train.avg import HeteroAvg, HeteroAvg_auxnet, HeteroAvg_cs
 from train.train_DDepthSFL import LocalUpdate, test_img
 from train.extract_weight import extract_submodel_weight_from_global
-from train.DDepthSFL_model_assign import *
+from train.DDepthSFL_model_assign_flop import *
 from data.dataset import load_data
 
 
@@ -147,8 +147,8 @@ def main_DDepthSFL(args):
     # Save output data to .excel file
     acc_test_arr_c = np.array(acc_test_total_c)
     acc_test_arr_s = np.array(acc_test_total_s)
-    file_name_c = './output/{}/'.format(args.method_name) + args.name + '/[client]test_accuracy.txt'
-    file_name_s = './output/{}/'.format(args.method_name) + args.name + '/[server]test_accuracy.txt'
+    file_name_c = './output_flop/{}/'.format(args.method_name) + args.name + '/[client]test_accuracy.txt'
+    file_name_s = './output_flop/{}/'.format(args.method_name) + args.name + '/[server]test_accuracy.txt'
 
     np.savetxt(file_name_c, acc_test_arr_c)
     np.savetxt(file_name_s, acc_test_arr_s)

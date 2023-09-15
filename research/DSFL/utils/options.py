@@ -15,6 +15,7 @@ def args_parser_main():
     parser.add_argument('--local_ep', type=int, default=5)
     parser.add_argument('--num_classes', type=int, default=10)
     parser.add_argument('--lr', type=float, default= 1e-1)
+    parser.add_argument('--lr_server', type=float, default = 5e-2)
     parser.add_argument('--weight_decay', type=float, default=0)
     parser.add_argument('--mode', type=str, default='normal')
 

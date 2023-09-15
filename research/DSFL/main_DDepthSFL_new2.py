@@ -16,7 +16,7 @@ from torchvision import datasets, transforms
 
 
 from train.avg import HeteroAvg, HeteroAvg_auxnet, HeteroAvg_cs
-from train.train_DDepthSFL import LocalUpdate, test_img
+from train.train_DDepthSFL_new2 import *
 from train.extract_weight import extract_submodel_weight_from_global
 from train.DDepthSFL_model_assign import *
 from data.dataset import load_data
@@ -46,9 +46,10 @@ def main_DDepthSFL(args):
         if args.learnable_step:
             if iter == args.epochs/2:
                 args.lr = args.lr*0.1
+                args.lr_server = args.lr_server * 0.1
             elif iter == 3*args.epochs/4:
                 args.lr = args.lr*0.1
-
+                args.lr_server = args.lr_server * 0.1
         w_glob_client = net_glob_client.state_dict()
         w_glob_server = net_glob_server.state_dict()
 
@@ -83,20 +84,32 @@ def main_DDepthSFL(args):
             s_model_select = local_smodels[model_idx]
             s_model_select.load_state_dict(weight_s)
 
+            aux_client = copy.deepcopy(auxiliary_models[:model_idx+1])
+            aux_server = copy.deepcopy(auxiliary_models[model_idx+1:])
+
             # Train
-            local = LocalUpdate(args,  dataset = dataset_train, idxs = dict_users[idx], wandb = wandb, model_idx = model_idx)
-            weight_c, weight_a_list, weight_s, args, loss_acc_c, loss_acc_s = local.train(
-                net_client = copy.deepcopy(c_model_select), net_ax = copy.deepcopy(auxiliary_models), net_server = copy.deepcopy(s_model_select))
-                
+            local_c = LocalUpdate_client(args,  dataset = dataset_train, idxs = dict_users[idx], wandb = wandb, model_idx = model_idx)
+            weight_c, weight_a_c,  args, loss_c, acc_c = local_c.train(
+                    net_client = copy.deepcopy(c_model_select), net_ax = copy.deepcopy(aux_client))
+            c_model_select.load_state_dict(weight_c)  
+            smashed_data, label = local_c.get_smashed_data(net = copy.deepcopy(c_model_select))
+            local_s = LocalUpdate_server(args, smashed_data = smashed_data, 
+                                         label = label, wandb = wandb, model_idx = model_idx)
+
+            weight_s, weight_a_s, args, loss_s, acc_s = local_s.train(
+                net = copy.deepcopy(s_model_select), net_ax = copy.deepcopy(aux_server))
+            
             w_locals_c.append([copy.deepcopy(weight_c), model_idx])
             w_locals_s.append([copy.deepcopy(weight_s), model_idx])
-            for i in range(len(weight_a_list)):
-                w_locals_a[i].append(weight_a_list[i])
+
+            weight_a_c.extend(weight_a_s)
+            for i in range(len(weight_a_c)):
+                w_locals_a[i].append(weight_a_c[i])
             
             print('[Epoch : {}][User {} with cut_point {}] [C_Loss  {:.3f} | C_Acc {:.3f}] [S_Loss  {:.3f} | S_Acc {:.3f}]'
-                  .format(iter, idx, args.cut_point[model_idx], loss_acc_c[0], loss_acc_c[1],loss_acc_s[0], loss_acc_s[1]))
-            wandb.log({"[Train] Client {} loss".format(args.cut_point[model_idx]): loss_acc_c[0],"[Train] Client {} acc".format(args.cut_point[model_idx]): loss_acc_c[1], \
-                        "[Train] Server {} loss".format(args.cut_point[model_idx]): loss_acc_s[0],"[Train] Server {} acc".format(args.cut_point[model_idx]): loss_acc_s[1]}, step = iter)
+                  .format(iter, idx, args.cut_point[model_idx], loss_c, acc_c,loss_s, acc_s))
+            wandb.log({"[Train] Client {} loss".format(args.cut_point[model_idx]): loss_c,"[Train] Client {} acc".format(args.cut_point[model_idx]): acc_c, \
+                        "[Train] Server {} loss".format(args.cut_point[model_idx]): loss_s,"[Train] Server {} acc".format(args.cut_point[model_idx]): acc_s}, step = iter)
 
 
         # 서버 쪽 글로벌 모델의 일부를 fed server로 보낸다고 가정합시다.
@@ -147,8 +160,8 @@ def main_DDepthSFL(args):
     # Save output data to .excel file
     acc_test_arr_c = np.array(acc_test_total_c)
     acc_test_arr_s = np.array(acc_test_total_s)
-    file_name_c = './output/{}/'.format(args.method_name) + args.name + '/[client]test_accuracy.txt'
-    file_name_s = './output/{}/'.format(args.method_name) + args.name + '/[server]test_accuracy.txt'
+    file_name_c = './output_new2/{}/'.format(args.method_name) + args.name + '/[client]test_accuracy.txt'
+    file_name_s = './output_new2/{}/'.format(args.method_name) + args.name + '/[server]test_accuracy.txt'
 
     np.savetxt(file_name_c, acc_test_arr_c)
     np.savetxt(file_name_s, acc_test_arr_s)
