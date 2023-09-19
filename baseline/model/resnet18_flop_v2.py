@@ -1,5 +1,5 @@
-# flops수 기준으로 모델 분할 : 1%, 28%, 76%
-# [1/2,2,2,2,1] [1,2/2,2,2,1] [1,2,2,2/2,1]
+# flops수 기준으로 모델 분할 : 1%, 28%, 55%
+# [1/2,2,2,2,1] [1,2/2,2,2,1] [1,2,2/2,2,1]
 import math
 import torch
 from torch import nn
@@ -109,8 +109,7 @@ class ResNet18_FL_v3(nn.Module):  # Dropout (or pruned) ResNet [width]
          # self.bn1 = nn.BatchNorm2d(self.in_planes)
         self.layer1 = self._make_layer(block, 64, num_blocks[0], stride=1)
         self.layer2 = self._make_layer(block, 128, num_blocks[1], stride=2)
-        self.layer3 = self._make_layer(block, 256, num_blocks[2], stride=2)
-        self.linear = nn.Linear(256*block.expansion, num_classes)
+        self.linear = nn.Linear(128*block.expansion, num_classes)
 
         self.apply(_weights_init)
     def _make_layer(self, block, planes, num_blocks, stride):
@@ -125,14 +124,13 @@ class ResNet18_FL_v3(nn.Module):  # Dropout (or pruned) ResNet [width]
         out1 = self.maxpool(F.relu(self.bn1(self.conv1(x))))
         out2 = self.layer1(out1)
         out3 = self.layer2(out2)
-        out4 = self.layer3(out3)
-        out = F.avg_pool2d(out4, out4.size()[3])
+        out = F.avg_pool2d(out3, out3.size()[3])
         out = out.view(out.size(0), -1)
         logits = self.linear(out)
         probas = F.softmax(logits, dim=1)
         return logits, probas
 
-# ---------------------------------------------------
+# --------------------------------------------------- 
 #               Full FL
 # ---------------------------------------------------
 class ResNet18_FL(nn.Module):  # Dropout (or pruned) ResNet [width] 
@@ -289,7 +287,6 @@ class ResNet18_depthFL_v3(nn.Module):  # Dropout (or pruned) ResNet [width]
          # self.bn1 = nn.BatchNorm2d(self.in_planes)
         self.layer1 = self._make_layer(block, 64, num_blocks[0], stride=1)
         self.layer2 = self._make_layer(block, 128, num_blocks[1], stride=2)
-        self.layer3 = self._make_layer(block, 256, num_blocks[2], stride=2)
 
         self.apply(_weights_init)
     def _make_layer(self, block, planes, num_blocks, stride):
@@ -304,8 +301,7 @@ class ResNet18_depthFL_v3(nn.Module):  # Dropout (or pruned) ResNet [width]
         out1 = self.maxpool(F.relu(self.bn1(self.conv1(x))))
         out2 = self.layer1(out1)
         out3 = self.layer2(out2)
-        out4 = self.layer3(out3)
-        return [out1, out2, out4]
+        return [out1, out2, out3]
 
 class ResNet18_depthFL(nn.Module):  # Dropout (or pruned) ResNet [width] 
     def __init__(self, block, num_blocks,  num_classes=10):
@@ -342,4 +338,4 @@ class ResNet18_depthFL(nn.Module):  # Dropout (or pruned) ResNet [width]
         out = out.view(out.size(0), -1)
         logits = self.linear(out)
         probas = F.softmax(logits, dim=1)
-        return [out1, out2, out4, logits], probas
+        return [out1, out2, out3, logits], probas

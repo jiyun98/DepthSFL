@@ -6,7 +6,7 @@ import torch.nn.functional as F
 from math import ceil as up
 
 from model.blocks import *
-from model.resnet18_flop import *
+from model.resnet18_flop_v3 import *
 from model.resnet34 import *
 from model.resnet50 import *
 from model.resnet56 import *
@@ -19,14 +19,16 @@ from model.resnet110 import *
 # 세 종류의 모델을 가지고 실험
 
 '''resnet18'''
-def resnet18_FL(num_classes = 10, cut_point = 1):
+def resnet18_FL_v3(num_classes = 10, cut_point = 1):
     if cut_point == 1:
         model = ResNet18_FL_v1(block = BasicBlock, num_blocks = [2,2,2,2],  num_classes = num_classes)
     elif cut_point == 2:
         model = ResNet18_FL_v2(block = BasicBlock, num_blocks = [2,2,2,2],  num_classes = num_classes)
     elif cut_point == 3:
         model = ResNet18_FL_v3(block = BasicBlock, num_blocks = [2,2,2,2], num_classes = num_classes)
-    elif cut_point == 5:
+    elif cut_point == 4:
+        model = ResNet18_FL_v4(block = BasicBlock, num_blocks = [2,2,2,2], num_classes = num_classes)
+    else:
         model = ResNet18_FL(block = BasicBlock, num_blocks = [2,2,2,2], num_classes = num_classes)
     return model
 
@@ -117,13 +119,15 @@ def resnet110_f(num_classes = 10, ps = 1):
 
 
 ############### '''DetpHFL'''###################
-def resnet18_depthFL(num_classes = 10, cut_point = 1):
+def resnet18_depthFL_v3(num_classes = 10, cut_point = 1):
     if cut_point == 1:
         model = ResNet18_depthFL_v1(block = BasicBlock, num_blocks = [2,2,2,2],  num_classes = num_classes)
     elif cut_point == 2:
         model = ResNet18_depthFL_v2(block = BasicBlock, num_blocks = [2,2,2,2],  num_classes = num_classes)
     elif cut_point == 3:
         model = ResNet18_depthFL_v3(block = BasicBlock, num_blocks = [2,2,2,2], num_classes = num_classes)
+    elif cut_point == 4:
+        model = ResNet18_depthFL_v4(block = BasicBlock, num_blocks = [2,2,2,2], num_classes = num_classes)
     else:
         model = ResNet18_depthFL(block = BasicBlock, num_blocks = [2,2,2,2], num_classes = num_classes)
     return model

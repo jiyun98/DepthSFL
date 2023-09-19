@@ -13,7 +13,7 @@ def args_parser_main():
     parser.add_argument('--local_bs', type=int, default=64)
     parser.add_argument('--momentum', type=float, default=0)
     parser.add_argument('--epochs', type=int, default=500)
-    parser.add_argument('--local_ep', type=int, default=5)
+    parser.add_argument('--local_ep', type=int, default=1)
     parser.add_argument('--num_classes', type=int, default=10)
     parser.add_argument('--lr', type=float, default= 1e-1)
     parser.add_argument('--weight_decay', type=float, default=0)
@@ -33,6 +33,8 @@ def args_parser_main():
     parser.add_argument('--cut_point', default = [1,2,3])
     parser.add_argument('--seed', type = int, default = 123)
     
+    parser.add_argument('--model_v', type = int, default = 1)
+
     parser.add_argument('--T', type = int, default = 4)
     parser.add_argument('--kd_opt', action='store_true')
     args = parser.parse_args()
