@@ -1,0 +1,132 @@
+wandb_version: 1
+
+_wandb:
+  desc: null
+  value:
+    python_version: 3.9.18
+    cli_version: 0.15.10
+    framework: torch
+    is_jupyter_run: false
+    is_kaggle_kernel: false
+    start_time: 1695051110.763949
+    t:
+      1:
+      - 1
+      - 41
+      - 55
+      2:
+      - 1
+      - 41
+      - 55
+      3:
+      - 13
+      - 23
+      4: 3.9.18
+      5: 0.15.10
+      8:
+      - 5
+num_users:
+  desc: null
+  value: 50
+noniid:
+  desc: null
+  value: false
+class_per_each_client:
+  desc: null
+  value: 10
+frac:
+  desc: null
+  value: 0.1
+bs:
+  desc: null
+  value: 64
+local_bs:
+  desc: null
+  value: 64
+momentum:
+  desc: null
+  value: 0
+epochs:
+  desc: null
+  value: 2000
+local_ep:
+  desc: null
+  value: 1
+num_classes:
+  desc: null
+  value: 10
+lr:
+  desc: null
+  value: 0.1
+lr_server:
+  desc: null
+  value: 0.1
+weight_decay:
+  desc: null
+  value: 0
+mode:
+  desc: null
+  value: normal
+optimizer:
+  desc: null
+  value: sgd
+model_name:
+  desc: null
+  value: resnet18
+data:
+  desc: null
+  value: cifar10
+device_id:
+  desc: null
+  value: '2'
+learnable_step:
+  desc: null
+  value: false
+run_name:
+  desc: null
+  value: vanilla
+ps:
+  desc: null
+  value: 1.0
+cut_point:
+  desc: null
+  value:
+  - 1
+  - 2
+  - 3
+seed:
+  desc: null
+  value: 123
+model_v:
+  desc: null
+  value: 2
+method:
+  desc: null
+  value: ddsfl
+T:
+  desc: null
+  value: 4
+lambdaa:
+  desc: null
+  value: 0.01
+kd_epoch:
+  desc: null
+  value: 0
+kd_self_opt:
+  desc: null
+  value: false
+kd_server_opt:
+  desc: null
+  value: true
+wandb:
+  desc: null
+  value: true
+device:
+  desc: null
+  value: cuda:2
+name:
+  desc: null
+  value: '[KD_DSFL][cifar10][resnet18][123]20230919-003149'
+method_name:
+  desc: null
+  value: KD_DSFL

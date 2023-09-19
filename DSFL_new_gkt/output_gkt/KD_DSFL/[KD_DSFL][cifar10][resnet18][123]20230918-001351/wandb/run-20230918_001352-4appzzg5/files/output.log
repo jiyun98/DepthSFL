@@ -1,0 +1,24 @@
+Files already downloaded and verified
+Files already downloaded and verified
+[KD_DSFL][cifar10][resnet18][123]20230918-001351
+[Epoch : 1][User 13 with cut_point 1] [C_Loss  2.623 | C_Acc 12.012] [S_Loss  7.476 | S_Acc 16.895]
+[Epoch : 1][User 28 with cut_point 2] [C_Loss  5.044 | C_Acc 14.668] [S_Loss  4.828 | S_Acc 18.809]
+[Epoch : 1][User 24 with cut_point 2] [C_Loss  5.074 | C_Acc 10.957] [S_Loss  4.776 | S_Acc 19.395]
+[Epoch : 1][User 47 with cut_point 3] [C_Loss  7.459 | C_Acc 16.328] [S_Loss  2.491 | S_Acc 19.277]
+[Epoch : 1][User 30 with cut_point 2] [C_Loss  5.119 | C_Acc 11.426] [S_Loss  4.890 | S_Acc 17.031]
+Traceback (most recent call last):
+  File "/home/gyoon814/DepthSFL/research/DSFL_new_gkt/main_new.py", line 51, in <module>
+    main_DDepthSFL(args)
+  File "/home/gyoon814/DepthSFL/research/DSFL_new_gkt/main_DDepthSFL_new.py", line 120, in main_DDepthSFL
+    w_s_glob = HeteroAvg(w_locals_s)
+  File "/home/gyoon814/DepthSFL/research/DSFL_new_gkt/train/avg.py", line 16, in HeteroAvg
+    w_local = copy.deepcopy(w[i][0])
+  File "/home/gyoon814/anaconda3/envs/SFL/lib/python3.9/copy.py", line 172, in deepcopy
+    y = _reconstruct(x, memo, *rv)
+  File "/home/gyoon814/anaconda3/envs/SFL/lib/python3.9/copy.py", line 296, in _reconstruct
+    value = deepcopy(value, memo)
+  File "/home/gyoon814/anaconda3/envs/SFL/lib/python3.9/copy.py", line 153, in deepcopy
+    y = copier(memo)
+  File "/home/gyoon814/anaconda3/envs/SFL/lib/python3.9/site-packages/torch/_tensor.py", line 178, in __deepcopy__
+    new_tensor.set_(
+KeyboardInterrupt

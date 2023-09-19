@@ -1,0 +1,9 @@
+Files already downloaded and verified
+Files already downloaded and verified
+Traceback (most recent call last):
+  File "/home/gyoon814/DepthSFL/research/DSFL_new/main_new.py", line 49, in <module>
+    main_DDepthSFL(args)
+  File "/home/gyoon814/DepthSFL/research/DSFL_new/main_DDepthSFL_new.py", line 48, in main_DDepthSFL
+    if iter > kd_epoch and args.kd_server_opt:
+NameError: name 'kd_epoch' is not defined
+[KD_DSFL][cifar10][resnet18][123]20230919-003119
