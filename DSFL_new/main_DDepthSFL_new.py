@@ -119,7 +119,8 @@ def main_DDepthSFL(args):
             wandb.log({"[Train] Client {} loss".format(args.cut_point[model_idx]): loss_c,"[Train] Client {} acc".format(args.cut_point[model_idx]): acc_c, \
                         "[Train] Server {} loss".format(args.cut_point[model_idx]): loss_s,"[Train] Server {} acc".format(args.cut_point[model_idx]): acc_s}, step = iter)
 
-
+        # 수정
+        
         # 서버 쪽 글로벌 모델의 일부를 fed server로 보낸다고 가정합시다.
         w_c_glob = HeteroAvg(w_locals_c) #  -> w_locals_s를 다 보내지 말고 중복되는 부분만 보내면 될 듯
         w_s_glob = HeteroAvg(w_locals_s)
