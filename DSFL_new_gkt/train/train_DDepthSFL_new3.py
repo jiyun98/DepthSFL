@@ -89,8 +89,11 @@ class LocalUpdate_client(object):
                 acc_client = calculate_accuracy(client_logits, labels)  
                 
                 if self.args.kd_gkt_opt:
-                    KD_loss_client = criterion_KD(client_logits, kd_logits[batch_idx].detach())
-                    loss_client = loss_client + self.args.lambdaa * KD_loss_client
+                    kd_loss = 0
+                    for i in range(len(fx)):
+                        kd_loss += (i+1)*criterion_KD(C_logits[i], kd_logits[batch_idx].detach())
+                    kd_loss /= len(fx)
+                    loss_client = loss_client + self.args.lambdaa * kd_loss
 
                 batch_loss_c.append(loss_client.item())
                 batch_acc_c.append(acc_client.item())    
@@ -178,22 +181,26 @@ class LocalUpdate_server(object):
                 y = self.label[j]
 
                 fx_server, probs = net_server(fx)
+                logit, prob = net_ax[0](fx)
                 loss = 0
-                S_logits = []
-                for i in range(len(fx_server)-1):
+                S_logits = [logit]
+                for i in range(1,len(fx_server)):
                     auxiliary_net = net_ax[i]# fx[i][1]-1]
                     auxiliary_net.zero_grad()
-                    server_logits, server_probs = auxiliary_net(fx_server[i])
+                    server_logits, server_probs = auxiliary_net(fx_server[i-1])
                     S_logits.append(server_logits)
                     loss += criterion(server_logits, y)
                 S_logits.append(fx_server[-1])
                 loss += criterion(fx_server[-1], y)
+                loss += criterion(logit, y)
                 acc = calculate_accuracy(fx_server[-1], y)  
 
-                kd_loss = 0
                 if self.args.kd_gkt_opt:
-                    KD_loss_server = criterion_KD(fx_server[-1], kd_logits[j].detach())
-                    loss = loss + KD_loss_server * self.args.lambdaa
+                    kd_loss = 0
+                    for i in range(len(S_logits)):
+                        kd_loss += (i+1)*criterion_KD(S_logits[i], kd_logits[j].detach())
+                    kd_loss /= len(S_logits)
+                    loss = loss + kd_loss * self.args.lambdaa
                 loss.backward()
                 optimizer_server.step()
 

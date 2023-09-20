@@ -178,16 +178,18 @@ class LocalUpdate_server(object):
                 y = self.label[j]
 
                 fx_server, probs = net_server(fx)
+                logit, prob = net_ax[0](fx)
                 loss = 0
                 S_logits = []
-                for i in range(len(fx_server)-1):
+                for i in range(1,len(fx_server)):
                     auxiliary_net = net_ax[i]# fx[i][1]-1]
                     auxiliary_net.zero_grad()
-                    server_logits, server_probs = auxiliary_net(fx_server[i])
+                    server_logits, server_probs = auxiliary_net(fx_server[i-1])
                     S_logits.append(server_logits)
                     loss += criterion(server_logits, y)
                 S_logits.append(fx_server[-1])
                 loss += criterion(fx_server[-1], y)
+                loss += criterion(logit, y)
                 acc = calculate_accuracy(fx_server[-1], y)  
 
                 kd_loss = 0

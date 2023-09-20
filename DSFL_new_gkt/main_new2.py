@@ -9,7 +9,7 @@ import os
 from utils.options import args_parser_main
 from utils.utils import *
 from main_DepthSFL import *
-from main_DDepthSFL_new import *
+from main_DDepthSFL_new2 import *
  
 
 if __name__ == '__main__':
@@ -27,7 +27,7 @@ if __name__ == '__main__':
     # filename setting
     args.name, wandb_name, timestamp, args.method_name = set_filename(args)
     filename = './output_gkt/{}/'.format(args.method_name) + args.name
-    wandb_name += '[11]'
+    wandb_name += '[22]'
     if not os.path.exists(filename):
         os.makedirs(filename)
 
