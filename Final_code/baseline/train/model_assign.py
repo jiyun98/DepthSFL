@@ -135,3 +135,29 @@ def global_depth_model_assignment(cut_point, model_name, device, num_classes = 1
     net_glob.train()
 
     return net_glob    
+#==========================================================================
+'''SFL 사용'''
+
+def SFL_model_assignment(cut_point, model_name, num_classes, device):
+    local_cmodels = []
+    local_smodels = []
+    if model_name == 'resnet18':
+            local_cmodels.append(resnet18_client(num_classes, cut_point).to(device)  )
+            local_smodels.append(resnet18_server(num_classes, cut_point).to(device)  )
+    elif model_name == 'resnet34':
+            local_cmodels.append(resnet34_client(num_classes, cut_point).to(device)  )
+            local_smodels.append(resnet34_server(num_classes, cut_point).to(device)  )
+    elif model_name == 'resnet50':
+            local_cmodels.append(resnet50_client(num_classes, cut_point).to(device)  )
+            local_smodels.append(resnet50_server(num_classes, cut_point).to(device)  )
+    elif model_name == 'resnet56':
+            local_cmodels.append(resnet56_client(num_classes, cut_point).to(device)  )
+            local_smodels.append(resnet56_server(num_classes, cut_point).to(device)  )
+    elif model_name == 'resnet101':
+            local_cmodels.append(resnet101_client(num_classes, cut_point).to(device)  )
+            local_smodels.append(resnet101_server(num_classes, cut_point).to(device)  )
+    elif model_name == 'resnet110':
+            local_cmodels.append(resnet110_client(num_classes, cut_point).to(device)  )
+            local_smodels.append(resnet110_server(num_classes, cut_point).to(device)  )
+        
+    return copy.deepcopy(local_cmodels), copy.deepcopy(local_smodels), [cut_point]

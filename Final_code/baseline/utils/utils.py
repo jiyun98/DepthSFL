@@ -19,6 +19,8 @@ def set_filename(args):
         method_name = 'RED'
     elif args.method == 'fjord':
         method_name = 'FJO'
+    elif args.method == 'splitfed':
+        method_name = 'SFL'
     elif args.method == 'depthfl':
         if args.kd_opt:
             method_name  = 'DEP_KD'
