@@ -9,7 +9,7 @@ import os
 from utils.options import args_parser_main
 from utils.utils import *
 from main_DepthSFL import *
-from main_DDepthSFL import *
+from main_DDepthSFL2 import *
  
 
 if __name__ == '__main__':
@@ -23,8 +23,8 @@ if __name__ == '__main__':
 
     # filename setting
     args.name, wandb_name, timestamp, args.method_name = set_filename(args)
-    wandb_name = wandb_name + 'v1'
-    filename = './output_v1/{}/'.format(args.method_name) + args.name
+    wandb_name = wandb_name + 'v2'
+    filename = './output_v2/{}/'.format(args.method_name) + args.name
     if not os.path.exists(filename):
         os.makedirs(filename)
 

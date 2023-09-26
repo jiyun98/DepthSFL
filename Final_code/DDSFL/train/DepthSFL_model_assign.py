@@ -3,10 +3,11 @@ from model.model_DepthSFL.auxnet import Aux_net_v2, Aux_net
 import copy
 
 
-def model_assignment(cut_point, model_name, num_classes, device):
+def model_assignment(model_name, num_classes, device):
     local_cmodels = []
     local_smodels = []
     auxiliary_models = []
+    cut_point = [1,2,3]
     if model_name == 'resnet18':
         for i in range(len(cut_point)):
                 local_cmodels.append(resnet18_client(num_classes, cut_point[i]))
@@ -31,7 +32,6 @@ def model_assignment(cut_point, model_name, num_classes, device):
         for i in range(len(cut_point)):
                 local_cmodels.append(resnet110_client(num_classes, cut_point[i]))
                 local_smodels.append(resnet110_server(num_classes, cut_point[i]))
-    
     '''auxiliary network'''
     for i in range(len(local_cmodels)):
         # client-side model
@@ -41,14 +41,14 @@ def model_assignment(cut_point, model_name, num_classes, device):
         # auxiliary network 
         input = torch.zeros((1,3,32,32)).to(device)  # input image에 따라 달라짐 
         output = local_cmodels[i](input)
-        ax_net = Aux_net_v2(output.shape[1], num_classes).to(device)               # <------------------ 종류바꿈
+        ax_net = Aux_net_v2(output.shape[1], num_classes).to(device)           # <-------------------
         ax_net.train()
         auxiliary_models.append(ax_net)   
 
         # server-side model
         local_smodels[i].to(device)
         local_smodels[i].train()
-    return copy.deepcopy(local_cmodels), copy.deepcopy(local_smodels), copy.deepcopy(auxiliary_models)
+    return copy.deepcopy(local_cmodels), copy.deepcopy(local_smodels), copy.deepcopy(auxiliary_models), cut_point
 
 
 def global_model_assignment(cut_point, model_name, device, num_classes = 10):

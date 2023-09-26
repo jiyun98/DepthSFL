@@ -16,13 +16,13 @@ from torchvision import datasets, transforms
 
 
 from train.avg import HeteroAvg, HeteroAvg_auxnet
-from train.train_DepthSFL import *
+from train.train_DDepthSFL2 import *
 from train.extract_weight import extract_submodel_weight_from_global
-from train.DepthSFL_model_assign import *
+from train.DDepthSFL_model_assign import *
 from data.dataset import load_data
 
 
-def main_DepthSFL(args):
+def main_DDepthSFL(args):
     # Load dataset
     dataset_train, dataset_test, dict_users, args.num_classes = load_data(args)
 
@@ -88,23 +88,26 @@ def main_DepthSFL(args):
             s_model_select = local_smodels[model_idx]
             s_model_select.load_state_dict(weight_s)
 
-            aux_client = copy.deepcopy(auxiliary_models[model_idx])
+            aux_client = copy.deepcopy(auxiliary_models[:model_idx+1])
+            aux_server = copy.deepcopy(auxiliary_models[model_idx+1:])
 
             # Train
-            local_c = LocalUpdate_client(args,  dataset = dataset_train, idxs = dict_users[idx], wandb = wandb, model_idx = model_idx)
+            local_c = LocalUpdate_client(args,  dataset = dataset_train, idxs = dict_users[idx], wandb = wandb, model_idx = model_idx, kd_gkt_opt = kd_gkt_opt)
             smashed_data, label = local_c.get_smashed_data(net = copy.deepcopy(c_model_select))
             local_s = LocalUpdate_server(args, smashed_data = smashed_data, 
-                                         label = label, wandb = wandb, model_idx = model_idx)
-            weight_c, weight_a_c,  args, loss_c, acc_c = local_c.train(
-                    net_client = copy.deepcopy(c_model_select), net_ax = copy.deepcopy(aux_client))
-            weight_s,  args, loss_s, acc_s = local_s.train(
-                net = copy.deepcopy(s_model_select))
+                                         label = label, wandb = wandb, model_idx = model_idx, kd_gkt_opt = kd_gkt_opt)
+            kd_logits_server = local_s.get_kd_logits(net = copy.deepcopy(s_model_select))
+            weight_c, weight_a_c, kd_logits_client,  args, loss_c, acc_c = local_c.train(
+                    net_client = copy.deepcopy(c_model_select), net_ax = copy.deepcopy(aux_client), kd_logits = kd_logits_server)
+            weight_s, weight_a_s, args, loss_s, acc_s = local_s.train(
+                net = copy.deepcopy(s_model_select), net_ax = copy.deepcopy(aux_server), kd_logits = kd_logits_client)
             
             w_locals_c.append([copy.deepcopy(weight_c), model_idx])
             w_locals_s.append([copy.deepcopy(weight_s), model_idx])
 
-
-            w_locals_a[model_idx].append(weight_a_c)
+            weight_a_c.extend(weight_a_s)
+            for i in range(args.num_models):
+                w_locals_a[i].append(weight_a_c[i])
             
 
             print('[Epoch : {}][User {} with cut_point {}] [C_Loss  {:.3f} | C_Acc {:.3f}] [S_Loss  {:.3f} | S_Acc {:.3f}]'
@@ -130,6 +133,8 @@ def main_DepthSFL(args):
             
             test_acc_list_c = []
             test_acc_list_s = []
+            test_acc_emsemble_c = []
+            test_acc_emsemble_s = []
 
             for ind in range(ti):
                 model_e_c = copy.deepcopy(local_cmodels[ind])
@@ -145,13 +150,20 @@ def main_DepthSFL(args):
                 model_e_s.load_state_dict(weight_s)
 
                 acc_test_c, loss_test_c, acc_test_s, loss_test_s = test_img(model_e_c, model_e_s, model_e_a, dataset_test, args)
+                acc_test_ensemble_c, _, acc_test_ensemble_s, _ = test_img2(model_e_c, model_e_s, auxiliary_models, dataset_test, args, ind)
                 print("[Epoch {}]Testing accuracy with split point {} : [Client : {:.2f} | Server : {:.2f}] ".format(iter,args.cut_point[ind], acc_test_c, acc_test_s))
+                print("[Epoch {}]Testing accuracy 2 with split point {} :[Client : {:.2f} | Server : {:.2f}] ".format(iter,args.cut_point[ind], acc_test_ensemble_c, acc_test_ensemble_s))
                 wandb.log({"[Test] Client {} acc".format(ind+1): acc_test_c, "[Test] Server {} acc".format(ind+1): acc_test_s}, step = iter)
+                wandb.log({"[Ensemble Test] Client {} acc".format(ind+1): acc_test_ensemble_c, "[Ensemble Test] Server {} acc".format(ind+1): acc_test_ensemble_s}, step = iter)
                 test_acc_list_c.append(acc_test_c)
                 test_acc_list_s.append(acc_test_s)
+                test_acc_emsemble_c.append(acc_test_ensemble_c)
+                test_acc_emsemble_s.append(acc_test_ensemble_s)
 
             acc_test_total_c.append(test_acc_list_c)
             acc_test_total_s.append(test_acc_list_s)
+            acc_test_total_ec.append(test_acc_emsemble_c)
+            acc_test_total_es.append(test_acc_emsemble_s)
         if iter % 50 == 0:
             print(program)
     print("finish")
@@ -160,12 +172,18 @@ def main_DepthSFL(args):
     # Save output_v2 data to .excel file
     acc_test_arr_c = np.array(acc_test_total_c)
     acc_test_arr_s = np.array(acc_test_total_s)
+    acc_test_arr_ec = np.array(acc_test_total_ec)
+    acc_test_arr_es = np.array(acc_test_total_es)
 
-    file_name_c = './output_v1/{}/'.format(args.method_name) + args.name + '/[client]test_accuracy_{}.txt'.format(args.seed)
-    file_name_s = './output_v1/{}/'.format(args.method_name) + args.name + '/[server]test_accuracy_{}.txt'.format(args.seed)
-   
+    file_name_c = './output_v2/{}/'.format(args.method_name) + args.name + '/[client]test_accuracy_{}.txt'.format(args.seed)
+    file_name_s = './output_v2/{}/'.format(args.method_name) + args.name + '/[server]test_accuracy_{}.txt'.format(args.seed)
+    file_name_ec = './output_v2/{}/'.format(args.method_name) + args.name + '/[ensemble|client]test_accuracy_{}.txt'.format(args.seed)
+    file_name_es = './output_v2/{}/'.format(args.method_name) + args.name + '/[ensemble|server]test_accuracy_{}.txt'.format(args.seed)
+
     np.savetxt(file_name_c, acc_test_arr_c)
     np.savetxt(file_name_s, acc_test_arr_s)
+    np.savetxt(file_name_ec, acc_test_arr_ec)
+    np.savetxt(file_name_es, acc_test_arr_es)
 # 
 #     # Save the final trained model
 #     torch.save(net_glob_client.state_dict(), "./saved/saved_model/{}/client/client_{}_{}_on_{}_with_{}_users_split_point_{}_epochs_{}_seed_{}.pth".format(

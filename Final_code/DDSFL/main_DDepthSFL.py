@@ -36,6 +36,8 @@ def main_DDepthSFL(args):
 
     acc_test_total_c = []
     acc_test_total_s = []
+    acc_test_total_ec = []
+    acc_test_total_es = []
 
     program = args.name
     print(program)
@@ -135,6 +137,8 @@ def main_DDepthSFL(args):
             
             test_acc_list_c = []
             test_acc_list_s = []
+            test_acc_emsemble_c = []
+            test_acc_emsemble_s = []
 
             for ind in range(ti):
                 model_e_c = copy.deepcopy(local_cmodels[ind])
@@ -150,27 +154,40 @@ def main_DDepthSFL(args):
                 model_e_s.load_state_dict(weight_s)
 
                 acc_test_c, loss_test_c, acc_test_s, loss_test_s = test_img(model_e_c, model_e_s, model_e_a, dataset_test, args)
+                acc_test_ensemble_c, _, acc_test_ensemble_s, _ = test_img2(model_e_c, model_e_s, auxiliary_models, dataset_test, args, ind)
                 print("[Epoch {}]Testing accuracy with split point {} : [Client : {:.2f} | Server : {:.2f}] ".format(iter,args.cut_point[ind], acc_test_c, acc_test_s))
-                
+                print("[Epoch {}]Testing accuracy 2 with split point {} :[Client : {:.2f} | Server : {:.2f}] ".format(iter,args.cut_point[ind], acc_test_ensemble_c, acc_test_ensemble_s))
                 wandb.log({"[Test] Client {} acc".format(ind+1): acc_test_c, "[Test] Server {} acc".format(ind+1): acc_test_s}, step = iter)
-
+                wandb.log({"[Ensemble Test] Client {} acc".format(ind+1): acc_test_ensemble_c, "[Ensemble Test] Server {} acc".format(ind+1): acc_test_ensemble_s}, step = iter)
                 test_acc_list_c.append(acc_test_c)
                 test_acc_list_s.append(acc_test_s)
+                test_acc_emsemble_c.append(acc_test_ensemble_c)
+                test_acc_emsemble_s.append(acc_test_ensemble_s)
+
             acc_test_total_c.append(test_acc_list_c)
             acc_test_total_s.append(test_acc_list_s)
+            acc_test_total_ec.append(test_acc_emsemble_c)
+            acc_test_total_es.append(test_acc_emsemble_s)
         if iter % 50 == 0:
             print(program)
     print("finish")
 
 
-    # Save output data to .excel file
+    # Save output_v1 data to .excel file
     acc_test_arr_c = np.array(acc_test_total_c)
     acc_test_arr_s = np.array(acc_test_total_s)
-    file_name_c = './output/{}/'.format(args.method_name) + args.name + '/[client]test_accuracy.txt'
-    file_name_s = './output/{}/'.format(args.method_name) + args.name + '/[server]test_accuracy.txt'
+    acc_test_arr_ec = np.array(acc_test_total_ec)
+    acc_test_arr_es = np.array(acc_test_total_es)
+
+    file_name_c = './output_v1/{}/'.format(args.method_name) + args.name + '/[client]test_accuracy_{}.txt'.format(args.seed)
+    file_name_s = './output_v1/{}/'.format(args.method_name) + args.name + '/[server]test_accuracy_{}.txt'.format(args.seed)
+    file_name_ec = './output_v1/{}/'.format(args.method_name) + args.name + '/[ensemble|client]test_accuracy_{}.txt'.format(args.seed)
+    file_name_es = './output_v1/{}/'.format(args.method_name) + args.name + '/[ensemble|server]test_accuracy_{}.txt'.format(args.seed)
 
     np.savetxt(file_name_c, acc_test_arr_c)
     np.savetxt(file_name_s, acc_test_arr_s)
+    np.savetxt(file_name_ec, acc_test_arr_ec)
+    np.savetxt(file_name_es, acc_test_arr_es)
 # 
 #     # Save the final trained model
 #     torch.save(net_glob_client.state_dict(), "./saved/saved_model/{}/client/client_{}_{}_on_{}_with_{}_users_split_point_{}_epochs_{}_seed_{}.pth".format(

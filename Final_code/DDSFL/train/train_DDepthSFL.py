@@ -173,7 +173,9 @@ class LocalUpdate_server(object):
             batch_acc_s = []
 
             for j in range(len(self.data)):
-                fx = self.data[j]   # fx reshape 필요할듯?
+                
+                # smashed_data.append(fx_client[-1].clone().detach().requires_grad_(True))
+                fx = self.data[j].clone().detach().requires_grad_(True)   # fx reshape 필요할듯?
                 y = self.label[j]
 
                 fx_server, probs = net_server(fx)
@@ -248,6 +250,69 @@ def test_img(net_c, net_s, net_a, datatest, args):
     test_loss_c /= len(data_loader.dataset)
     test_loss_s /= len(data_loader.dataset)
     accuracy_c = 100.00 * correct_c / len(data_loader.dataset)
+    accuracy_s = 100.00 * correct_s / len(data_loader.dataset)
+
+    return accuracy_c, test_loss_c, accuracy_s, test_loss_s
+
+def test_img2(net_c, net_s, auxiliary_models, datatest, args, model_idx):
+    net_c.eval()
+    net_c.to(args.device)
+
+    net_s.eval()
+    net_s.to(args.device)
+
+    aux_client = copy.deepcopy(auxiliary_models[:model_idx+1])
+    aux_server = copy.deepcopy(auxiliary_models[model_idx+1:])
+    # testing
+    test_loss_c = 0
+    test_loss_s = 0
+    correct_c = 0
+    correct_s = 0
+
+    data_loader = DataLoader(datatest, batch_size=args.bs)
+    l = len(data_loader) # len(data_loader)= 469개, 128*468개 세트, 1개는 96개 들어있음
+
+    with torch.no_grad():
+      for idx, (data, target) in enumerate(data_loader):
+            prob = 0 
+            if 'cuda' in args.device:
+                data, target = data.to(args.device), target.to(args.device)
+            
+            fx_client = net_c(data)
+
+            for i in range(len(fx_client)):
+                auxiliary_net = aux_client[i]# fx[i][1]-1]
+                auxiliary_net.eval()
+                auxiliary_net.to(args.device)
+                client_logits, client_probs = auxiliary_net(fx_client[i])
+                prob = prob + client_probs
+            
+            prob_c = prob / len(fx_client)
+
+            test_loss_c += F.cross_entropy(prob_c, target, reduction='sum').item()
+            y_pred_c = prob_c.data.max(1, keepdim=True)[1]
+            correct_c += y_pred_c.eq(target.data.view_as(y_pred_c)).long().cpu().sum()
+
+            # server-side loss
+            fx_server, probas_s = net_s(fx_client[-1])
+
+            for i in range(len(fx_server)-1):
+                auxiliary_net = aux_server[i]# fx[i][1]-1]
+                auxiliary_net.eval()
+                auxiliary_net.to(args.device)
+                server_logits, server_probs = auxiliary_net(fx_server[i])
+                prob = prob + server_probs
+            prob = prob + probas_s
+            prob_s = prob / 4
+
+            test_loss_s += F.cross_entropy(prob_s, target, reduction='sum').item()
+            y_pred_s = prob_s.data.max(1, keepdim=True)[1]
+            correct_s += y_pred_s.eq(target.data.view_as(y_pred_s)).long().cpu().sum()
+
+    test_loss_c /= len(data_loader.dataset)
+    accuracy_c = 100.00 * correct_c / len(data_loader.dataset)
+
+    test_loss_s /= len(data_loader.dataset)
     accuracy_s = 100.00 * correct_s / len(data_loader.dataset)
 
     return accuracy_c, test_loss_c, accuracy_s, test_loss_s

@@ -35,8 +35,6 @@ class ResNet101_client_v1(nn.Module):  # Dropout (or pruned) ResNet [width]
                                stride=1, padding=1, bias=False)
         self.bn1 = nn.BatchNorm2d(self.in_planes)
         self.maxpool = nn.MaxPool2d(kernel_size=3, stride=2, padding=1)
-        self.layer1 = self._make_layer(block, 64, num_blocks[0], stride=1)
-        self.layer2 = self._make_layer(block, 128, num_blocks[1], stride=2)
         self.apply(_weights_init)
 
     def _make_layer(self, block, planes, num_blocks, stride):
@@ -48,25 +46,25 @@ class ResNet101_client_v1(nn.Module):  # Dropout (or pruned) ResNet [width]
         return nn.Sequential(*layers)
 
     def forward(self, x):
-        out1 = self.maxpool(F.relu(self.bn1(self.conv1(x))))
-        out2 = self.layer1(out1)
-        out3 = self.layer2(out2)
-        return out3
+        out0 = self.maxpool(F.relu(self.bn1(self.conv1(x))))
+        return out0
     
 
 class ResNet101_server_v1(nn.Module):  # Dropout (or pruned) ResNet [width] 
     def __init__(self, block, num_blocks, num_classes=10):
         super(ResNet101_server_v1, self).__init__()
-        self.in_planes = 256
+        self.in_planes = 64
         
         # self.conv1 = nn.Conv2d(3, self.in_planes, kernel_size=7,
         #                        stride=2, padding=3, bias=False)
         # self.bn1 = nn.BatchNorm2d(self.in_planes)
+        self.layer1 = self._make_layer(block, 64, num_blocks[0], stride=1)
+        self.layer2 = self._make_layer(block, 128, num_blocks[1], stride=2)
         self.layer3 = self._make_layer(block, 256, num_blocks[2], stride=2)
         self.layer4 = self._make_layer(block, 512, num_blocks[3], stride=2)
         self.linear = nn.Linear(512*block.expansion, num_classes)
         self.apply(_weights_init)
-    
+
     def _make_layer(self, block, planes, num_blocks, stride):
         strides = [stride] + [1]*(num_blocks-1)
         layers = []
@@ -76,8 +74,10 @@ class ResNet101_server_v1(nn.Module):  # Dropout (or pruned) ResNet [width]
         return nn.Sequential(*layers)
 
     def forward(self, x):
-        out = self.layer3(x)
-        out = self.layer4(out)
+        out1 = self.layer1(x)
+        out2 = self.layer2(out1)
+        out3 = self.layer3(out2)
+        out = self.layer4(out3)
         out = F.avg_pool2d(out, out.size()[3])
         out = out.view(out.size(0), -1)
         logits = self.linear(out)
@@ -114,11 +114,11 @@ class ResNet101_client_v2(nn.Module):  # Dropout (or pruned) ResNet [width]
         return nn.Sequential(*layers)
 
     def forward(self, x):
-        out1 = self.maxpool(F.relu(self.bn1(self.conv1(x))))
-        out2 = self.layer1(out1)
-        out3 = self.layer2(out2)
-        out4 = self.layer3(out3)
-        return out4
+        out0 = self.maxpool(F.relu(self.bn1(self.conv1(x))))
+        out1 = self.layer1(out0)
+        out2 = self.layer2(out1)
+        out3 = self.layer3(out2)
+        return out3
     
 
 class ResNet101_server_v2(nn.Module):  # Dropout (or pruned) ResNet101 [width] 
@@ -130,8 +130,82 @@ class ResNet101_server_v2(nn.Module):  # Dropout (or pruned) ResNet101 [width]
         #                        stride=2, padding=3, bias=False)
         # self.bn1 = nn.BatchNorm2d(self.in_planes)
         layer3 : OrderdDict[str, nn.Module] = OrderedDict()
-        self.layer3 = self._make_layer(block, 256, num_blocks[2], 1, layer3, block_index = 23 - num_blocks[2], opt = True)
+        self.layer3 = self._make_layer(block, 256, num_blocks[2], 1, layer3, 1, True)
         self.layer4 = self._make_layer(block, 512, num_blocks[3], stride=2)
+        self.linear = nn.Linear(512*block.expansion, num_classes)
+        self.apply(_weights_init)
+
+    def _make_layer(self, block, planes, num_blocks, stride, Olayer = None, block_index = None, opt = False):
+        if opt:
+            ind = block_index
+            strides = [stride] + [1]*(num_blocks-1)
+            for stride in strides:
+                Olayer[f"{int(ind)}"] = block(self.in_planes, planes, stride)
+                self.in_planes = planes * block.expansion
+                ind += 1
+            return nn.Sequential(Olayer)
+        else:
+            strides = [stride] + [1]*(num_blocks-1)
+            layers = []
+            for stride in strides:
+                layers.append(block(self.in_planes, planes, stride))
+                self.in_planes = planes * block.expansion
+            return nn.Sequential(*layers)
+
+    def forward(self, x):
+        out3 = self.layer3(x)
+        out = self.layer4(out3)
+        out = F.avg_pool2d(out, out.size()[3])
+        out = out.view(out.size(0), -1)
+        logits = self.linear(out)
+        probas = F.softmax(logits, dim=1)
+        return logits, probas
+
+# ---------------------------------------------------
+#                split & pruned ResNet101 v5
+# ---------------------------------------------------
+class ResNet101_client_v3(nn.Module):  # Dropout (or pruned) ResNet101 [width] 
+    def __init__(self, block, num_blocks,  num_classes=10):
+        super(ResNet101_client_v3, self).__init__()
+        self.in_planes = 64
+
+        self.conv1 = nn.Conv2d(3, self.in_planes, kernel_size=3,
+                               stride=1, padding=1, bias=False)
+        self.bn1 = nn.BatchNorm2d(self.in_planes)
+        self.maxpool = nn.MaxPool2d(kernel_size=3, stride=2, padding=1)
+         # self.bn1 = nn.BatchNorm2d(self.in_planes)
+        self.layer1 = self._make_layer(block, 64, num_blocks[0], stride=1)
+        self.layer2 = self._make_layer(block, 128, num_blocks[1], stride=2)
+        self.layer3 = self._make_layer(block, 256, num_blocks[2], stride=2)
+
+        self.apply(_weights_init)
+    def _make_layer(self, block, planes, num_blocks, stride):
+        strides = [stride] + [1]*(num_blocks-1)
+        layers = []
+        for stride in strides:
+            layers.append(block(self.in_planes, planes, stride))
+            self.in_planes = planes * block.expansion
+        return nn.Sequential(*layers)
+
+    def forward(self, x):
+        out0 = self.maxpool(F.relu(self.bn1(self.conv1(x))))
+        out1 = self.layer1(out0)
+        out2 = self.layer2(out1)
+        out3 = self.layer3(out2)
+        return out3
+    
+
+class ResNet101_server_v3(nn.Module):  # Dropout (or pruned) ResNet101 [width] 
+    def __init__(self, block, num_blocks,  num_classes=10):
+        super(ResNet101_server_v3, self).__init__()
+        self.in_planes = 1024
+        
+        # self.conv1 = nn.Conv2d(3, self.in_planes, kernel_size=7,
+        #                        stride=2, padding=3, bias=False)
+        # self.bn1 = nn.BatchNorm2d(self.in_planes)
+        layer3 : OrderdDict[str, nn.Module] = OrderedDict()
+        self.layer3 = self._make_layer(block, 256, num_blocks[2], 1, layer3, 11, True)
+        self.layer4 = self._make_layer(block, 512, num_blocks[3], stride = 2)
         self.linear = nn.Linear(512*block.expansion, num_classes)
         self.apply(_weights_init)
 
@@ -155,70 +229,6 @@ class ResNet101_server_v2(nn.Module):  # Dropout (or pruned) ResNet101 [width]
     def forward(self, x):
         out = self.layer3(x)
         out = self.layer4(out)
-        out = F.avg_pool2d(out, out.size()[3])
-        out = out.view(out.size(0), -1)
-        logits = self.linear(out)
-        probas = F.softmax(logits, dim=1)
-        return logits, probas
-
-# ---------------------------------------------------
-#                split & pruned ResNet101 v5
-# ---------------------------------------------------
-class ResNet101_client_v3(nn.Module):  # Dropout (or pruned) ResNet101 [width] 
-    def __init__(self, block, num_blocks,  num_classes=10):
-        super(ResNet101_client_v3, self).__init__()
-        self.in_planes = 64
-
-        self.conv1 = nn.Conv2d(3, self.in_planes, kernel_size=3,
-                               stride=1, padding=1, bias=False)
-        self.bn1 = nn.BatchNorm2d(self.in_planes)
-        self.maxpool = nn.MaxPool2d(kernel_size=3, stride=2, padding=1)
-         # self.bn1 = nn.BatchNorm2d(self.in_planes)
-        self.layer1 = self._make_layer(block, 64, num_blocks[0], stride=1)
-        self.layer2 = self._make_layer(block, 128, num_blocks[1], stride=2)
-        self.layer3 = self._make_layer(block, 256, num_blocks[2], stride=2)
-        self.layer4 = self._make_layer(block, 512, num_blocks[3], stride=2)
-
-        self.apply(_weights_init)
-    def _make_layer(self, block, planes, num_blocks, stride):
-        strides = [stride] + [1]*(num_blocks-1)
-        layers = []
-        for stride in strides:
-            layers.append(block(self.in_planes, planes, stride))
-            self.in_planes = planes * block.expansion
-        return nn.Sequential(*layers)
-
-    def forward(self, x):
-        out1 = self.maxpool(F.relu(self.bn1(self.conv1(x))))
-        out2 = self.layer1(out1)
-        out3 = self.layer2(out2)
-        out4 = self.layer3(out3)
-        out5 = self.layer4(out4)
-        return out5
-    
-
-class ResNet101_server_v3(nn.Module):  # Dropout (or pruned) ResNet101 [width] 
-    def __init__(self, block, num_blocks,  num_classes=10):
-        super(ResNet101_server_v3, self).__init__()
-        self.in_planes = 512
-        
-        # self.conv1 = nn.Conv2d(3, self.in_planes, kernel_size=7,
-        #                        stride=2, padding=3, bias=False)
-        # self.bn1 = nn.BatchNorm2d(self.in_planes)
-        self.layer4 = self._make_layer(block, 512, num_blocks[3], stride=1)
-        self.linear = nn.Linear(512*block.expansion, num_classes)
-        self.apply(_weights_init)
-
-    def _make_layer(self, block, planes, num_blocks, stride):
-        strides = [stride] + [1]*(num_blocks-1)
-        layers = []
-        for stride in strides:
-            layers.append(block(self.in_planes, planes, stride))
-            self.in_planes = planes * block.expansion
-        return nn.Sequential(*layers)
-
-    def forward(self, x):
-        out = self.layer4(x)
         out = F.avg_pool2d(out, out.size()[3])
         out = out.view(out.size(0), -1)
         logits = self.linear(out)
