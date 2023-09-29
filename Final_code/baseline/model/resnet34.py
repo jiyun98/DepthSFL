@@ -186,7 +186,7 @@ class ResNet34_fjord(nn.Module):  # Dropout (or pruned) ResNet [width]
         self.layer2 = self._make_layer(block, up(128*p_drop), num_blocks[1], stride=2, track=track)
         self.layer3 = self._make_layer(block, up(256*p_drop), num_blocks[2], stride=2, track=track)
         self.layer4 = self._make_layer(block, up(512*p_drop), num_blocks[3], stride=2, track=track)
-        self.fc = nn.Linear(up(512*block.expansion*p_drop), num_classes)
+        self.linear = nn.Linear(up(512*block.expansion*p_drop), num_classes)
 
         self.apply(_weights_init)
     def _make_layer(self, block, planes, num_blocks, stride, track):
@@ -205,7 +205,7 @@ class ResNet34_fjord(nn.Module):  # Dropout (or pruned) ResNet [width]
         out = self.layer4(out)
         out = F.avg_pool2d(out, out.size()[3])
         out = out.view(out.size(0), -1)
-        logits = self.fc(out)
+        logits = self.linear(out)
         probas = F.softmax(logits, dim=1)
         return logits, probas
 

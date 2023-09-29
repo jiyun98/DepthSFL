@@ -18,11 +18,10 @@ def main_fjord(args):
     dataset_train, dataset_test, dict_users, args.num_classes = load_data(args)
 
 
-    local_models = fjord_local_model_assignment(
+    local_models, args.ps = fjord_local_model_assignment(
         args.model_name, args.device, args.num_classes)
     args.num_models = len(local_models)
-    net_glob = fjord_global_model_assignment(
-        args.ps[-1], args.model_name, args.device, args.num_classes)
+    net_glob = copy.deepcopy(local_models[-1])
     
     w_glob = net_glob.state_dict()
     
@@ -116,7 +115,7 @@ def main_fjord(args):
  
     # Save output data to .excel file
     acc_test_arr = np.array(acc_test_total)
-    file_name = './output2/FJO/' + args.name + '/test_accuracy.txt'
+    file_name = './output/FJO/' + args.name + '/test_accuracy.txt'
     np.savetxt(file_name, acc_test_arr)
 
     

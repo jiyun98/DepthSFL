@@ -110,3 +110,61 @@ class BottleNeck_f(nn.Module):
         x = self.residual_function(x) + self.shortcut(x)
         x = self.relu(x)
         return x
+    
+class BasicBlockH(nn.Module):  # Basic Block for HeteroFL (BN is not tracked)
+    expansion = 1
+
+    def __init__(self, in_planes, planes, stride=1, track=False):
+        super(BasicBlockH, self).__init__()
+        self.conv1 = nn.Conv2d(
+            in_planes, planes, kernel_size=3, stride=stride, padding=1, bias=False)
+        self.bn1 = nn.BatchNorm2d(planes, momentum=None, track_running_stats=track)
+        self.conv2 = nn.Conv2d(planes, planes, kernel_size=3,
+                               stride=1, padding=1, bias=False)
+        self.bn2 = nn.BatchNorm2d(planes, momentum=None, track_running_stats=track)
+
+        self.downsample = nn.Sequential()
+        if stride != 1 or in_planes != self.expansion*planes:
+            self.downsample = nn.Sequential(
+                nn.Conv2d(in_planes, self.expansion*planes,
+                        kernel_size=1, stride=stride, bias=False),
+                nn.BatchNorm2d(self.expansion*planes, momentum=None, track_running_stats=track)
+            )
+
+    def forward(self, x):
+        out = F.relu(self.bn1(self.conv1(x)))
+        out = self.bn2(self.conv2(out))
+        out += self.downsample(x)
+        out = F.relu(out)
+        return out    
+
+class BottleneckH(nn.Module): # Bottleneck Block for HeteroFL (BN is not tracked)
+    expansion = 4
+
+    def __init__(self, in_planes, planes, stride=1, base_width=64, track=False):
+        super(BottleneckH, self).__init__()
+        width = int(planes * (base_width / 64.0))
+        self.conv1 = nn.Conv2d(in_planes, width, kernel_size=1, bias=False)
+        self.bn1 = nn.BatchNorm2d(width, momentum=None, track_running_stats=track)
+        self.conv2 = nn.Conv2d(width, width, kernel_size=3,
+                               stride=stride, padding=1, bias=False)
+        self.bn2 = nn.BatchNorm2d(width, momentum=None, track_running_stats=track)
+        self.conv3 = nn.Conv2d(width, self.expansion *
+                               planes, kernel_size=1, bias=False)
+        self.bn3 = nn.BatchNorm2d(self.expansion * planes, momentum=None, track_running_stats=track)
+
+        self.downsample = nn.Sequential()
+        if stride != 1 or in_planes != self.expansion * planes:
+            self.downsample = nn.Sequential(
+                nn.Conv2d(in_planes, self.expansion * planes,
+                          kernel_size=1, stride=stride, bias=False),
+                nn.BatchNorm2d(self.expansion * planes, momentum=None, track_running_stats=track)
+            )
+
+    def forward(self, x):
+        out = F.relu(self.bn1(self.conv1(x)))
+        out = F.relu(self.bn2(self.conv2(out)))
+        out = self.step_size*self.bn3(self.conv3(out))
+        out += self.downsample(x)
+        out = F.relu(out)
+        return out

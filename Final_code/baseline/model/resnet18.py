@@ -173,9 +173,9 @@ class ResNet18_FL(nn.Module):  # Dropout (or pruned) ResNet [width]
 # ---------------------------------------------------
 #                FjORD
 # ---------------------------------------------------
-class ResNet18_fjord(nn.Module):  # Dropout (or pruned) ResNet [width] 
-    def __init__(self, block, num_blocks,  p_drop = 1, num_classes=10, track = False):
-        super(ResNet18_fjord, self).__init__()
+class ResNet_HeteroFL(nn.Module):  #  ResNethp, Width-varying ResNet
+    def __init__(self, block, num_blocks, p_drop, num_classes=10, track=False):
+        super(ResNet_HeteroFL, self).__init__()
         self.in_planes = up(64*p_drop)        
         # self.conv1 = nn.Conv2d(3, self.in_planes, kernel_size=7,
         #                        stride=2, padding=3, bias=False)
@@ -183,21 +183,21 @@ class ResNet18_fjord(nn.Module):  # Dropout (or pruned) ResNet [width]
                                stride=1, padding=1, bias=False)
         self.bn1 = nn.BatchNorm2d(self.in_planes, momentum=None, track_running_stats=track)
         self.maxpool = nn.MaxPool2d(kernel_size=3, stride=2, padding=1)
-
+        
         self.layer1 = self._make_layer(block, up(64*p_drop), num_blocks[0], stride=1, track=track)
         self.layer2 = self._make_layer(block, up(128*p_drop), num_blocks[1], stride=2, track=track)
         self.layer3 = self._make_layer(block, up(256*p_drop), num_blocks[2], stride=2, track=track)
         self.layer4 = self._make_layer(block, up(512*p_drop), num_blocks[3], stride=2, track=track)
         self.linear = nn.Linear(up(512*block.expansion*p_drop), num_classes)
 
-        self.apply(_weights_init)
     def _make_layer(self, block, planes, num_blocks, stride, track):
         strides = [stride] + [1]*(num_blocks-1)
         layers = []
         for stride in strides:
-            layers.append(block(self.in_planes, planes, stride))
+            layers.append(block(self.in_planes, planes, stride, track))
             self.in_planes = planes * block.expansion
         return nn.Sequential(*layers)
+
     def forward(self, x):
         out = self.maxpool(F.relu(self.bn1(self.conv1(x))))
         out = self.layer1(out)

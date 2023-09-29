@@ -99,22 +99,21 @@ def resnet110_FL(num_classes = 10, cut_point = 1):
 ############### '''FjORD'''###################
 
 def resnet18_f(num_classes = 10, ps = 1):
-    return ResNet18_fjord(block = BasicBlock, num_blocks = [2,2,2,2], p_drop = ps, num_classes = num_classes)
-
+    return ResNet_HeteroFL(block=BasicBlockH,num_blocks=[2, 2, 2, 2], p_drop = ps,num_classes=num_classes)
 def resnet34_f(num_classes = 10, ps = 1):
-    return ResNet34_fjord(block = BasicBlock, num_blocks = [3,4,6,3], p_drop = ps, num_classes = num_classes)
+    return ResNet_HeteroFL(block=BasicBlockH,num_blocks=[3, 4, 6, 3], p_drop = ps,num_classes=num_classes)
 
 def resnet50_f(num_classes = 10, ps = 1):
-    return ResNet50_fjord(block = BottleNeck_f, num_blocks = [3,4,6,3], p_drop = ps, num_classes = num_classes)
+    return ResNet50_fjord(block=BottleNeck_f,num_blocks=[3, 4, 6, 3], p_drop = ps,num_classes=num_classes)
 
 def resnet56_f(num_classes = 10, ps = 1):
-    return ResNet56_fjord(block = BasicBlock, num_blocks = [9,9,9], p_drop = ps, num_classes = num_classes)
+    return ResNet_c_HeteroFL(block=BasicBlockH,  num_blocks=[9, 9, 9], p_drop = ps,num_classes=num_classes)
 
 def resnet101_f(num_classes = 10, ps = 1):
-    return ResNet101_fjord(block = BottleNeck_f, num_blocks = [3,4,23,3], p_drop = ps, num_classes = num_classes)
+    return ResNet50_fjord(block=BottleNeck_f,num_blocks=[3, 4, 23, 3], p_drop = ps,num_classes=num_classes)
 
 def resnet110_f(num_classes = 10, ps = 1):
-    return ResNet110_fjord(block = BasicBlock, num_blocks = [18,18,18], p_drop = ps, num_classes = num_classes)
+    return ResNet_c_HeteroFL(block=BasicBlock,  num_blocks=[18, 18, 18], p_drop = ps,num_classes=num_classes)
 
 
 ############### '''DetpHFL'''###################
