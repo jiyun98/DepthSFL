@@ -96,7 +96,7 @@ def main_DDepthSFL(args):
             smashed_data, label = local_c.get_smashed_data(net = copy.deepcopy(c_model_select))
             local_s = LocalUpdate_server(args, smashed_data = smashed_data, 
                                          label = label, wandb = wandb, model_idx = model_idx, kd_gkt_opt = kd_gkt_opt)
-            kd_logits_server = local_s.get_kd_logits(net = copy.deepcopy(s_model_select))
+            kd_logits_server = local_s.get_kd_logits(net = copy.deepcopy(s_model_select),net_a_list = aux_server)
             weight_c, weight_a_c, kd_logits_client,  args, loss_c, acc_c = local_c.train(
                     net_client = copy.deepcopy(c_model_select), net_ax = copy.deepcopy(aux_client), kd_logits = kd_logits_server)
             weight_s, weight_a_s, args, loss_s, acc_s = local_s.train(

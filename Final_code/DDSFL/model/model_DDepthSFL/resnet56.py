@@ -79,14 +79,13 @@ class ResNet56_server_v1(nn.Module): # Dropout (or pruned) ResNet [width] for CI
     def forward(self, x):
         out1 = self.layer1(x)
         out2 = self.layer2(out1)
-        out3 = self.layer3[0:1](out2)
-        out3_2 = self.layer3[1:4](out3)
-        out3_3 = self.layer3[4:](out3_2)
-        out = F.avg_pool2d(out3_3, out3_3.size()[3])
+        out3 = self.layer3[:4](out2)
+        out3_2 = self.layer3[4:](out3)
+        out = F.avg_pool2d(out3_2, out3_2.size()[3])
         out = out.view(out.size(0), -1)
         logits = self.linear(out)
         probas = F.softmax(logits, dim=1)
-        return [out3, out3_2, logits], probas
+        return [out2, out3, logits], probas
 #---------------------------------------------------------------------
 class ResNet56_client_v2(nn.Module): # Dropout (or pruned) ResNet [width] for CIFAR-10
     def __init__(self, block, num_blocks, num_classes=10):
@@ -97,7 +96,6 @@ class ResNet56_client_v2(nn.Module): # Dropout (or pruned) ResNet [width] for CI
         self.bn1 = nn.BatchNorm2d(16)
         self.layer1 = self._make_layer(block, 16, num_blocks[0], stride=1)
         self.layer2 = self._make_layer(block, 32, num_blocks[1], stride=2)
-        self.layer3 = self._make_layer(block,64, num_blocks[2], stride=2)
         self.apply(_weights_init)
 
     def _make_layer(self, block, planes, num_blocks, stride):
@@ -110,18 +108,17 @@ class ResNet56_client_v2(nn.Module): # Dropout (or pruned) ResNet [width] for CI
 
     def forward(self, x):
         out = F.relu(self.bn1(self.conv1(x)))
-        out1 = self.layer1[0:2](out)
+        out1 = self.layer1[:2](out)
         out1_2 = self.layer1[2:](out1)
         out2 = self.layer2(out1_2)
-        out3 = self.layer3(out2)
-        return [out1, out3]
+        return [out1, out2]
 
 class ResNet56_server_v2(nn.Module): # Dropout (or pruned) ResNet [width] for CIFAR-10
     def __init__(self, block, num_blocks, num_classes=10):
         super(ResNet56_server_v2, self).__init__()
         self.in_planes = 64
-        layer3 : OrderdDict[str, nn.Module] = OrderedDict()
-        self.layer3 = self._make_layer(block,64, num_blocks[2], 1, layer3, 1, True )
+
+        self.layer3 = self._make_layer(block,64, num_blocks[2], 2)
         self.linear = nn.Linear(64*block.expansion, num_classes)
 
         self.apply(_weights_init)
@@ -144,8 +141,8 @@ class ResNet56_server_v2(nn.Module): # Dropout (or pruned) ResNet [width] for CI
             return nn.Sequential(*layers)
 
     def forward(self, x):
-        out1 = self.layer3[0:3](x)
-        out2 = self.layer3[3:](out1)
+        out1 = self.layer3[:4](x)
+        out2 = self.layer3[4:](out1)
         out = F.avg_pool2d(out2, out2.size()[3])
         out = out.view(out.size(0), -1)
         logits = self.linear(out)
@@ -174,12 +171,11 @@ class ResNet56_client_v3(nn.Module): # Dropout (or pruned) ResNet [width] for CI
 
     def forward(self, x):
         out = F.relu(self.bn1(self.conv1(x)))
-        out1 = self.layer1[0:2](out)
+        out1 = self.layer1[:2](out)
         out1_1 = self.layer1[2:](out1)
         out2 = self.layer2(out1_1)
-        out3 = self.layer3[0:1](out2)
-        out3_2 = self.layer3[1:](out3)
-        return [out1, out3, out3_2]
+        out3 = self.layer3(out2)
+        return [out1, out2, out3]
 
 class ResNet56_server_v3(nn.Module): # Dropout (or pruned) ResNet [width] for CIFAR-10
     def __init__(self, block, num_blocks, num_classes=10):

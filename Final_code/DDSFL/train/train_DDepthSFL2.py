@@ -22,7 +22,7 @@ class LocalUpdate_client(object):
         idxs : 데이터 분할에 사용되는
         '''
         self.args = args
-        self.ldr_train = DataLoader(DatasetSplit(dataset, idxs), batch_size = args.local_bs, shuffle = True)
+        self.ldr_train = DataLoader(DatasetSplit(dataset, idxs), batch_size = args.local_bs, shuffle = True, drop_last=True)
         self.wandb = wandb
         self.model_idx = model_idx
         self.kd_gkt_opt = kd_gkt_opt
@@ -105,18 +105,26 @@ class LocalUpdate_client(object):
         weight_a_c = [ax.state_dict() for ax in aux_client]
 
         # client-side logit 추출하기
-        logits = []
+        logits = 0
+        logits_list = []
         net_client.eval()
         aux_client[-1].eval()
 
         with torch.no_grad():
             for batch_idx, (images, labels) in enumerate(self.ldr_train):
                 images = images.to(self.args.device)
-                fx_client = net_client(images)
-                c_logit, _ = aux_client[-1](fx_client[-1])
-                logits.append(c_logit.detach())
+                fx = net_client(images)
+                for i in range(len(fx)):
+                    auxiliary_net = aux_client[i]# fx[i][1]-1]
+                    auxiliary_net.eval()
+                    client_logits, _ = auxiliary_net(fx[i])
+                    logits = logits + client_logits
+                # c_logit, _ = aux_client[-1](fx_client[-1])
+                logits = logits / len(aux_client)
+                logits_list.append(logits.detach())
+
         # net_ax가 요소마다 데이트 되는지 확인해봐야 함
-        return net_client.state_dict(), weight_a_c, logits, self.args, client_loss_acc[0], client_loss_acc[1] # sum(epoch_loss)/len(epoch_loss), epoch_acc[-1], sum(epoch_loss)/len(epoch_loss), epoch_acc[-1]
+        return net_client.state_dict(), weight_a_c, logits_list, self.args, client_loss_acc[0], client_loss_acc[1] # sum(epoch_loss)/len(epoch_loss), epoch_acc[-1], sum(epoch_loss)/len(epoch_loss), epoch_acc[-1]
 
 
 class LocalUpdate_server(object):
@@ -132,14 +140,29 @@ class LocalUpdate_server(object):
         self.wandb = wandb
         self.model_idx = model_idx
         self.kd_gkt_opt = kd_gkt_opt
-    def get_kd_logits(self, net):
-        logits = []
+    def get_kd_logits(self, net, net_a_list):
+        # logits = []
+        # net.eval()
+        # with torch.no_grad():
+        #     for i in range(len(self.data)):
+        #         fx_server, probas = net(self.data[i])
+        #         logits.append(fx_server[-1].detach())
+        # return logits
+        logits_list = []
+        logits = 0
         net.eval()
         with torch.no_grad():
             for i in range(len(self.data)):
-                fx_server, probas = net(self.data[i])
-                logits.append(fx_server[-1].detach())
-        return logits
+                fx_server, _ = net(self.data[i])
+                for i in range(len(fx_server)-1):
+                    auxiliary_net = net_a_list[i]# fx[i][1]-1]
+                    auxiliary_net.eval()
+                    server_logits, _ = auxiliary_net(fx_server[i])
+                    logits = logits + server_logits
+                logits = logits + fx_server[-1].detach()
+                logits = logits / (len(net_a_list)+1)
+                logits_list.append(logits.detach())
+        return logits_list
 
 
     def train(self, net, net_ax, kd_logits = None):
@@ -223,7 +246,7 @@ def test_img(net_c, net_s, net_a, datatest, args):
     correct_c = 0
     correct_s = 0
 
-    data_loader = DataLoader(datatest, batch_size=args.bs)
+    data_loader = DataLoader(datatest, batch_size=args.bs, drop_last=True)
     l = len(data_loader) # len(data_loader)= 469개, 128*468개 세트, 1개는 96개 들어있음
 
     with torch.no_grad():
