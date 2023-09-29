@@ -98,28 +98,17 @@ def main_depthfl(args):
             test_acc_list = []
 
             for ind in range(ti):
-                if ind != ti-1:
-                    model_e = copy.deepcopy(local_models[ind])
-                    model_a = copy.deepcopy(auxiliary_models[ind])
+                model_e = copy.deepcopy(local_models[ind])
+                model_a = copy.deepcopy(auxiliary_models[:ind+1])
 
-                    weight = extract_submodel_weight_from_global(glob_net = copy.deepcopy(net_glob),net = copy.deepcopy(model_e), model_i = model_idx)
-                    model_e.load_state_dict(weight)
+                weight = extract_submodel_weight_from_global(glob_net = copy.deepcopy(net_glob),net = copy.deepcopy(model_e), model_i = model_idx)
+                model_e.load_state_dict(weight)
 
-                    acc_test , loss_test = test_img_d(model_e, dataset_test, args, model_a)
-                    print("[Epoch {}]Testing accuracy with cut point {} :  {:.2f}  ".format(iter, ind+1,  acc_test))
-                    wandb.log({"[Test] User {} loss".format(args.cut_point[ind]): loss_test, "[Test] User {} acc".format(args.cut_point[ind]): acc_test}, step = iter)
-                    test_acc_list.append(acc_test)
-                else:
-                    model_e = copy.deepcopy(local_models[ind])
+                acc_test , loss_test = test_img_d(model_e, dataset_test, args, model_a, ind)
+                print("[Epoch {}]Testing accuracy with cut point {} :  {:.2f}  ".format(iter, ind+1,  acc_test))
+                wandb.log({"[Test] User {} loss".format(args.cut_point[ind]): loss_test, "[Test] User {} acc".format(args.cut_point[ind]): acc_test}, step = iter)
+                test_acc_list.append(acc_test)
 
-                    weight = extract_submodel_weight_from_global(glob_net = copy.deepcopy(net_glob),net = copy.deepcopy(model_e), model_i = model_idx)
-                    model_e.load_state_dict(weight)
-
-                    acc_test , loss_test = test_img_d(model_e,  dataset_test, args)
-                    print("[Epoch {}]Testing accuracy with cut point {} :  {:.2f} ".format(iter, ind+1,  acc_test))
-                    wandb.log({"[Test] User {} loss".format(args.cut_point[ind]): loss_test, "[Test] User {} acc".format(args.cut_point[ind]): acc_test}, step = iter)
-
-                    test_acc_list.append(acc_test)
             acc_test_total.append(test_acc_list)
         if iter % 50 == 0:
             print(program)

@@ -21,6 +21,8 @@ def set_filename(args):
         method_name = 'FJO'
     elif args.method == 'splitfed':
         method_name = 'SFL'
+    elif args.method == 'splitfed_acc':
+        method_name = 'SFL_ACC'
     elif args.method == 'depthfl':
         if args.kd_opt:
             method_name  = 'DEP_KD'

@@ -13,6 +13,7 @@ from main_reduction import *
 from fjord import *
 from depthfl import *
 from splitfed import *
+from splitfed_acc import *
 
 
 if __name__ == '__main__':
@@ -73,5 +74,10 @@ if __name__ == '__main__':
             f.write("[Method:{}], [Data:{}], [Model:{}], [Select idx:{}],  [Seed:{}], [Epoch:{}], [BatchSize:{}], [Frac:{}], [Time:{}]\n".format(
                         args.method, args.data, args.model_name, args.selected_idx,
                         args.seed, args.epochs, args.bs, args.frac, timestamp))
-     
+    elif args.method == 'splitfed_acc':  # DEP   # args.cut_point = [1,2,3,4]로 설정해주세요
+        main_sfl_acc(args)
+        with open('./logs/learning_log.txt', 'a+') as f: # selected idx로 global model size 설정
+            f.write("[Method:{}], [Data:{}], [Model:{}], [Select idx:{}],  [Seed:{}], [Epoch:{}], [BatchSize:{}], [Frac:{}], [Time:{}]\n".format(
+                        args.method, args.data, args.model_name, args.selected_idx,
+                        args.seed, args.epochs, args.bs, args.frac, timestamp))
     print("Complete!")

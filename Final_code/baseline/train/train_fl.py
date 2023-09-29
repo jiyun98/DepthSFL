@@ -168,14 +168,10 @@ class LocalUpdate_d(object):
         weight_a = [ax.state_dict() for ax in net_ax]
         return net.state_dict(), weight_a, sum(epoch_loss)/len(epoch_loss), epoch_acc[-1]  # sum(epoch_loss)/len(epoch_loss), epoch_acc[-1], sum(epoch_loss)/len(epoch_loss), epoch_acc[-1]
 
-def test_img_d(net, datatest = None, args = None,  net_a = None):
+def test_img_d(net, datatest = None, args = None,  auxiliary_models = None, model_idx = None):
     net.eval()
     net.to(args.device)
     
-    if net_a:
-        net_a.eval()
-        net_a.to(args.device)
-
     # testing
     test_loss = 0
     correct = 0
@@ -186,25 +182,34 @@ def test_img_d(net, datatest = None, args = None,  net_a = None):
     with torch.no_grad():
         for idx, (data, target) in enumerate(data_loader):
             data, target = data.to(args.device), target.to(args.device)
-            if not net_a:
-                logits, probas = net(data)
-                test_loss += F.cross_entropy(probas, target, reduction='sum').item()
-                # get the index of the max log-probability
-                y_pred = probas.data.max(1, keepdim=True)[1]
-                correct += y_pred.eq(target.data.view_as(y_pred)).long().cpu().sum()
-
-            else:
+            if model_idx < 3:
                 fx = net(data)
-                # sum up batch loss
-                logits, probas = net_a(fx[-1])
-                test_loss += F.cross_entropy(probas, target, reduction='sum').item()
-                # get the index of the max log-probability
-                y_pred = probas.data.max(1, keepdim=True)[1]
-                correct += y_pred.eq(target.data.view_as(y_pred)).long().cpu().sum()
+                prob = 0
+                for i in range(len(fx)):
+                    auxiliary_net = auxiliary_models[i]# fx[i][1]-1]
+                    auxiliary_net.eval()
+                    auxiliary_net.to(args.device)
+                    client_logits, client_probs = auxiliary_net(fx[i])
+                    prob = prob + client_probs
+                prob_c = prob / len(fx)
+            else:
+                fx, prob = net(data)
+                for i in range(len(fx)-1):
+                    auxiliary_net = auxiliary_models[i]# fx[i][1]-1]
+                    auxiliary_net.eval()
+                    auxiliary_net.to(args.device)
+                    client_logits, client_probs = auxiliary_net(fx[i])
+                    prob = prob + client_probs
+                prob_c = prob / len(fx)
+            test_loss += F.cross_entropy(prob_c, target, reduction='sum').item()
+            # get the index of the max log-probability
+            y_pred = prob_c.data.max(1, keepdim=True)[1]
+            correct += y_pred.eq(target.data.view_as(y_pred)).long().cpu().sum()
 
     test_loss /= len(data_loader.dataset)
     accuracy = 100.00 * correct / len(data_loader.dataset)
     return accuracy, test_loss
+
 
 class SoftTarget(nn.Module):
     def __init__(self, T):  
@@ -328,3 +333,190 @@ def test_img_sfl(net_c, net_s, datatest, args):
     accuracy_s = 100.00 * correct_s / len(data_loader.dataset)
 
     return  accuracy_s, test_loss_s
+
+class LocalUpdate_client(object):
+    def __init__(self, args, dataset = None, idxs = None, wandb = None, model_idx = None):
+        '''
+        args : argument
+        dataset : 학습에 사용될 데이터 셋
+        idxs : 데이터 분할에 사용되는
+        '''
+        self.args = args
+        self.ldr_train = DataLoader(DatasetSplit(dataset, idxs), batch_size = args.local_bs, shuffle = True)
+        self.wandb = wandb
+        self.model_idx = model_idx
+
+    def get_smashed_data(self, net):
+        smashed_data = []
+        label = []
+        net.eval()
+
+        with torch.no_grad():
+            for batch_idx, (images, labels) in enumerate(self.ldr_train):
+                images, labels = images.to(self.args.device), labels.to(self.args.device)
+                fx_client = net(images)
+                smashed_data.append(fx_client.clone().detach().requires_grad_(True))
+                label.append(labels)
+        return smashed_data, label
+
+    def train(self, net_client, net_ax, kd_logits = None):
+        net_client.to(self.args.device)
+
+        net_client.train()
+        # Auxiliary net 분리 (클라이언트 쪽/서버 쪽)
+        aux_client = copy.deepcopy(net_ax)
+
+        params = list(net_client.parameters())
+        
+        aux_client.to(self.args.device)
+        aux_client.train()
+        params += list(aux_client.parameters())
+
+        optimizer_client = torch.optim.SGD(params, lr = self.args.lr, momentum=self.args.momentum, weight_decay=self.args.weight_decay)
+
+        criterion = nn.CrossEntropyLoss() 
+
+        epoch_loss_c = []
+        epoch_acc_c = []
+        epoch_loss_s = []
+        epoch_acc_s = []
+
+        for iter in range(self.args.local_ep):
+            batch_loss_c = []
+            batch_acc_c = []
+            batch_loss_s = []
+            batch_acc_s = []
+            len_batch = len(self.ldr_train)
+            for batch_idx, (images, labels) in enumerate(self.ldr_train):
+                images, labels = images.to(self.args.device), labels.to(self.args.device)
+                net_client.zero_grad()
+                optimizer_client.zero_grad()
+
+                # forward prop in client-side model      
+                fx = net_client(images) # [[output1,depth1],[output2,depth2],...]
+                
+                aux_client.zero_grad()
+                client_logits, client_probs = aux_client(fx)
+                loss_client = criterion(client_logits, labels)
+                acc_client = calculate_accuracy(client_logits, labels)  
+
+                batch_loss_c.append(loss_client.item())
+                batch_acc_c.append(acc_client.item())    
+
+                loss_client.backward()
+                optimizer_client.step() 
+
+            epoch_loss_c.append(sum(batch_loss_c)/len(batch_loss_c))
+            epoch_acc_c.append(sum(batch_acc_c)/len(batch_acc_c))
+        
+        client_loss_acc = [sum(epoch_loss_c)/len(epoch_loss_c), epoch_acc_c[-1]]
+
+        weight_a_c = copy.deepcopy(aux_client.state_dict())
+        # net_ax가 요소마다 데이트 되는지 확인해봐야 함
+        return net_client.state_dict(), weight_a_c, self.args, client_loss_acc[0], client_loss_acc[1] # sum(epoch_loss)/len(epoch_loss), epoch_acc[-1], sum(epoch_loss)/len(epoch_loss), epoch_acc[-1]
+
+
+class LocalUpdate_server(object):
+    def __init__(self, args, smashed_data = None, label = None, wandb = None, model_idx = None):
+        '''
+        args : argument
+        dataset : 학습에 사용될 데이터 셋
+        idxs : 데이터 분할에 사용되는
+        '''
+        self.args = args 
+        self.data = smashed_data
+        self.label = label
+        self.wandb = wandb
+        self.model_idx = model_idx
+        
+    def train(self, net):
+        net_server = copy.deepcopy(net)
+        net_server.to(self.args.device)
+        net_server.train()
+
+        params = list(net_server.parameters())
+
+
+        optimizer_server = torch.optim.SGD(params, lr = self.args.lr, momentum = self.args.momentum, weight_decay = self.args.weight_decay)
+        criterion = nn.CrossEntropyLoss()  
+
+        
+        net_server.train()
+        net_server.zero_grad()
+        optimizer_server.zero_grad()
+
+        epoch_loss_s = []
+        epoch_acc_s = []
+
+        for iter in range(self.args.local_ep):
+            batch_loss_s = []
+            batch_acc_s = []
+
+            for j in range(len(self.data)):
+                
+                # smashed_data.append(fx_client[-1].clone().detach().requires_grad_(True))
+                fx = self.data[j].clone().detach().requires_grad_(True)   # fx reshape 필요할듯?
+                y = self.label[j]
+
+                fx_server, probs = net_server(fx)
+                loss = criterion(fx_server, y)
+                acc = calculate_accuracy(fx_server, y)  
+
+                loss.backward()
+                optimizer_server.step()
+
+                batch_loss_s.append(loss.item())
+                batch_acc_s.append(acc.item())
+            epoch_loss_s.append(sum(batch_loss_s)/len(batch_loss_s))
+            epoch_acc_s.append(sum(batch_acc_s)/len(batch_acc_s))
+        server_loss = sum(epoch_loss_s)/len(epoch_loss_s)
+        server_acc = epoch_acc_s[-1]
+    
+
+        return net_server.state_dict(), self.args, server_loss, server_acc
+
+
+def test_img_acc(net_c, net_s, net_a, datatest, args):
+    net_c.eval()
+    net_c.to(args.device)
+
+    net_s.eval()
+    net_s.to(args.device)
+
+    net_a.eval()
+    net_a.to(args.device)
+
+    # testing
+    test_loss_c = 0
+    test_loss_s = 0
+    correct_c = 0
+    correct_s = 0
+
+    data_loader = DataLoader(datatest, batch_size=args.bs)
+    l = len(data_loader) # len(data_loader)= 469개, 128*468개 세트, 1개는 96개 들어있음
+
+    with torch.no_grad():
+      for idx, (data, target) in enumerate(data_loader):
+            if 'cuda' in args.device:
+                data, target = data.to(args.device), target.to(args.device)
+            fx_client = net_c(data)
+            
+            # client-side loss
+            logits_c, probas_c = net_a(fx_client)
+            # server-side loss
+            logits_s, probas_s = net_s(fx_client)
+
+            test_loss_c += F.cross_entropy(probas_c, target, reduction='sum').item()
+            y_pred_c = probas_c.data.max(1, keepdim=True)[1]
+            correct_c += y_pred_c.eq(target.data.view_as(y_pred_c)).long().cpu().sum()
+
+            test_loss_s += F.cross_entropy(probas_s, target, reduction='sum').item()
+            y_pred_s = probas_s.data.max(1, keepdim=True)[1]     # label return 
+            correct_s += y_pred_s.eq(target.data.view_as(y_pred_s)).long().cpu().sum()  # ([32]) -> ([32, 1])
+
+    test_loss_c /= len(data_loader.dataset)
+    test_loss_s /= len(data_loader.dataset)
+    accuracy_c = 100.00 * correct_c / len(data_loader.dataset)
+    accuracy_s = 100.00 * correct_s / len(data_loader.dataset)
+
+    return accuracy_c, test_loss_c, accuracy_s, test_loss_s

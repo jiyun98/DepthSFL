@@ -62,7 +62,7 @@ def main_reduction(args):
             test_acc, test_loss = test_img(net_glob, dataset_test, args)
             acc_test_total.append(test_acc)
             print('[Test][User {} with split point {}] [Loss  {:.3f} | Acc {:.3f}]'
-                  .format(iter, idx, args.selected_idx, test_loss, test_acc))
+                  .format(idx, args.selected_idx, test_loss, test_acc))
             wandb.log({"[Test] User {} loss".format(args.selected_idx): test_loss,"[Test] User {} acc".format(args.selected_idx): test_acc}, step = iter)
 #     
     print("finish")

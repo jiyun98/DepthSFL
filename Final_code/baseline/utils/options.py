@@ -20,7 +20,7 @@ def args_parser_main():
     parser.add_argument('--mode', type=str, default='normal')
     parser.add_argument('--wandb', action='store_true')
 
-    parser.add_argument('--method', type=str, default='fjord')
+    parser.add_argument('--method', type=str, default='exclusive')
     parser.add_argument('--model_name', type=str, default='resnet18')
     parser.add_argument('--data', type=str, default='cifar10')
     parser.add_argument('--device_id', type=str, default='1')
