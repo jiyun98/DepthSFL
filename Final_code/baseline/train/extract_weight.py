@@ -91,7 +91,7 @@ def extract_submodel_weight_from_global_fjord(net, p, model_i):
 
         elif len(shape) == 1:
             # bn1.weight/bias/running_mean/running_var, layer1.x len: 1 shape[0]: 16, layer2.0.bn2.bias len: 1 shape[0]: 32
-            if key != 'fc.bias':
+            if key != 'linear.bias':
                 f[key] = parent[key][0:up(shape[0]*p)]
             # 'linear.bias' len 1 shape [10]
             else:
