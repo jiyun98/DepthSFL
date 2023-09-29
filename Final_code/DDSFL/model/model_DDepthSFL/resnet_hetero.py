@@ -79,20 +79,20 @@ def resnet50_server(num_classes = 10, cut_point = 1):
 '''resnet56'''
 def resnet56_client(num_classes = 10, cut_point = 1):
     if cut_point == 1:
-        model = ResNet56_client_v1(block = BasicBlock, num_blocks = [2,0,0],  num_classes = num_classes)
+        model = ResNet56_client_v1(block = BasicBlock, num_blocks = [0,0,0],  num_classes = num_classes)
     elif cut_point == 2:
-        model = ResNet56_client_v2(block = BasicBlock, num_blocks = [9,9,0],  num_classes = num_classes)
+        model = ResNet56_client_v2(block = BasicBlock, num_blocks = [8,0,0],  num_classes = num_classes)
     elif cut_point == 3:
-        model = ResNet56_client_v3(block = BasicBlock, num_blocks = [9,9,4], num_classes = num_classes)
+        model = ResNet56_client_v3(block = BasicBlock, num_blocks = [9,6,0], num_classes = num_classes)
     return model
 
 def resnet56_server(num_classes = 10, cut_point = 1):
     if cut_point == 1:
-        model = ResNet56_server_v1(block = BasicBlock, num_blocks = [7,9,9], num_classes = num_classes)
+        model = ResNet56_server_v1(block = BasicBlock, num_blocks = [9,9,9], num_classes = num_classes)
     elif cut_point == 2:
-        model = ResNet56_server_v2(block = BasicBlock, num_blocks = [0,0,9], num_classes = num_classes)
+        model = ResNet56_server_v2(block = BasicBlock, num_blocks = [1,9,9], num_classes = num_classes)
     elif cut_point == 3:
-        model = ResNet56_server_v3(block = BasicBlock, num_blocks = [0,0,5], num_classes = num_classes)
+        model = ResNet56_server_v3(block = BasicBlock, num_blocks = [0,3,9], num_classes = num_classes)
     return model
 
 

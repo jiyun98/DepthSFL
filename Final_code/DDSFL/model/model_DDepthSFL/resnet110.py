@@ -73,9 +73,9 @@ class ResNet110_server_v1(nn.Module): # Dropout (or pruned) ResNet [width] for C
             return nn.Sequential(*layers)
 
     def forward(self, x):
-        out1 = self.layer1[0:16](x)
+        out1 = self.layer1[:16](x)
         out1_1 = self.layer1[16:](out1)
-        out2 = self.layer2[0:12](out1_1)
+        out2 = self.layer2[:12](out1_1)
         out2_2 = self.layer2[12:](out2)
         out = self.layer3(out2_2)                                    # <-----------------------------
         out = F.avg_pool2d(out, out.size()[3])
@@ -170,7 +170,7 @@ class ResNet110_client_v3(nn.Module): # Dropout (or pruned) ResNet [width] for C
 
     def forward(self, x):
         out0 = F.relu(self.bn1(self.conv1(x)))
-        out1 = self.layer1[0:16](out0)
+        out1 = self.layer1[:16](out0)
         out1_2 = self.layer1[16:](out1)
         out2 = self.layer2(out1_2)
         return [out0, out1, out2]
