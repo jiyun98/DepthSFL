@@ -72,6 +72,7 @@ class ResNet101_FL_v2(nn.Module):  # Dropout (or pruned) ResNet [width]
         self.bn1 = nn.BatchNorm2d(self.in_planes)
         self.maxpool = nn.MaxPool2d(kernel_size=3, stride=2, padding=1)
         self.layer1 = self._make_layer(block, 64, num_blocks[0], stride=1)
+        self.layer2 = self._make_layer(block, 128, num_blocks[1], stride=2)
         self.layer3 = self._make_layer(block, 256, num_blocks[2], stride=2)
         self.linear = nn.Linear(256*block.expansion, num_classes)
 
